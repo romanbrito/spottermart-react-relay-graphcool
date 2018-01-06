@@ -49,6 +49,7 @@
     "test": "node scripts/test.js --env=jsdom"
   },
   "devDependencies": {
+    "babel-plugin-relay": "^1.4.1",
     "relay-compiler": "^1.4.1"
   },
   "jest": {

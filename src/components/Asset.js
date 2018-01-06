@@ -1,4 +1,8 @@
 import React, {Component} from 'react'
+import {
+  createFragmentContainer,
+  graphql
+} from 'react-relay'
 
 class Asset extends Component {
   render(){
@@ -10,4 +14,10 @@ class Asset extends Component {
   }
 }
 
-export default Asset
+export default createFragmentContainer(Asset, graphql`
+  fragment Asset_asset on Asset {
+      id
+      businessName
+      price
+  }
+`)

@@ -1,23 +1,17 @@
 import React, {Component} from 'react'
 import Asset from './Asset'
+import {
+  createFragmentContainer,
+  graphql
+} from 'react-relay'
 
 class AssetList extends Component {
   render(){
 
-    const assetsToRender = [{
-      id: '1',
-      businessName: 'Texadelphia Laredo',
-      price: '120,000'
-    }, {
-      id: '2',
-      businessName: 'Texadelphia McAllen',
-      price: '250,000'
-    }]
-
     return (
       <div>
-        {assetsToRender.map(asset => (
-          <Asset key={asset.id} asset={asset}/>
+        {this.props.viewer.allAssets.edges.map(({node}) => (
+          <Asset key={node.__id} asset={node}/>
         ))}
       </div>
     )
@@ -25,4 +19,14 @@ class AssetList extends Component {
   }
 }
 
-export default AssetList
+export default createFragmentContainer(AssetList, graphql`
+  fragment AssetList_viewer on Viewer {
+      allAssets(last:100, orderBy: createdAt_DESC) @connection(key:"AssetList_allAssets", filters:[]){
+          edges{
+              node {
+                  ...Asset_asset
+              }
+          }
+      }
+  }
+`)

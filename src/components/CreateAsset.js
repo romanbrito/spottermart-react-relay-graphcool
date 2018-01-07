@@ -2,6 +2,7 @@ import React,{Component} from 'react'
 import { withStyles } from 'material-ui/styles'
 import TextField from 'material-ui/TextField'
 import Button from 'material-ui/Button'
+import CreateAssetMutation from '../mutations/CreateAssetMutation'
 
 const styles = {
   textField:{
@@ -32,6 +33,7 @@ class CreateAsset extends Component {
           onChange={(e) => this.setState({ businessName: e.target.value })}
         />
         <TextField
+          type="number"
           id="price"
           label="Price"
           className={classes.textField}
@@ -50,7 +52,7 @@ class CreateAsset extends Component {
 
   _createAsset = () => {
     const {businessName, price} = this.state
-    console.log('name ' + businessName + ', price ' + price)
+    CreateAssetMutation(businessName, price ,() => console.log('Mutation completed'))
   }
 
 }

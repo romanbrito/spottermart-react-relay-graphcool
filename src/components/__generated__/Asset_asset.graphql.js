@@ -11,7 +11,7 @@ import type {ConcreteFragment} from 'relay-runtime';
 export type Asset_asset = {|
   +id: string;
   +businessName: string;
-  +price: number;
+  +price: ?string;
 |};
 */
 

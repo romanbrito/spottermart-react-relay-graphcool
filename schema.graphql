@@ -1,8 +1,24 @@
-﻿type Asset implements Node {
+﻿type AddToUsersAssetsPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  postedByUser: User
+  assetsAsset: Asset
+  postedByUserEdge: UserEdge
+  assetsAssetEdge: AssetEdge
+}
+
+input AddToUsersAssetsUserInput {
+  assetsAssetId: ID!
+  postedByUserId: ID!
+  clientMutationId: String!
+}
+
+type Asset implements Node {
   businessName: String!
   createdAt: DateTime!
   id: ID!
-  price: Int!
+  postedBy(filter: UserFilter): User
+  price: String
   updatedAt: DateTime!
 }
 
@@ -135,28 +151,46 @@ input AssetFilter {
 
   # All values not ending with the given string.
   id_not_ends_with: ID
-  price: Int
+  price: String
 
   # All values that are not equal to given value.
-  price_not: Int
+  price_not: String
 
   # All values that are contained in given list.
-  price_in: [Int!]
+  price_in: [String!]
 
   # All values that are not contained in given list.
-  price_not_in: [Int!]
+  price_not_in: [String!]
 
   # All values less than the given value.
-  price_lt: Int
+  price_lt: String
 
   # All values less than or equal the given value.
-  price_lte: Int
+  price_lte: String
 
   # All values greater than the given value.
-  price_gt: Int
+  price_gt: String
 
   # All values greater than or equal the given value.
-  price_gte: Int
+  price_gte: String
+
+  # All values containing the given string.
+  price_contains: String
+
+  # All values not containing the given string.
+  price_not_contains: String
+
+  # All values starting with the given string.
+  price_starts_with: String
+
+  # All values not starting with the given string.
+  price_not_starts_with: String
+
+  # All values ending with the given string.
+  price_ends_with: String
+
+  # All values not ending with the given string.
+  price_not_ends_with: String
   updatedAt: DateTime
 
   # All values that are not equal to given value.
@@ -179,6 +213,7 @@ input AssetFilter {
 
   # All values greater than or equal the given value.
   updatedAt_gte: DateTime
+  postedBy: UserFilter
 }
 
 enum AssetOrderBy {
@@ -194,14 +229,23 @@ enum AssetOrderBy {
   updatedAt_DESC
 }
 
+input AssetpostedByUser {
+  assetsIds: [ID!]
+  assets: [UserassetsAsset!]
+}
+
 input CreateAsset {
   businessName: String!
-  price: Int!
+  price: String
+  postedById: ID
+  postedBy: AssetpostedByUser
 }
 
 input CreateAssetInput {
   businessName: String!
-  price: Int!
+  price: String
+  postedById: ID
+  postedBy: AssetpostedByUser
   clientMutationId: String!
 }
 
@@ -210,6 +254,7 @@ type CreateAssetPayload {
   clientMutationId: String!
   asset: Asset
   edge: AssetEdge
+  postedBy: User
 }
 
 input CreateFile {
@@ -226,6 +271,11 @@ type CreateFilePayload {
   clientMutationId: String!
   file: File
   edge: FileEdge
+}
+
+input CreateUser {
+  assetsIds: [ID!]
+  assets: [UserassetsAsset!]
 }
 
 # If authentication was successful the payload contains the user and a token. If unsuccessful this payload is null.
@@ -247,6 +297,7 @@ type DeleteAssetPayload {
   clientMutationId: String!
   asset: Asset
   edge: AssetEdge
+  postedBy: User
   deletedId: ID
 }
 
@@ -613,6 +664,8 @@ type Mutation {
   deleteAsset(input: DeleteAssetInput!): DeleteAssetPayload
   deleteFile(input: DeleteFileInput!): DeleteFilePayload
   deleteUser(input: DeleteUserInput!): DeleteUserPayload
+  addToUsersAssets(input: AddToUsersAssetsUserInput!): AddToUsersAssetsPayload
+  removeFromUsersAssets(input: RemoveFromUsersAssetsUserInput!): RemoveFromUsersAssetsPayload
   createUser(input: SignupUserInput!): CreateUserPayload!
 }
 
@@ -647,20 +700,41 @@ type Query {
   ): Node
 }
 
+type RemoveFromUsersAssetsPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  postedByUser: User
+  assetsAsset: Asset
+  postedByUserEdge: UserEdge
+  assetsAssetEdge: AssetEdge
+}
+
+input RemoveFromUsersAssetsUserInput {
+  assetsAssetId: ID!
+  postedByUserId: ID!
+  clientMutationId: String!
+}
+
 input SignupUserInput {
+  assetsIds: [ID!]
+  assets: [UserassetsAsset!]
   clientMutationId: String!
 }
 
 input UpdateAsset {
   businessName: String
   id: ID!
-  price: Int
+  price: String
+  postedById: ID
+  postedBy: AssetpostedByUser
 }
 
 input UpdateAssetInput {
   businessName: String
   id: ID!
-  price: Int
+  price: String
+  postedById: ID
+  postedBy: AssetpostedByUser
   clientMutationId: String!
 }
 
@@ -669,6 +743,7 @@ type UpdateAssetPayload {
   clientMutationId: String!
   asset: Asset
   edge: AssetEdge
+  postedBy: User
 }
 
 input UpdateFile {
@@ -700,6 +775,7 @@ type UpdateOrCreateAssetPayload {
   clientMutationId: String!
   asset: Asset
   edge: AssetEdge
+  postedBy: User
 }
 
 input UpdateOrCreateFileInput {
@@ -717,6 +793,7 @@ type UpdateOrCreateFilePayload {
 
 input UpdateOrCreateUserInput {
   update: UpdateUser!
+  create: CreateUser!
   clientMutationId: String!
 }
 
@@ -729,10 +806,14 @@ type UpdateOrCreateUserPayload {
 
 input UpdateUser {
   id: ID!
+  assetsIds: [ID!]
+  assets: [UserassetsAsset!]
 }
 
 input UpdateUserInput {
   id: ID!
+  assetsIds: [ID!]
+  assets: [UserassetsAsset!]
   clientMutationId: String!
 }
 
@@ -744,9 +825,15 @@ type UpdateUserPayload {
 }
 
 type User implements Node {
+  assets(filter: AssetFilter, orderBy: AssetOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): AssetConnection
   createdAt: DateTime!
   id: ID!
   updatedAt: DateTime!
+}
+
+input UserassetsAsset {
+  businessName: String!
+  price: String
 }
 
 # A connection to a list of items.
@@ -860,6 +947,9 @@ input UserFilter {
 
   # All values greater than or equal the given value.
   updatedAt_gte: DateTime
+  assets_every: AssetFilter
+  assets_some: AssetFilter
+  assets_none: AssetFilter
 }
 
 enum UserOrderBy {

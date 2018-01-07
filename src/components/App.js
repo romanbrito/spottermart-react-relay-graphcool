@@ -3,11 +3,12 @@ import React, { Component } from 'react';
 // import '../App.css';
 //import AssetList from './AssetList'
 import AssetListPage from './AssetListPage'
+import CreateAsset from './CreateAsset'
 
 class App extends Component {
   render() {
     return (
-      <AssetListPage/>
+      <CreateAsset/>
     );
   }
 }

@@ -2,7 +2,9 @@ import React,{Component} from 'react'
 import { withStyles } from 'material-ui/styles'
 import TextField from 'material-ui/TextField'
 import Button from 'material-ui/Button'
+import Input from 'material-ui/Input'
 import CreateAssetMutation from '../mutations/CreateAssetMutation'
+import {NumberFormatCustom} from "./FormatedInputs"
 
 const styles = {
   textField:{
@@ -14,7 +16,7 @@ const styles = {
 class CreateAsset extends Component {
 
   state = {
-    businessName: 'Business Name',
+    businessName: '',
     price: ''
   }
 
@@ -32,12 +34,11 @@ class CreateAsset extends Component {
           value={this.state.businessName}
           onChange={(e) => this.setState({ businessName: e.target.value })}
         />
-        <TextField
-          type="number"
+        <Input
           id="price"
           label="Price"
+          inputComponent={NumberFormatCustom}
           className={classes.textField}
-          margin="normal"
           value={this.state.price}
           onChange={(e) => this.setState({ price: e.target.value })}
         />

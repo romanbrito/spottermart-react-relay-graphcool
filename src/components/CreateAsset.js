@@ -53,7 +53,7 @@ class CreateAsset extends Component {
 
   _createAsset = () => {
     const {businessName, price} = this.state
-    CreateAssetMutation(businessName, price ,() => console.log('Mutation completed'))
+    CreateAssetMutation(businessName, price ,() => this.props.history.push('/'))
   }
 
 }

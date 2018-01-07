@@ -6,6 +6,7 @@ import AppBar from 'material-ui/AppBar'
 import Toolbar from 'material-ui/Toolbar'
 import Button from 'material-ui/Button'
 import Typography from 'material-ui/Typography'
+import '../sass/Header.css'
 
 const styles = {
   root: {

@@ -1,12 +1,13 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { withRouter } from 'react-router'
+import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
+import {withRouter} from 'react-router'
 import {withStyles} from "material-ui/styles/index"
 import AppBar from 'material-ui/AppBar'
 import Toolbar from 'material-ui/Toolbar'
 import Button from 'material-ui/Button'
 import Typography from 'material-ui/Typography'
 import '../sass/Header.css'
+import {GC_USER_ID, GC_AUTH_TOKEN} from "../constants"
 
 const styles = {
   root: {
@@ -24,20 +25,34 @@ const styles = {
 @withStyles(styles)
 class Header extends Component {
 
-  render(){
-    const { classes } = this.props
+  render() {
+    const {classes} = this.props
+    const userId = localStorage.getItem(GC_USER_ID)
 
-    return(
+    return (
       <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <Link to='/'><Button color="contrast">New</Button></Link>
-          <Typography type="title" color="inherit" className={classes.flex}>
-            Title
-          </Typography>
-          <Link to='/create'><Button color="contrast">Submit</Button></Link>
-        </Toolbar>
-      </AppBar>
+        <AppBar position="static">
+          <Toolbar>
+            <Link to='/'><Button color="contrast">New</Button></Link>
+            <Typography type="title" color="inherit" className={classes.flex}>
+              Spottermart
+            </Typography>
+            {userId &&
+            <Link to='/create'><Button color="contrast">Submit</Button></Link>}
+            {userId ?
+              <Button color="contrast"
+                      onClick={() => {
+                        localStorage.removeItem(GC_USER_ID)
+                        localStorage.removeItem(GC_AUTH_TOKEN)
+                        this.props.history.push(`/`)
+                      }}>
+                logout
+              </Button>
+              :
+              <Link to='/login' className='ml1 no-underline black'><Button color="contrast">login</Button></Link>
+            }
+          </Toolbar>
+        </AppBar>
       </div>
     )
   }

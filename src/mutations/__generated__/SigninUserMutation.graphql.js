@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 48013c08f6440f28b0ad458938fbf910
+ * @relayHash 8cd256e14857eb3a29fe28a1f901703f
  */
 
 /* eslint-disable */
@@ -9,19 +9,20 @@
 
 /*::
 import type {ConcreteBatch} from 'relay-runtime';
-export type CreateAssetMutationVariables = {|
+export type SigninUserMutationVariables = {|
   input: {
-    businessName: string;
-    price?: ?string;
-    postedById?: ?string;
+    email?: ?{
+      email: string;
+      password: string;
+    };
     clientMutationId: string;
   };
 |};
-export type CreateAssetMutationResponse = {|
-  +createAsset: ?{|
-    +asset: ?{|
+export type SigninUserMutationResponse = {|
+  +signinUser: {|
+    +token: ?string;
+    +user: ?{|
       +id: string;
-      +createdAt: any;
     |};
   |};
 |};
@@ -29,13 +30,13 @@ export type CreateAssetMutationResponse = {|
 
 
 /*
-mutation CreateAssetMutation(
-  $input: CreateAssetInput!
+mutation SigninUserMutation(
+  $input: SigninUserInput!
 ) {
-  createAsset(input: $input) {
-    asset {
+  signinUser(input: $input) {
+    token
+    user {
       id
-      createdAt
     }
   }
 }
@@ -47,13 +48,13 @@ const batch /*: ConcreteBatch*/ = {
       {
         "kind": "LocalArgument",
         "name": "input",
-        "type": "CreateAssetInput!",
+        "type": "SigninUserInput!",
         "defaultValue": null
       }
     ],
     "kind": "Fragment",
     "metadata": null,
-    "name": "CreateAssetMutation",
+    "name": "SigninUserMutation",
     "selections": [
       {
         "kind": "LinkedField",
@@ -63,19 +64,26 @@ const batch /*: ConcreteBatch*/ = {
             "kind": "Variable",
             "name": "input",
             "variableName": "input",
-            "type": "CreateAssetInput!"
+            "type": "SigninUserInput!"
           }
         ],
-        "concreteType": "CreateAssetPayload",
-        "name": "createAsset",
+        "concreteType": "SigninPayload",
+        "name": "signinUser",
         "plural": false,
         "selections": [
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "token",
+            "storageKey": null
+          },
           {
             "kind": "LinkedField",
             "alias": null,
             "args": null,
-            "concreteType": "Asset",
-            "name": "asset",
+            "concreteType": "User",
+            "name": "user",
             "plural": false,
             "selections": [
               {
@@ -83,13 +91,6 @@ const batch /*: ConcreteBatch*/ = {
                 "alias": null,
                 "args": null,
                 "name": "id",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "createdAt",
                 "storageKey": null
               }
             ],
@@ -104,18 +105,18 @@ const batch /*: ConcreteBatch*/ = {
   "id": null,
   "kind": "Batch",
   "metadata": {},
-  "name": "CreateAssetMutation",
+  "name": "SigninUserMutation",
   "query": {
     "argumentDefinitions": [
       {
         "kind": "LocalArgument",
         "name": "input",
-        "type": "CreateAssetInput!",
+        "type": "SigninUserInput!",
         "defaultValue": null
       }
     ],
     "kind": "Root",
-    "name": "CreateAssetMutation",
+    "name": "SigninUserMutation",
     "operation": "mutation",
     "selections": [
       {
@@ -126,19 +127,26 @@ const batch /*: ConcreteBatch*/ = {
             "kind": "Variable",
             "name": "input",
             "variableName": "input",
-            "type": "CreateAssetInput!"
+            "type": "SigninUserInput!"
           }
         ],
-        "concreteType": "CreateAssetPayload",
-        "name": "createAsset",
+        "concreteType": "SigninPayload",
+        "name": "signinUser",
         "plural": false,
         "selections": [
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "token",
+            "storageKey": null
+          },
           {
             "kind": "LinkedField",
             "alias": null,
             "args": null,
-            "concreteType": "Asset",
-            "name": "asset",
+            "concreteType": "User",
+            "name": "user",
             "plural": false,
             "selections": [
               {
@@ -146,13 +154,6 @@ const batch /*: ConcreteBatch*/ = {
                 "alias": null,
                 "args": null,
                 "name": "id",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "createdAt",
                 "storageKey": null
               }
             ],
@@ -163,7 +164,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "mutation CreateAssetMutation(\n  $input: CreateAssetInput!\n) {\n  createAsset(input: $input) {\n    asset {\n      id\n      createdAt\n    }\n  }\n}\n"
+  "text": "mutation SigninUserMutation(\n  $input: SigninUserInput!\n) {\n  signinUser(input: $input) {\n    token\n    user {\n      id\n    }\n  }\n}\n"
 };
 
 module.exports = batch;

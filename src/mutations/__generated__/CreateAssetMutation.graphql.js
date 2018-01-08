@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 48013c08f6440f28b0ad458938fbf910
+ * @relayHash 10e1a89ac9352bf1381a90ba9958e386
  */
 
 /* eslint-disable */
@@ -22,6 +22,12 @@ export type CreateAssetMutationResponse = {|
     +asset: ?{|
       +id: string;
       +createdAt: any;
+      +businessName: string;
+      +price: ?string;
+      +postedBy: ?{|
+        +id: string;
+        +name: string;
+      |};
     |};
   |};
 |};
@@ -36,6 +42,12 @@ mutation CreateAssetMutation(
     asset {
       id
       createdAt
+      businessName
+      price
+      postedBy {
+        id
+        name
+      }
     }
   }
 }
@@ -90,6 +102,45 @@ const batch /*: ConcreteBatch*/ = {
                 "alias": null,
                 "args": null,
                 "name": "createdAt",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "businessName",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "price",
+                "storageKey": null
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "args": null,
+                "concreteType": "User",
+                "name": "postedBy",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "id",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "name",
+                    "storageKey": null
+                  }
+                ],
                 "storageKey": null
               }
             ],
@@ -154,6 +205,45 @@ const batch /*: ConcreteBatch*/ = {
                 "args": null,
                 "name": "createdAt",
                 "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "businessName",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "price",
+                "storageKey": null
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "args": null,
+                "concreteType": "User",
+                "name": "postedBy",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "id",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "name",
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
               }
             ],
             "storageKey": null
@@ -163,7 +253,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "mutation CreateAssetMutation(\n  $input: CreateAssetInput!\n) {\n  createAsset(input: $input) {\n    asset {\n      id\n      createdAt\n    }\n  }\n}\n"
+  "text": "mutation CreateAssetMutation(\n  $input: CreateAssetInput!\n) {\n  createAsset(input: $input) {\n    asset {\n      id\n      createdAt\n      businessName\n      price\n      postedBy {\n        id\n        name\n      }\n    }\n  }\n}\n"
 };
 
 module.exports = batch;

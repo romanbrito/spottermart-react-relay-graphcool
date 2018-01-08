@@ -5,6 +5,7 @@ import Button from 'material-ui/Button'
 import Input from 'material-ui/Input'
 import CreateAssetMutation from '../mutations/CreateAssetMutation'
 import {NumberFormatCustom} from "./FormatedInputs"
+import {GC_USER_ID} from "../constants"
 
 const styles = {
   textField:{
@@ -52,8 +53,13 @@ class CreateAsset extends Component {
   }
 
   _createAsset = () => {
+    const postedById = localStorage.getItem(GC_USER_ID)
+    if (!postedById) {
+      console.error('No user logged in')
+      return
+    }
     const {businessName, price} = this.state
-    CreateAssetMutation(businessName, price ,() => this.props.history.push('/'))
+    CreateAssetMutation(postedById, businessName, price ,() => this.props.history.push('/'))
   }
 
 }

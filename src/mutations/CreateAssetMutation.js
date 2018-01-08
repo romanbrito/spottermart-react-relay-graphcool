@@ -12,16 +12,23 @@ const mutation = graphql`
             asset {
                 id
                 createdAt
+                businessName
+                price
+                postedBy {
+                    id
+                    name
+                }
             }
         }
     }
 `
 
 // 3
-export default (businessName, price, callback) => {
+export default (postedById, businessName, price, callback) => {
   //4
   const variables = {
     input: {
+      postedById,
       businessName,
       price,
       clientMutationId: ""

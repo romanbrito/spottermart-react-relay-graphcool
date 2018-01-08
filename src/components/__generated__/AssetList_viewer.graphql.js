@@ -13,20 +13,35 @@ export type AssetList_viewer = {|
     +edges: ?$ReadOnlyArray<?{|
       +node: {| |};
     |}>;
+    +pageInfo: {|
+      +hasNextPage: boolean;
+      +endCursor: ?string;
+    |};
   |};
 |};
 */
 
 
 const fragment /*: ConcreteFragment*/ = {
-  "argumentDefinitions": [],
+  "argumentDefinitions": [
+    {
+      "kind": "RootArgument",
+      "name": "count",
+      "type": "Int"
+    },
+    {
+      "kind": "RootArgument",
+      "name": "after",
+      "type": "String"
+    }
+  ],
   "kind": "Fragment",
   "metadata": {
     "connection": [
       {
-        "count": null,
-        "cursor": null,
-        "direction": "backward",
+        "count": "count",
+        "cursor": "after",
+        "direction": "forward",
         "path": [
           "allAssets"
         ]
@@ -38,7 +53,14 @@ const fragment /*: ConcreteFragment*/ = {
     {
       "kind": "LinkedField",
       "alias": "allAssets",
-      "args": null,
+      "args": [
+        {
+          "kind": "Literal",
+          "name": "orderBy",
+          "value": "createdAt_DESC",
+          "type": "AssetOrderBy"
+        }
+      ],
       "concreteType": "AssetConnection",
       "name": "__AssetList_allAssets_connection",
       "plural": false,
@@ -65,6 +87,31 @@ const fragment /*: ConcreteFragment*/ = {
                   "args": null
                 }
               ],
+              "storageKey": null
+            }
+          ],
+          "storageKey": null
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "args": null,
+          "concreteType": "PageInfo",
+          "name": "pageInfo",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "args": null,
+              "name": "hasNextPage",
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "args": null,
+              "name": "endCursor",
               "storageKey": null
             }
           ],
@@ -109,36 +156,11 @@ const fragment /*: ConcreteFragment*/ = {
                 }
               ],
               "storageKey": null
-            },
-            {
-              "kind": "LinkedField",
-              "alias": null,
-              "args": null,
-              "concreteType": "PageInfo",
-              "name": "pageInfo",
-              "plural": false,
-              "selections": [
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "args": null,
-                  "name": "hasPreviousPage",
-                  "storageKey": null
-                },
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "args": null,
-                  "name": "startCursor",
-                  "storageKey": null
-                }
-              ],
-              "storageKey": null
             }
           ]
         }
       ],
-      "storageKey": null
+      "storageKey": "__AssetList_allAssets_connection{\"orderBy\":\"createdAt_DESC\"}"
     }
   ],
   "type": "Viewer"

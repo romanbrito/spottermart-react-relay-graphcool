@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 40f4c460b226d526d50c652381e35990
+ * @relayHash 3fd0711b33c24e8a2b2c30228bfef929
  */
 
 /* eslint-disable */
@@ -9,14 +9,14 @@
 
 /*::
 import type {ConcreteBatch} from 'relay-runtime';
-export type AssetListPageQueryResponse = {|
+export type AssetListForwardQueryResponse = {|
   +viewer: {| |};
 |};
 */
 
 
 /*
-query AssetListPageQuery(
+query AssetListForwardQuery(
   $count: Int!
   $after: String
 ) {
@@ -79,7 +79,7 @@ const batch /*: ConcreteBatch*/ = {
     ],
     "kind": "Fragment",
     "metadata": null,
-    "name": "AssetListPageQuery",
+    "name": "AssetListForwardQuery",
     "selections": [
       {
         "kind": "LinkedField",
@@ -103,7 +103,7 @@ const batch /*: ConcreteBatch*/ = {
   "id": null,
   "kind": "Batch",
   "metadata": {},
-  "name": "AssetListPageQuery",
+  "name": "AssetListForwardQuery",
   "query": {
     "argumentDefinitions": [
       {
@@ -120,7 +120,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ],
     "kind": "Root",
-    "name": "AssetListPageQuery",
+    "name": "AssetListForwardQuery",
     "operation": "query",
     "selections": [
       {
@@ -325,7 +325,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query AssetListPageQuery(\n  $count: Int!\n  $after: String\n) {\n  viewer {\n    ...AssetList_viewer\n    id\n  }\n}\n\nfragment AssetList_viewer on Viewer {\n  allAssets(first: $count, after: $after, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        ...Asset_asset\n        id\n      }\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    ... on AssetConnection {\n      edges {\n        cursor\n        node {\n          __typename\n          id\n        }\n      }\n      pageInfo {\n        endCursor\n        hasNextPage\n      }\n    }\n  }\n}\n\nfragment Asset_asset on Asset {\n  id\n  businessName\n  price\n}\n"
+  "text": "query AssetListForwardQuery(\n  $count: Int!\n  $after: String\n) {\n  viewer {\n    ...AssetList_viewer\n    id\n  }\n}\n\nfragment AssetList_viewer on Viewer {\n  allAssets(first: $count, after: $after, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        ...Asset_asset\n        id\n      }\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    ... on AssetConnection {\n      edges {\n        cursor\n        node {\n          __typename\n          id\n        }\n      }\n      pageInfo {\n        endCursor\n        hasNextPage\n      }\n    }\n  }\n}\n\nfragment Asset_asset on Asset {\n  id\n  businessName\n  price\n}\n"
 };
 
 module.exports = batch;

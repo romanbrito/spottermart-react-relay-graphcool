@@ -4,10 +4,14 @@ import {
   graphql
 } from 'react-relay'
 import environment from '../Environment'
+import {ITEMS_PER_PAGE} from '../constants'
 import AssetList from './AssetList'
 
 const AssetListPageQuery = graphql`
-  query AssetListPageQuery {
+  query AssetListPageQuery (
+      $count: Int!,
+      $after: String
+  ){
       viewer {
           ...AssetList_viewer
       }
@@ -19,6 +23,9 @@ class AssetListPage extends Component {
     return(
       <QueryRenderer
       environment={environment}
+      variables={{
+        count: ITEMS_PER_PAGE,
+      }}
       query={AssetListPageQuery}
       render={({error, props}) => {
         if (error) {

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import {withStyles} from 'material-ui/styles';
-import Button from 'material-ui/Button';
-import Input, {InputLabel, InputAdornment} from 'material-ui/Input';
+import {withStyles} from 'material-ui/styles'
+import Button from 'material-ui/Button'
+import Input, {InputLabel, InputAdornment} from 'material-ui/Input'
 import IconButton from 'material-ui/IconButton'
 import Visibility from 'material-ui-icons/Visibility'
 import VisibilityOff from 'material-ui-icons/VisibilityOff'

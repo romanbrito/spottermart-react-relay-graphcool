@@ -9,9 +9,9 @@ const Main = (props) => {
   return (
     <Switch>
       <Route exact path='/' component={AssetListPage}/>
-      <Route path='/:businessName' component={SingleAsset}/>
       <Route exact path='/create' component={CreateAsset}/>
       <Route exact path='/login' component={Login}/>
+      <Route path='/:businessName' component={SingleAsset}/>
     </Switch>
   )
 }

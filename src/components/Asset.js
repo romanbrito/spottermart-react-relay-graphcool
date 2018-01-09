@@ -42,6 +42,7 @@ render(){
           <div className={classes.details}>
             <CardContent className={classes.content}>
               <Typography type="headline">
+                {console.log(this.props)}
                 {this.props.asset.businessName}
               </Typography>
               <Typography type="subheading" color="secondary">

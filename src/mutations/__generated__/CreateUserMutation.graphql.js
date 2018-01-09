@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 72c2c898f36cc0c6028b11791ecd6e7a
+ * @relayHash f6ae5c404fdc5b5cf3adbb7c6b7b857f
  */
 
 /* eslint-disable */
@@ -14,8 +14,44 @@ export type CreateUserMutationVariables = {|
     name: string;
     assetsIds?: ?$ReadOnlyArray<string>;
     assets?: ?$ReadOnlyArray<{
+      address?: ?string;
+      alcoholLicense?: ?boolean;
       businessName: string;
+      businessType?: ?string;
+      city: string;
+      description: string;
+      equipment?: ?$ReadOnlyArray<string>;
+      franchiseBool?: ?boolean;
+      franchiseMarketingFee?: ?string;
+      franchiseRoyalties?: ?string;
+      franchiseTraining?: ?string;
+      franchiseTransferFee?: ?string;
+      franchiseYearsRemaining?: ?string;
+      fullTimeEmployees?: ?string;
+      grossIncome?: ?string;
+      hoursOfOperation?: ?string;
+      howLongInOperation?: ?string;
+      howManySeats?: ?string;
+      insideSqFeet?: ?string;
+      netIncome?: ?string;
+      notes?: ?string;
+      owned?: ?boolean;
+      ownerFinance?: ?string;
+      partTimeEmployees?: ?string;
+      pictures?: ?$ReadOnlyArray<any>;
       price?: ?string;
+      rentNNN?: ?string;
+      requirementsToQualify?: ?string;
+      socialMedia?: ?$ReadOnlyArray<string>;
+      socialMediaRating?: ?string;
+      specialFeatures?: ?string;
+      state: string;
+      status?: ?string;
+      structure?: ?string;
+      termOfLease?: ?string;
+      website?: ?string;
+      whySelling?: ?string;
+      zipCode: string;
     }>;
     clientMutationId: string;
     authProvider: {

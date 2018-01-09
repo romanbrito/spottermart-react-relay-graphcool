@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 10e1a89ac9352bf1381a90ba9958e386
+ * @relayHash 7139a06fa1612b3fdff8668d7829c7c6
  */
 
 /* eslint-disable */
@@ -11,8 +11,44 @@
 import type {ConcreteBatch} from 'relay-runtime';
 export type CreateAssetMutationVariables = {|
   input: {
+    address?: ?string;
+    alcoholLicense?: ?boolean;
     businessName: string;
+    businessType?: ?string;
+    city: string;
+    description: string;
+    equipment?: ?$ReadOnlyArray<string>;
+    franchiseBool?: ?boolean;
+    franchiseMarketingFee?: ?string;
+    franchiseRoyalties?: ?string;
+    franchiseTraining?: ?string;
+    franchiseTransferFee?: ?string;
+    franchiseYearsRemaining?: ?string;
+    fullTimeEmployees?: ?string;
+    grossIncome?: ?string;
+    hoursOfOperation?: ?string;
+    howLongInOperation?: ?string;
+    howManySeats?: ?string;
+    insideSqFeet?: ?string;
+    netIncome?: ?string;
+    notes?: ?string;
+    owned?: ?boolean;
+    ownerFinance?: ?string;
+    partTimeEmployees?: ?string;
+    pictures?: ?$ReadOnlyArray<any>;
     price?: ?string;
+    rentNNN?: ?string;
+    requirementsToQualify?: ?string;
+    socialMedia?: ?$ReadOnlyArray<string>;
+    socialMediaRating?: ?string;
+    specialFeatures?: ?string;
+    state: string;
+    status?: ?string;
+    structure?: ?string;
+    termOfLease?: ?string;
+    website?: ?string;
+    whySelling?: ?string;
+    zipCode: string;
     postedById?: ?string;
     clientMutationId: string;
   };

@@ -18,7 +18,11 @@ class CreateAsset extends Component {
 
   state = {
     businessName: '',
-    price: ''
+    price: '',
+    description: '',
+    city: '',
+    state: '',
+    zipCode: ''
   }
 
   render() {
@@ -28,12 +32,48 @@ class CreateAsset extends Component {
       <div>
         <TextField
           required
-          id="required"
+          id="businessname"
           label="Name"
           className={classes.textField}
           margin="normal"
           value={this.state.businessName}
           onChange={(e) => this.setState({ businessName: e.target.value })}
+        />
+        <TextField
+          required
+          id="description"
+          label="Description"
+          className={classes.textField}
+          margin="normal"
+          value={this.state.description}
+          onChange={(e) => this.setState({ description: e.target.value })}
+        />
+        <TextField
+          required
+          id="city"
+          label="City"
+          className={classes.textField}
+          margin="normal"
+          value={this.state.city}
+          onChange={(e) => this.setState({ city: e.target.value })}
+        />
+        <TextField
+          required
+          id="state"
+          label="State"
+          className={classes.textField}
+          margin="normal"
+          value={this.state.state}
+          onChange={(e) => this.setState({ state: e.target.value })}
+        />
+        <TextField
+          required
+          id="zipCode"
+          label="ZipCode"
+          className={classes.textField}
+          margin="normal"
+          value={this.state.zipCode}
+          onChange={(e) => this.setState({ zipCode: e.target.value })}
         />
         <Input
           id="price"
@@ -59,7 +99,15 @@ class CreateAsset extends Component {
       return
     }
     const {businessName, price} = this.state
-    CreateAssetMutation(postedById, businessName, price ,() => this.props.history.push('/'))
+    CreateAssetMutation(
+      postedById,
+      businessName,
+      price,
+      description,
+      city,
+      state,
+      zipCode
+      ,() => this.props.history.push('/'))
   }
 
 }

@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 7139a06fa1612b3fdff8668d7829c7c6
+ * @relayHash 5c2ddacf013fe461a6ce32fa1f89c011
  */
 
 /* eslint-disable */
@@ -64,6 +64,10 @@ export type CreateAssetMutationResponse = {|
         +id: string;
         +name: string;
       |};
+      +description: string;
+      +city: string;
+      +state: string;
+      +zipCode: string;
     |};
   |};
 |};
@@ -84,6 +88,10 @@ mutation CreateAssetMutation(
         id
         name
       }
+      description
+      city
+      state
+      zipCode
     }
   }
 }
@@ -177,6 +185,34 @@ const batch /*: ConcreteBatch*/ = {
                     "storageKey": null
                   }
                 ],
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "description",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "city",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "state",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "zipCode",
                 "storageKey": null
               }
             ],
@@ -280,6 +316,34 @@ const batch /*: ConcreteBatch*/ = {
                   }
                 ],
                 "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "description",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "city",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "state",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "zipCode",
+                "storageKey": null
               }
             ],
             "storageKey": null
@@ -289,7 +353,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "mutation CreateAssetMutation(\n  $input: CreateAssetInput!\n) {\n  createAsset(input: $input) {\n    asset {\n      id\n      createdAt\n      businessName\n      price\n      postedBy {\n        id\n        name\n      }\n    }\n  }\n}\n"
+  "text": "mutation CreateAssetMutation(\n  $input: CreateAssetInput!\n) {\n  createAsset(input: $input) {\n    asset {\n      id\n      createdAt\n      businessName\n      price\n      postedBy {\n        id\n        name\n      }\n      description\n      city\n      state\n      zipCode\n    }\n  }\n}\n"
 };
 
 module.exports = batch;

@@ -40,6 +40,7 @@ render(){
 
     return (
       <div>
+        {console.log(this.props.asset)}
         <Card className={classes.card}>
           <div className={classes.details}>
             <CardContent className={classes.content}>
@@ -51,9 +52,15 @@ render(){
                 Show Details
               </Button></Link>}
               {this.props.showDetails &&
-              <Typography type="subheading" color="secondary">
-                {this.props.asset.price}
-              </Typography>}
+              <div>
+                <Typography type="subheading" color="secondary">
+                  {this.props.asset.price}
+                </Typography>
+                <Typography type="subheading" color="secondary">
+                  {this.props.asset.city}, {this.props.asset.state}, {this.props.asset.zipCode}
+                </Typography>
+              </div>}
+
             </CardContent>
           </div>
         </Card>
@@ -67,5 +74,9 @@ export default createFragmentContainer(Asset, graphql`
       id
       businessName
       price
+      description
+      city
+      state
+      zipCode
   }
 `)

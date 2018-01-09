@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash b249219958a104d5ddf6fe50a4b15939
+ * @relayHash efb519deb9c3a1d86dc683cd4bd2d547
  */
 
 /* eslint-disable */
@@ -34,6 +34,10 @@ fragment Asset_asset on Asset {
   id
   businessName
   price
+  description
+  city
+  state
+  zipCode
 }
 */
 
@@ -148,6 +152,34 @@ const batch /*: ConcreteBatch*/ = {
                 "args": null,
                 "name": "price",
                 "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "description",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "city",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "state",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "zipCode",
+                "storageKey": null
               }
             ],
             "storageKey": null
@@ -164,7 +196,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query SingleAssetPageQuery(\n  $businessName: String!\n) {\n  viewer {\n    Asset(businessName: $businessName) {\n      ...Asset_asset\n      id\n    }\n    id\n  }\n}\n\nfragment Asset_asset on Asset {\n  id\n  businessName\n  price\n}\n"
+  "text": "query SingleAssetPageQuery(\n  $businessName: String!\n) {\n  viewer {\n    Asset(businessName: $businessName) {\n      ...Asset_asset\n      id\n    }\n    id\n  }\n}\n\nfragment Asset_asset on Asset {\n  id\n  businessName\n  price\n  description\n  city\n  state\n  zipCode\n}\n"
 };
 
 module.exports = batch;

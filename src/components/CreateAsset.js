@@ -98,7 +98,14 @@ class CreateAsset extends Component {
       console.error('No user logged in')
       return
     }
-    const {businessName, price} = this.state
+    const {
+      businessName,
+      price,
+      description,
+      city,
+      state,
+      zipCode} = this.state
+
     CreateAssetMutation(
       postedById,
       businessName,

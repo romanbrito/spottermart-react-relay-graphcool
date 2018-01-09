@@ -18,19 +18,30 @@ const mutation = graphql`
                     id
                     name
                 }
+                description
+                city
+                state
+                zipCode
             }
         }
     }
 `
 
 // 3
-export default (postedById, businessName, price, callback) => {
+export default (postedById, businessName, price,description,
+  city,
+  state,
+  zipCode, callback) => {
   //4
   const variables = {
     input: {
       postedById,
       businessName,
       price,
+      description,
+      city,
+      state,
+      zipCode,
       clientMutationId: ""
     },
   }

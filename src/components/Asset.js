@@ -1,10 +1,12 @@
 import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
 import {
   createFragmentContainer,
   graphql
 } from 'react-relay'
 import Card, {CardActions, CardContent, CardMedia} from 'material-ui/Card'
 import Typography from 'material-ui/Typography';
+import Button from 'material-ui/Button'
 import {withStyles} from "material-ui/styles/index"
 
 const styles = theme => ({
@@ -44,6 +46,10 @@ render(){
               <Typography type="headline">
                 {this.props.asset.businessName}
               </Typography>
+              {!this.props.showDetails &&
+              <Link to={'/' + this.props.asset.businessName}><Button color="primary">
+                Show Details
+              </Button></Link>}
               {this.props.showDetails &&
               <Typography type="subheading" color="secondary">
                 {this.props.asset.price}

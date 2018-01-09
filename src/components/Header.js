@@ -49,7 +49,7 @@ class Header extends Component {
                 logout
               </Button>
               :
-              <Link to='/login' className='ml1 no-underline black'><Button color="contrast">login</Button></Link>
+              <Link to='/login'><Button color="contrast">login</Button></Link>
             }
           </Toolbar>
         </AppBar>

@@ -28,7 +28,7 @@ class SingleAssetPage extends Component {
           if (error) {
             return <div>{error.message}</div>
           } else if (props) {
-            return <Asset asset={props.viewer.Asset}/>
+            return <Asset asset={props.viewer.Asset} showDetails={true}/>
           }
           return <div>Loading</div>
         }}

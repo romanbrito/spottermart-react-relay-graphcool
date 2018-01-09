@@ -33,21 +33,21 @@ const styles = theme => ({
 @withStyles(styles)
 class Asset extends Component {
 
-
 render(){
   const {classes} = this.props
+
     return (
       <div>
         <Card className={classes.card}>
           <div className={classes.details}>
             <CardContent className={classes.content}>
               <Typography type="headline">
-                {console.log(this.props)}
                 {this.props.asset.businessName}
               </Typography>
+              {this.props.showDetails &&
               <Typography type="subheading" color="secondary">
                 {this.props.asset.price}
-              </Typography>
+              </Typography>}
             </CardContent>
           </div>
         </Card>

@@ -29,6 +29,7 @@ class Basic extends React.Component {
   render() {
     return (
       <section>
+        {this.state.files.length > 11 ? '':
         <div className="dropzone">
           <Dropzone
             onDrop={this.onDrop.bind(this)}
@@ -36,6 +37,8 @@ class Basic extends React.Component {
             <p>Try dropping some files here, or click to select files to upload.</p>
           </Dropzone>
         </div>
+        }
+
         <aside>
           <h2>Grid List</h2>
 

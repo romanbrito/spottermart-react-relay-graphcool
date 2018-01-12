@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {withStyles} from 'material-ui/styles';
 import {GridList, GridListTile, GridListTileBar} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
-import StarBorderIcon from 'material-ui-icons/StarBorder';
+import Delete from 'material-ui-icons/Delete';
 
 
 const styles = theme => ({
@@ -52,7 +52,6 @@ const styles = theme => ({
 function AdvancedGridList(props) {
   const {classes} = props;
 
-  console.log(props)
   return (
     <div className={classes.root}>
       <GridList cellHeight={200} spacing={1} className={classes.gridList}>
@@ -62,18 +61,19 @@ function AdvancedGridList(props) {
           props.tileData.map(tile => (
 
             <GridListTile
-              onClick={(e) => props.removeImage(e)}
               key={tile.preview} cols={tile.featured ? 2 : 1} rows={tile.featured ? 2 : 1}>
 
 
-              <img src={tile.preview} alt={tile.name}/>
+              <img id={tile.preview} src={tile.preview} alt={tile.name}/>
 
               <GridListTileBar
                 title={tile.name}
                 titlePosition="top"
                 actionIcon={
-                  <IconButton className={classes.icon}>
-                    <StarBorderIcon/>
+                  <IconButton
+                    className={classes.icon}
+                    onClick={() => props.removeImage(document.getElementById(tile.preview))}>
+                    <Delete/>
                   </IconButton>
                 }
                 actionPosition="left"

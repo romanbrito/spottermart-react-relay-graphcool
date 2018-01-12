@@ -16,12 +16,11 @@ class Basic extends React.Component {
     })
   }
 
-  removeImage = (e) => {
+  removeImage = (image) => {
 
     this.setState({
       files:this.state.files.filter(function (file) {
-        console.log(file.preview)
-        return file.preview !== e.target.src
+        return file.preview !== image.src
       })
     })
 

@@ -6,6 +6,8 @@ import Input from 'material-ui/Input'
 import CreateAssetMutation from '../mutations/CreateAssetMutation'
 import {NumberFormatCustom} from "./FormatedInputs"
 import {GC_USER_ID} from "../constants"
+import AssetImages from './AssetImages'
+import ImageGrid from './ImageGrid'
 
 const styles = {
   textField:{
@@ -22,7 +24,9 @@ class CreateAsset extends Component {
     description: '',
     city: '',
     state: '',
-    zipCode: ''
+    zipCode: '',
+    pictures: '',
+    images: []
   }
 
   render() {
@@ -83,6 +87,8 @@ class CreateAsset extends Component {
           value={this.state.price}
           onChange={(e) => this.setState({ price: e.target.value })}
         />
+        <AssetImages imageDrop={this._getImages}/>
+        <ImageGrid images={this.state.images} removeImage={this._removeImage}/>
         <Button
           color="primary"
           onClick={() => this._createAsset()}>
@@ -115,6 +121,20 @@ class CreateAsset extends Component {
       state,
       zipCode
       ,() => this.props.history.push('/'))
+  }
+
+  _getImages = (images) => {
+    const imagesArr = [...this.state.images]
+    imagesArr.push(...images)
+    this.setState({
+      images:imagesArr
+    })
+  }
+
+  _removeImage = (image) => {
+    this.setState({
+      images:this.state.images.filter(pic => pic.preview !== image.src)
+    })
   }
 
 }

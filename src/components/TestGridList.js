@@ -88,8 +88,8 @@ function AdvancedGridList(props) {
   );
 }
 
-AdvancedGridList.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
+// AdvancedGridList.propTypes = {
+//   classes: PropTypes.object.isRequired,
+// };
 
 export default withStyles(styles)(AdvancedGridList);

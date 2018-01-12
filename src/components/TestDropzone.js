@@ -2,10 +2,13 @@ import React, {Component} from 'react'
 import Dropzone from 'react-dropzone'
 import GridList from './TestGridList'
 
+import {CLOUDINARY_UPLOAD_URL, CLOUDINARY_UPLOAD_PRESET} from "../constants"
+
 class Basic extends React.Component {
 
   state = {
-    files: []
+    files: [],
+    uploadedFileUrl:[]
   }
 
   onDrop(files) {
@@ -26,6 +29,34 @@ class Basic extends React.Component {
 
   }
 
+  handleImageUpload(files) {
+    files.map(
+
+      file => {
+        const fd = new FormData()
+        fd.append('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+        fd.append('file', file)
+
+        fetch(CLOUDINARY_UPLOAD_URL, {
+          method: 'POST',
+          body: fd,
+        }).then(response => {
+          return response.json()
+        }).then(data => {
+          console.log(data)
+
+          const upFileUrlArr = [...this.state.uploadedFileUrl]
+          upFileUrlArr.push(data.secure_url)
+
+          this.setState({
+            uploadedFileUrl: upFileUrlArr
+          })
+        }).catch(error => console.log(error))
+      }
+
+    )
+  }
+
   render() {
     return (
       <section>
@@ -41,10 +72,13 @@ class Basic extends React.Component {
 
         <aside>
           <h2>Grid List</h2>
-
           <GridList tileData={this.state.files} removeImage={this.removeImage}/>
 
         </aside>
+        <button
+          onClick={() => this.handleImageUpload(this.state.files)}>
+          upload
+        </button>
       </section>
     );
   }

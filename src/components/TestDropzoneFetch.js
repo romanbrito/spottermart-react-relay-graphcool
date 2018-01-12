@@ -1,72 +1,23 @@
 import React, {Component} from 'react'
 import Dropzone from 'react-dropzone'
-//import {GC_AUTH_TOKEN} from "../constants"
-
-// cloudinary.config({
-//   cloud_name: 'spottermart',
-//   api_key: '367443589146887',
-//   api_secret: 'a9sZ5OqfhHRLDshttizduOUy1B4'
-//   Preset_name: 'cqpzx56r'
-//
-// });
-
-const CLOUDINARY_UPLOAD_PRESET = 'react-dropzone-test'
-const CLOUD_NAME = 'spottermart'
-const RESOURCE_TYPE = 'image'
-const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/' + CLOUD_NAME + '/upload';
-//Image upload: https://api.cloudinary.com/v1_1/spottermart/image/upload
-//Environment Variable cloudinary://367443589146887:a9sZ5OqfhHRLDshttizduOUy1B4@spottermart/
-
-//Sample upload code
-// cloudinary.uploader.upload(
-//   "sample.jpg",
-//   {
-//     "crop":"limit",
-//     "tags":"samples",
-//     "width":3000,
-//     "height":2000
-//   }, function(result) {
-//   console.log(result) });
-
-//Sample image manipulation tag
-//cloudinary.image("sample", {"crop":"fill","gravity":"faces","width":300,"height":200,"format":"jpg"});
+import {CLOUDINARY_UPLOAD_URL} from "../constants"
 
 class Basic extends Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
+    state = {
       uploadedFile: null,
       uploadedFileCloudinaryUrl: ''
-    };
-  }
+    }
 
   onImageDrop(files) {
     this.setState({
       uploadedFile: files[0]
-    });
+    })
 
     this.handleImageUpload(files[0]);
   }
 
   handleImageUpload(file) {
-
-    // let upload = request.post(CLOUDINARY_UPLOAD_URL)
-    //   .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
-    //   .field('file', file);
-    //
-    // upload.end((err, response) => {
-    //   if (err) {
-    //     console.error(err);
-    //   }
-    //
-    //   if (response.body.secure_url !== '') {
-    //     this.setState({
-    //       uploadedFileCloudinaryUrl: response.body.secure_url
-    //     });
-    //   }
-    // });
-
     const fd = new FormData()
     fd.append('upload_preset', CLOUDINARY_UPLOAD_PRESET)
     fd.append('file', file)

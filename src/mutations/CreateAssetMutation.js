@@ -22,16 +22,18 @@ const mutation = graphql`
                 city
                 state
                 zipCode
+                pictures
             }
         }
     }
 `
 
 // 3
-export default (postedById, businessName, price,description,
-  city,
-  state,
-  zipCode, callback) => {
+export default (postedById, businessName, price, description,
+                city,
+                state,
+                zipCode,
+                pictures, callback) => {
   //4
   const variables = {
     input: {
@@ -42,6 +44,7 @@ export default (postedById, businessName, price,description,
       city,
       state,
       zipCode,
+      pictures,
       clientMutationId: ""
     },
   }

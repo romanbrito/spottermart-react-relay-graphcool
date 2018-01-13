@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 5c2ddacf013fe461a6ce32fa1f89c011
+ * @relayHash aac9c699db6aa51b08a49aea916bd21e
  */
 
 /* eslint-disable */
@@ -68,6 +68,7 @@ export type CreateAssetMutationResponse = {|
       +city: string;
       +state: string;
       +zipCode: string;
+      +pictures: ?$ReadOnlyArray<any>;
     |};
   |};
 |};
@@ -92,6 +93,7 @@ mutation CreateAssetMutation(
       city
       state
       zipCode
+      pictures
     }
   }
 }
@@ -213,6 +215,13 @@ const batch /*: ConcreteBatch*/ = {
                 "alias": null,
                 "args": null,
                 "name": "zipCode",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "pictures",
                 "storageKey": null
               }
             ],
@@ -344,6 +353,13 @@ const batch /*: ConcreteBatch*/ = {
                 "args": null,
                 "name": "zipCode",
                 "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "pictures",
+                "storageKey": null
               }
             ],
             "storageKey": null
@@ -353,7 +369,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "mutation CreateAssetMutation(\n  $input: CreateAssetInput!\n) {\n  createAsset(input: $input) {\n    asset {\n      id\n      createdAt\n      businessName\n      price\n      postedBy {\n        id\n        name\n      }\n      description\n      city\n      state\n      zipCode\n    }\n  }\n}\n"
+  "text": "mutation CreateAssetMutation(\n  $input: CreateAssetInput!\n) {\n  createAsset(input: $input) {\n    asset {\n      id\n      createdAt\n      businessName\n      price\n      postedBy {\n        id\n        name\n      }\n      description\n      city\n      state\n      zipCode\n      pictures\n    }\n  }\n}\n"
 };
 
 module.exports = batch;

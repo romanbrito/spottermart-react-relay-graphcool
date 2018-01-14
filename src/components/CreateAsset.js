@@ -101,48 +101,45 @@ class CreateAsset extends Component {
 
   _createAsset = () => {
 
-    this.state.images.map(
-      image => {
-        uploadImage(image)
-          .then(
-            data => {
-              console.log(data)
-              const picArr = [...this.state.pictures]
-              picArr.push(data)
+    // fetch image data PROMISES!!
+    const allPicData = () => {
+      const imagePromises = this.state.images.map(
+        image => {
+          return uploadImage(image)
+        }
+      )
+      return Promise.all(imagePromises)
+    }
 
-              this.setState({
-                pictures: picArr
-              })
-            }
-          )
-      }
+    allPicData().then(
+      imageData => console.log(imageData)
     )
 
-    const postedById = localStorage.getItem(GC_USER_ID)
-    if (!postedById) {
-      console.error('No user logged in')
-      return
-    }
-    const {
-      businessName,
-      price,
-      description,
-      city,
-      state,
-      zipCode,
-      pictures
-    } = this.state
-
-    CreateAssetMutation(
-      postedById,
-      businessName,
-      price,
-      description,
-      city,
-      state,
-      zipCode,
-      pictures
-      , () => this.props.history.push('/'))
+    // const postedById = localStorage.getItem(GC_USER_ID)
+    // if (!postedById) {
+    //   console.error('No user logged in')
+    //   return
+    // }
+    // const {
+    //   businessName,
+    //   price,
+    //   description,
+    //   city,
+    //   state,
+    //   zipCode,
+    //   pictures
+    // } = this.state
+    //
+    // CreateAssetMutation(
+    //   postedById,
+    //   businessName,
+    //   price,
+    //   description,
+    //   city,
+    //   state,
+    //   zipCode,
+    //   pictures
+    //   , () => this.props.history.push('/'))
   }
 
   _getImages = (images) => {

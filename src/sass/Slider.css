@@ -1,0 +1,7 @@
+@import url(~slick-carousel/slick/slick.css);
+@import url(~slick-carousel/slick/slick-theme.css);
+.slick-slide {
+  height: 300px;
+  width: auto; }
+  .slick-slide img {
+    margin: 0 auto; }

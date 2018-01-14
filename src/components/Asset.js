@@ -9,6 +9,8 @@ import { CloudinaryContext, Image, Transformation, Video } from 'cloudinary-reac
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button'
 import {withStyles} from "material-ui/styles/index"
+import Slider from 'react-slick'
+import '../sass/Slider.css'
 
 const styles = theme => ({
   card: {
@@ -38,6 +40,13 @@ class Asset extends Component {
 
 render(){
   const {classes} = this.props
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  }
 
     return (
       <div>
@@ -60,15 +69,17 @@ render(){
                 <Typography type="subheading" color="secondary">
                   {this.props.asset.city}, {this.props.asset.state}, {this.props.asset.zipCode}
                 </Typography>
-                {console.log(this.props.asset.pictures[0])}
-                {this.props.asset.pictures.map(picture => (
-                  <Image key={picture.public_id} cloudName="spottermart" publicId={picture.public_id} width="300" crop="scale"/>
-                ))}
               </div>}
 
             </CardContent>
           </div>
         </Card>
+        {this.props.showDetails &&
+        <Slider {...sliderSettings}>
+          {this.props.asset.pictures.map(picture => (
+            <div key={picture.public_id}><Image cloudName="spottermart" publicId={picture.public_id} width="300" crop="scale"/></div>
+          ))}
+        </Slider>}
       </div>
     )
   }

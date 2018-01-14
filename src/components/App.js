@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Header from './Header'
 import Main from './Main'
+import Slider from './TestSlider'
 
 class App extends Component {
   render() {

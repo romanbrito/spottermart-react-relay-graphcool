@@ -5,6 +5,7 @@ import {
   graphql
 } from 'react-relay'
 import Card, {CardActions, CardContent, CardMedia} from 'material-ui/Card'
+import { CloudinaryContext, Image, Transformation, Video } from 'cloudinary-react';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button'
 import {withStyles} from "material-ui/styles/index"
@@ -59,6 +60,10 @@ render(){
                 <Typography type="subheading" color="secondary">
                   {this.props.asset.city}, {this.props.asset.state}, {this.props.asset.zipCode}
                 </Typography>
+                {console.log(this.props.asset.pictures[0])}
+                {this.props.asset.pictures.map(picture => (
+                  <Image key={picture.public_id} cloudName="spottermart" publicId={picture.public_id} width="300" crop="scale"/>
+                ))}
               </div>}
 
             </CardContent>
@@ -78,5 +83,6 @@ export default createFragmentContainer(Asset, graphql`
       city
       state
       zipCode
+      pictures
   }
 `)

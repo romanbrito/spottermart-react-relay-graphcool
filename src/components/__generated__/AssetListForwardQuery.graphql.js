@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 37fe1e6b26446fd55a674b02b5fc196d
+ * @relayHash d39e31ebc8e0b13c4374cb4164aa505f
  */
 
 /* eslint-disable */
@@ -62,6 +62,7 @@ fragment Asset_asset on Asset {
   city
   state
   zipCode
+  pictures
 }
 */
 
@@ -241,6 +242,13 @@ const batch /*: ConcreteBatch*/ = {
                                 "args": null,
                                 "name": "zipCode",
                                 "storageKey": null
+                              },
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "args": null,
+                                "name": "pictures",
+                                "storageKey": null
                               }
                             ]
                           }
@@ -357,7 +365,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query AssetListForwardQuery(\n  $count: Int!\n  $after: String\n) {\n  viewer {\n    ...AssetList_viewer\n    id\n  }\n}\n\nfragment AssetList_viewer on Viewer {\n  allAssets(first: $count, after: $after, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        ...Asset_asset\n        id\n      }\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    ... on AssetConnection {\n      edges {\n        cursor\n        node {\n          __typename\n          id\n        }\n      }\n      pageInfo {\n        endCursor\n        hasNextPage\n      }\n    }\n  }\n}\n\nfragment Asset_asset on Asset {\n  id\n  businessName\n  price\n  description\n  city\n  state\n  zipCode\n}\n"
+  "text": "query AssetListForwardQuery(\n  $count: Int!\n  $after: String\n) {\n  viewer {\n    ...AssetList_viewer\n    id\n  }\n}\n\nfragment AssetList_viewer on Viewer {\n  allAssets(first: $count, after: $after, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        ...Asset_asset\n        id\n      }\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    ... on AssetConnection {\n      edges {\n        cursor\n        node {\n          __typename\n          id\n        }\n      }\n      pageInfo {\n        endCursor\n        hasNextPage\n      }\n    }\n  }\n}\n\nfragment Asset_asset on Asset {\n  id\n  businessName\n  price\n  description\n  city\n  state\n  zipCode\n  pictures\n}\n"
 };
 
 module.exports = batch;

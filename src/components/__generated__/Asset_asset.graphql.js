@@ -16,6 +16,7 @@ export type Asset_asset = {|
   +city: string;
   +state: string;
   +zipCode: string;
+  +pictures: ?$ReadOnlyArray<any>;
 |};
 */
 
@@ -73,6 +74,13 @@ const fragment /*: ConcreteFragment*/ = {
       "alias": null,
       "args": null,
       "name": "zipCode",
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "args": null,
+      "name": "pictures",
       "storageKey": null
     }
   ],

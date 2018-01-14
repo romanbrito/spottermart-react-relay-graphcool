@@ -112,34 +112,34 @@ class CreateAsset extends Component {
     }
 
     allPicData().then(
-      imageData => console.log(imageData)
+      pictures => {
+        const postedById = localStorage.getItem(GC_USER_ID)
+        if (!postedById) {
+          console.error('No user logged in')
+          return
+        }
+        const {
+          businessName,
+          price,
+          description,
+          city,
+          state,
+          zipCode
+        } = this.state
+
+        CreateAssetMutation(
+          postedById,
+          businessName,
+          price,
+          description,
+          city,
+          state,
+          zipCode,
+          pictures
+          , () => this.props.history.push('/'))
+      }
     )
 
-    // const postedById = localStorage.getItem(GC_USER_ID)
-    // if (!postedById) {
-    //   console.error('No user logged in')
-    //   return
-    // }
-    // const {
-    //   businessName,
-    //   price,
-    //   description,
-    //   city,
-    //   state,
-    //   zipCode,
-    //   pictures
-    // } = this.state
-    //
-    // CreateAssetMutation(
-    //   postedById,
-    //   businessName,
-    //   price,
-    //   description,
-    //   city,
-    //   state,
-    //   zipCode,
-    //   pictures
-    //   , () => this.props.history.push('/'))
   }
 
   _getImages = (images) => {

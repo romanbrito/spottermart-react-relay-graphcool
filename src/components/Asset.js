@@ -5,12 +5,10 @@ import {
   graphql
 } from 'react-relay'
 import Card, {CardActions, CardContent, CardMedia} from 'material-ui/Card'
-import { CloudinaryContext, Image, Transformation, Video } from 'cloudinary-react';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button'
 import {withStyles} from "material-ui/styles/index"
-import Slider from 'react-slick'
-import '../sass/Slider.css'
+import ImageSlider from './ImageSlider'
 
 const styles = theme => ({
   card: {
@@ -38,15 +36,8 @@ const styles = theme => ({
 @withStyles(styles)
 class Asset extends Component {
 
-render(){
-  const {classes} = this.props
-  const sliderSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  }
+  render() {
+    const {classes} = this.props
 
     return (
       <div>
@@ -75,25 +66,22 @@ render(){
           </div>
         </Card>
         {this.props.showDetails &&
-        <Slider {...sliderSettings}>
-          {this.props.asset.pictures.map(picture => (
-            <div key={picture.public_id}><Image cloudName="spottermart" publicId={picture.public_id} width="300" crop="scale"/></div>
-          ))}
-        </Slider>}
+        <ImageSlider pictures={this.props.asset.pictures}/>
+        }
       </div>
     )
   }
 }
 
 export default createFragmentContainer(Asset, graphql`
-  fragment Asset_asset on Asset {
-      id
-      businessName
-      price
-      description
-      city
-      state
-      zipCode
-      pictures
-  }
+    fragment Asset_asset on Asset {
+        id
+        businessName
+        price
+        description
+        city
+        state
+        zipCode
+        pictures
+    }
 `)

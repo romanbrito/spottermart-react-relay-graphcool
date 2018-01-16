@@ -41,7 +41,6 @@ class Asset extends Component {
 
     return (
       <div>
-        {console.log(this.props.asset)}
         <Card className={classes.card}>
           <div className={classes.details}>
             <CardContent className={classes.content}>

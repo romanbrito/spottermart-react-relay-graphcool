@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import {withStyles} from 'material-ui/styles'
 import TextField from 'material-ui/TextField'
 import Button from 'material-ui/Button'
-import Input from 'material-ui/Input'
+import Input, { InputLabel, InputAdornment } from 'material-ui/Input'
+import { FormControl, FormHelperText } from 'material-ui/Form'
 import CreateAssetMutation from '../mutations/CreateAssetMutation'
 import {NumberFormatCustom} from "./FormatedInputs"
 import {GC_USER_ID} from "../constants"
@@ -10,11 +11,20 @@ import {uploadImage} from "../utils"
 import AssetImages from './AssetImages'
 import ImageGrid from './ImageGrid'
 
-const styles = {
+const styles = theme => ({
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
   textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
     width: 200,
-  }
-}
+  },
+  menu: {
+    width: 200,
+  },
+});
 
 @withStyles(styles)
 class CreateAsset extends Component {
@@ -80,14 +90,15 @@ class CreateAsset extends Component {
           value={this.state.zipCode}
           onChange={(e) => this.setState({zipCode: e.target.value})}
         />
+        <FormControl>
+        <InputLabel htmlFor="price">Price</InputLabel>
         <Input
           id="price"
-          label="Price"
           inputComponent={NumberFormatCustom}
-          className={classes.textField}
           value={this.state.price}
           onChange={(e) => this.setState({price: e.target.value})}
         />
+        </FormControl>
         <AssetImages imageDrop={this._getImages}/>
         <ImageGrid images={this.state.images} removeImage={this._removeImage}/>
         <Button

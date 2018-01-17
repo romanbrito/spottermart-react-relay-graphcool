@@ -8,7 +8,6 @@ import CreateAssetMutation from '../mutations/CreateAssetMutation'
 import {NumberFormatCustom} from "./FormatedInputs"
 import {GC_USER_ID} from "../constants"
 import {uploadImage} from "../utils"
-import AssetImages from './AssetImages'
 import ImageGrid from './ImageGrid'
 
 const styles = theme => ({
@@ -99,8 +98,7 @@ class CreateAsset extends Component {
           onChange={(e) => this.setState({price: e.target.value})}
         />
         </FormControl>
-        <AssetImages imageDrop={this._getImages}/>
-        <ImageGrid images={this.state.images} removeImage={this._removeImage}/>
+        <ImageGrid imageDrop={this._getImages} images={this.state.images} removeImage={this._removeImage}/>
         <Button
           color="primary"
           onClick={() => this._createAsset()}>

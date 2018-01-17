@@ -40,14 +40,17 @@ class Header extends Component {
             {userId &&
             <Link to='/create'><Button color="contrast">Submit</Button></Link>}
             {userId ?
-              <Button color="contrast"
-                      onClick={() => {
-                        localStorage.removeItem(GC_USER_ID)
-                        localStorage.removeItem(GC_AUTH_TOKEN)
-                        this.props.history.push(`/`)
-                      }}>
-                logout
-              </Button>
+              <div>
+                <Button color="contrast"
+                        onClick={() => {
+                          localStorage.removeItem(GC_USER_ID)
+                          localStorage.removeItem(GC_AUTH_TOKEN)
+                          this.props.history.push(`/`)
+                        }}>
+                  logout
+                </Button>
+                <Link to='/myAssets'><Button color="contrast">my assets</Button></Link>
+              </div>
               :
               <Link to='/login'><Button color="contrast">login</Button></Link>
             }

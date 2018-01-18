@@ -55,11 +55,14 @@ class Asset extends Component {
               </Button></Link>}
 
               {this.props.userAsset &&
-              <Button
-                color="primary"
-              onClick={() => this._deleteAsset(this.props.asset.id)}>
-                Delete
-              </Button>
+                <div>
+                  <Button
+                    color="primary"
+                    onClick={() => this._deleteAsset(this.props.asset.id)}>
+                    Delete
+                  </Button>
+                  <Link to={'/update/' + this.props.asset.id}><Button color="primary">Update</Button></Link>
+                </div>
               }
 
               {this.props.showDetails &&

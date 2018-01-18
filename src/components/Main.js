@@ -5,6 +5,7 @@ import CreateAsset from './CreateAsset'
 import Login from './Login'
 import SingleAssetPage from './SingleAssetPage'
 import UserAssetListPage from './UserAssetListPage'
+import UpdateAssetPage from './UpdateAssetPage'
 
 const Main = (props) => {
   return (
@@ -13,6 +14,7 @@ const Main = (props) => {
       <Route exact path='/create' component={CreateAsset}/>
       <Route exact path='/login' component={Login}/>
       <Route exact path='/myAssets' component={UserAssetListPage}/>
+      <Route exact path='/update/:assetId' component={UpdateAssetPage}/>
       <Route path='/:businessName' component={SingleAssetPage}/>
     </Switch>
   )

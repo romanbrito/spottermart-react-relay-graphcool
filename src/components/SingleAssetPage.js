@@ -6,7 +6,7 @@ import {
 import environment from "../Environment"
 import Asset from './Asset'
 
-const AssetPageQuery = graphql`
+const SingleAssetPageQuery = graphql`
   query SingleAssetPageQuery ($businessName: String!) {
       viewer {
           Asset(businessName:$businessName) {
@@ -22,7 +22,7 @@ class SingleAssetPage extends Component {
     return (
       <QueryRenderer
         environment={environment}
-        query={AssetPageQuery}
+        query={SingleAssetPageQuery}
         variables={{businessName:this.props.match.params.businessName}}
         render={({error,props}) => {
           if (error) {

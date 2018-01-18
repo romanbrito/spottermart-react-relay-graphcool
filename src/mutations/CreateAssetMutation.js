@@ -29,7 +29,10 @@ const mutation = graphql`
 `
 
 // 3
-export default (postedById, businessName, price, description,
+export default (postedById,
+                businessName,
+                price,
+                description,
                 city,
                 state,
                 zipCode,

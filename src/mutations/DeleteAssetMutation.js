@@ -11,7 +11,6 @@ const mutation = graphql`
         deleteAsset(input: $input) {
             asset {
                 id
-                businessName
             }
         }
     }
@@ -22,7 +21,8 @@ export default (id, callback) => {
   // 4
   const variables = {
     input: {
-      id
+      id,
+      clientMutationId: ""
     }
   }
 

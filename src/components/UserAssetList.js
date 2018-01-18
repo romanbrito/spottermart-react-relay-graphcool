@@ -13,7 +13,7 @@ class UserAssetList extends Component {
     return (
         <div>
           {this.props.viewer.allAssets.edges.map(({node}) => (
-            <Asset key={node.__id} asset={node}/>
+            <Asset key={node.__id} asset={node} userAsset={true} history={this.props.history}/>
           ))}
         </div>
     )

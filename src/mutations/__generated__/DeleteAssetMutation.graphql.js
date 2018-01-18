@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash be0d64f811a501cfc016283791ce5d30
+ * @relayHash e2a4bb220a9f33eed544c5a7d9dfc97f
  */
 
 /* eslint-disable */
@@ -19,7 +19,6 @@ export type DeleteAssetMutationResponse = {|
   +deleteAsset: ?{|
     +asset: ?{|
       +id: string;
-      +businessName: string;
     |};
   |};
 |};
@@ -33,7 +32,6 @@ mutation DeleteAssetMutation(
   deleteAsset(input: $input) {
     asset {
       id
-      businessName
     }
   }
 }
@@ -81,13 +79,6 @@ const batch /*: ConcreteBatch*/ = {
                 "alias": null,
                 "args": null,
                 "name": "id",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "businessName",
                 "storageKey": null
               }
             ],
@@ -145,13 +136,6 @@ const batch /*: ConcreteBatch*/ = {
                 "args": null,
                 "name": "id",
                 "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "businessName",
-                "storageKey": null
               }
             ],
             "storageKey": null
@@ -161,7 +145,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "mutation DeleteAssetMutation(\n  $input: DeleteAssetInput!\n) {\n  deleteAsset(input: $input) {\n    asset {\n      id\n      businessName\n    }\n  }\n}\n"
+  "text": "mutation DeleteAssetMutation(\n  $input: DeleteAssetInput!\n) {\n  deleteAsset(input: $input) {\n    asset {\n      id\n    }\n  }\n}\n"
 };
 
 module.exports = batch;

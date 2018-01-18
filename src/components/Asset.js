@@ -9,6 +9,7 @@ import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button'
 import {withStyles} from "material-ui/styles/index"
 import ImageSlider from './ImageSlider'
+import DeleteAssetMutation from "../mutations/DeleteAssetMutation"
 
 const styles = theme => ({
   card: {
@@ -47,10 +48,20 @@ class Asset extends Component {
               <Typography type="headline">
                 {this.props.asset.businessName}
               </Typography>
+
               {!this.props.showDetails &&
               <Link to={'/' + this.props.asset.businessName}><Button color="primary">
                 Show Details
               </Button></Link>}
+
+              {this.props.userAsset &&
+              <Button
+                color="primary"
+              onClick={() => this._deleteAsset(this.props.asset.id)}>
+                Delete
+              </Button>
+              }
+
               {this.props.showDetails &&
               <div>
                 <Typography type="subheading" color="secondary">
@@ -68,6 +79,13 @@ class Asset extends Component {
         <ImageSlider pictures={this.props.asset.pictures}/>
         }
       </div>
+    )
+  }
+
+  _deleteAsset = (assetId) => {
+    DeleteAssetMutation(
+      assetId,
+      () => this.props.history.push('/')
     )
   }
 }

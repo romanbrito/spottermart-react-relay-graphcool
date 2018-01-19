@@ -32,6 +32,7 @@ export default (id,
   const variables = {
     input: {
       //postedById,
+      id,
       businessName,
       price,
       description,

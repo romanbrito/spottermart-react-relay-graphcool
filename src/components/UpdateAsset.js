@@ -34,6 +34,7 @@ const styles = theme => ({
 class UpdateAsset extends Component {
 
   state = {
+    id: this.props.asset.id,
     businessName: this.props.asset.businessName,
     price: this.props.asset.price,
     description: this.props.asset.description,
@@ -115,7 +116,48 @@ class UpdateAsset extends Component {
   }
 
   _updateAsset = () => {
-    console.log('update asset')
+    // fetch image data PROMISES!!
+    const allPicData = () => {
+      const imagePromises = this.state.images.map(
+        image => {
+          return uploadImage(image)
+        }
+      )
+      return Promise.all(imagePromises)
+    }
+
+    allPicData().then(
+      pics => {
+        const postedById = localStorage.getItem(GC_USER_ID)
+        const pictures = [...pics, ...this.state.pictures] //merging new and old images
+
+        if (!postedById) {
+          console.error('No user logged in')
+          return
+        }
+        const {
+          id,
+          businessName,
+          price,
+          description,
+          city,
+          state,
+          zipCode
+        } = this.state
+
+        UpdateAssetMutation(
+          id,
+          businessName,
+          price,
+          description,
+          city,
+          state,
+          zipCode,
+          pictures
+          , () => this.props.history.push('/'))
+      }
+    )
+
   }
 
   _getImages = (images) => {
@@ -124,7 +166,6 @@ class UpdateAsset extends Component {
     this.setState({
       images: imagesArr
     })
-    console.log('update Asset dropzone')
   }
 
   _removePicture = (image) => {

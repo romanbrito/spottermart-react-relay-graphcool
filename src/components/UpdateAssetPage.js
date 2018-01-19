@@ -29,7 +29,7 @@ class UpdateAssetPage extends Component {
           if (error) {
             return <div>{error.message}</div>
           } else if (props) {
-            return <UpdateAsset asset={props.viewer.Asset} showDetails={true}/>
+            return <UpdateAsset asset={props.viewer.Asset} showDetails={true} history={this.props.history}/>
           }
           return <div>Loading</div>
         }}

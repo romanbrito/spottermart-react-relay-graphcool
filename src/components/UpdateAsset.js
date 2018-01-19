@@ -39,8 +39,8 @@ class UpdateAsset extends Component {
     city: this.props.asset.city,
     state: this.props.asset.state,
     zipCode: this.props.asset.zipCode,
-    pictures: this.props.asset.pictures,
-    images: []
+    pictures: [],
+    images: this.props.asset.pictures
   }
 
   render () {
@@ -102,7 +102,7 @@ class UpdateAsset extends Component {
             onChange={(e) => this.setState({price: e.target.value})}
           />
         </FormControl>
-        <ImageGrid imageDrop={this._getImages} images={this.state.pictures} removeImage={this._removeImage}/>
+        <ImageGrid imageDrop={this._getImages} images={this.state.images} removeImage={this._removeImage} updateImage={true}/>
         <Button
           color="primary"
           onClick={() => this._updateAsset()}>
@@ -115,6 +115,21 @@ class UpdateAsset extends Component {
   _updateAsset = () => {
     console.log('update asset')
   }
+
+  _getImages = (images) => {
+    const imagesArr = [...this.state.images]
+    imagesArr.push(...images)
+    this.setState({
+      images: imagesArr
+    })
+  }
+
+  _removeImage = (image) => {
+    this.setState({
+      images: this.state.images.filter(pic => pic.secure_url !== image.src)
+    })
+  }
+
 }
 
 export default createFragmentContainer(UpdateAsset, graphql`

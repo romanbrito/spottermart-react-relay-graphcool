@@ -15,7 +15,7 @@ export default class AssetImages extends Component {
 
   onDrop(images) {
     // when image is dropped
-    this.props.imageDrop(images)
+    //this.props.imageDrop(images)
     console.log(images)
   }
 

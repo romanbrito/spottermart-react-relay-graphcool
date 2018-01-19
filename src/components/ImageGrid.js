@@ -39,7 +39,7 @@ function ImageGrid(props) {
         <GridListTile cols={2}>
           <AssetImages imageDrop={props.imageDrop}/>
         </GridListTile>
-        {
+        { !props.updateImage?
           props.images.map(image => (
             <GridListTile key={image.preview} cols={1} rows={1}>
 
@@ -57,6 +57,27 @@ function ImageGrid(props) {
               }
               actionPosition="left"
               className={classes.titleBar}
+              />
+            </GridListTile>
+          ))
+          :
+          props.images.map(image => (
+            <GridListTile key={image.secure_url} cols={1} rows={1}>
+
+              <img id={image.secure_url} src={image.secure_url} alt={image.public_id}/>
+
+              <GridListTileBar
+                title={image.public_id}
+                titlePosition="top"
+                actionIcon={
+                  <IconButton
+                    className={classes.icon}
+                    onClick={() => props.removeImage(document.getElementById(image.secure_url))}>
+                    <Delete/>
+                  </IconButton>
+                }
+                actionPosition="left"
+                className={classes.titleBar}
               />
             </GridListTile>
           ))

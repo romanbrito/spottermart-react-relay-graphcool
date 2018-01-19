@@ -11,7 +11,7 @@ const styles = {
 }
 
 @withStyles(styles)
-export default class AssetImages extends Component {
+export default class UpdateAssetImages extends Component {
 
   onDrop(images) {
     // when image is dropped

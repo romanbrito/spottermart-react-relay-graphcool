@@ -4,7 +4,7 @@ import {withStyles} from 'material-ui/styles';
 import {GridList, GridListTile, GridListTileBar} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import Delete from 'material-ui-icons/Delete';
-import AssetImages from './AssetImages'
+import UpdateAssetImages from "./UpdateAssetImages"
 
 const styles = theme => ({
   root: {
@@ -36,11 +36,8 @@ function ImageGrid(props) {
   return (
     <div className={classes.root}>
       <GridList cellHeight={200} spacing={1} className={classes.gridList}>
-        <GridListTile cols={2}>
-          <AssetImages imageDrop={props.imageDrop}/>
-        </GridListTile>
         {
-          props.images.map(image => (
+          props.pictures.map(image => (
             <GridListTile key={image.secure_url} cols={1} rows={1}>
 
               <img id={image.secure_url} src={image.secure_url} alt={image.public_id}/>
@@ -51,7 +48,7 @@ function ImageGrid(props) {
                 actionIcon={
                   <IconButton
                     className={classes.icon}
-                    onClick={() => props.removeImage(document.getElementById(image.secure_url))}>
+                    onClick={() => props.removePicture(document.getElementById(image.secure_url))}>
                     <Delete/>
                   </IconButton>
                 }

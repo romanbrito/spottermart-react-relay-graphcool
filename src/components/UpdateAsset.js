@@ -13,6 +13,7 @@ import {NumberFormatCustom} from "./FormatedInputs"
 import {GC_USER_ID} from "../constants"
 import {uploadImage} from "../utils"
 import UpdateImageGrid from './UpdateImageGrid'
+import ImageGrid from './ImageGrid'
 
 const styles = theme => ({
   container: {
@@ -39,8 +40,8 @@ class UpdateAsset extends Component {
     city: this.props.asset.city,
     state: this.props.asset.state,
     zipCode: this.props.asset.zipCode,
-    pictures: [],
-    images: this.props.asset.pictures
+    pictures: this.props.asset.pictures,
+    images: []
   }
 
   render () {
@@ -102,7 +103,8 @@ class UpdateAsset extends Component {
             onChange={(e) => this.setState({price: e.target.value})}
           />
         </FormControl>
-        <UpdateImageGrid imageDrop={this._getImages} images={this.state.images} removeImage={this._removeImage} updateImage={true}/>
+        <ImageGrid imageDrop={this._getImages} images={this.state.images} removeImage={this._removeImage}/>
+        <UpdateImageGrid pictures={this.state.pictures} removePicture={this._removePicture} updateImage={true}/>
         <Button
           color="primary"
           onClick={() => this._updateAsset()}>
@@ -122,15 +124,20 @@ class UpdateAsset extends Component {
     this.setState({
       images: imagesArr
     })
+    console.log('update Asset dropzone')
+  }
+
+  _removePicture = (image) => {
+    this.setState({
+      pictures: this.state.pictures.filter(pic => pic.secure_url !== image.src)
+    })
   }
 
   _removeImage = (image) => {
     this.setState({
-      images: this.state.images.filter(pic => pic.secure_url !== image.src)
+      images: this.state.images.filter(pic => pic.preview !== image.src)
     })
-  }
-
-}
+  }}
 
 export default createFragmentContainer(UpdateAsset, graphql`
   fragment UpdateAsset_asset on Asset {

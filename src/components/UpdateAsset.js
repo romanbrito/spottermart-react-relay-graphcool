@@ -12,7 +12,7 @@ import UpdateAssetMutation from '../mutations/UpdateAssetMutation'
 import {NumberFormatCustom} from "./FormatedInputs"
 import {GC_USER_ID} from "../constants"
 import {uploadImage} from "../utils"
-import ImageGrid from './ImageGrid'
+import UpdateImageGrid from './UpdateImageGrid'
 
 const styles = theme => ({
   container: {
@@ -102,7 +102,7 @@ class UpdateAsset extends Component {
             onChange={(e) => this.setState({price: e.target.value})}
           />
         </FormControl>
-        <ImageGrid imageDrop={this._getImages} images={this.state.images} removeImage={this._removeImage} updateImage={true}/>
+        <UpdateImageGrid imageDrop={this._getImages} images={this.state.images} removeImage={this._removeImage} updateImage={true}/>
         <Button
           color="primary"
           onClick={() => this._updateAsset()}>

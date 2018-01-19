@@ -8,6 +8,7 @@ import Button from 'material-ui/Button'
 import Typography from 'material-ui/Typography'
 import '../sass/Header.css'
 import {GC_USER_ID, GC_AUTH_TOKEN} from "../constants"
+import {fetchQuery} from "../Environment"
 
 const styles = {
   root: {
@@ -38,7 +39,11 @@ class Header extends Component {
               Spottermart
             </Typography>
             {userId &&
-            <Link to='/create'><Button color="contrast">Submit</Button></Link>}
+              <div>
+                {console.log(this._userInfo(userId))}
+                <Link to='/create'><Button color="contrast">Submit</Button></Link>
+              </div>
+            }
             {userId ?
               <div>
                 <Button color="contrast"
@@ -59,6 +64,25 @@ class Header extends Component {
       </div>
     )
   }
+
+  _userInfo = async (userId) => {
+    const userQueryText = `
+    query GetUserName($userId: ID!) {
+      viewer {
+        User(id:$userId){
+          name
+        }
+      }
+    }
+    `
+    const userInfoQuery = {text: userQueryText}
+
+    const result = await fetchQuery(userInfoQuery,{userId})
+    console.log(result)
+    return result.data.viewer.User.name
+  }
+
+
 }
 
 export default withRouter(Header)

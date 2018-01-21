@@ -1,4 +1,5 @@
 import {CLOUDINARY_UPLOAD_URL, CLOUDINARY_UPLOAD_PRESET} from './constants'
+import {fetchQuery} from "./Environment";
 
 export const uploadImage = (image) => {
 
@@ -16,4 +17,20 @@ export const uploadImage = (image) => {
     return data
   }).catch(error => console.log(error))
 
+}
+
+export const _userInfo = async (userId) => {
+  const userQueryText = `
+    query GetUserName($userId: ID!) {
+      viewer {
+        User(id:$userId){
+          name
+        }
+      }
+    }
+    `
+  const userInfoQuery = {text: userQueryText}
+
+  const result = await fetchQuery(userInfoQuery,{userId})
+  return result
 }

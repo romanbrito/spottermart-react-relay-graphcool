@@ -39,10 +39,7 @@ class Header extends Component {
               Spottermart
             </Typography>
             {userId &&
-              <div>
-                {console.log(this._userInfo(userId))}
-                <Link to='/create'><Button color="contrast">Submit</Button></Link>
-              </div>
+            <Link to='/create'><Button color="contrast">Submit</Button></Link>
             }
             {userId ?
               <div>
@@ -50,6 +47,7 @@ class Header extends Component {
                         onClick={() => {
                           localStorage.removeItem(GC_USER_ID)
                           localStorage.removeItem(GC_AUTH_TOKEN)
+                          this.props.removeUserName()
                           this.props.history.push(`/`)
                         }}>
                   logout
@@ -64,24 +62,6 @@ class Header extends Component {
       </div>
     )
   }
-
-  _userInfo = async (userId) => {
-    const userQueryText = `
-    query GetUserName($userId: ID!) {
-      viewer {
-        User(id:$userId){
-          name
-        }
-      }
-    }
-    `
-    const userInfoQuery = {text: userQueryText}
-
-    const result = await fetchQuery(userInfoQuery,{userId})
-    console.log(result)
-    return result.data.viewer.User.name
-  }
-
 
 }
 

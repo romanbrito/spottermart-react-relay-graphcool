@@ -8,7 +8,6 @@ import Button from 'material-ui/Button'
 import Typography from 'material-ui/Typography'
 import '../sass/Header.css'
 import {GC_USER_ID, GC_AUTH_TOKEN} from "../constants"
-import {fetchQuery} from "../Environment"
 
 const styles = {
   root: {
@@ -35,6 +34,9 @@ class Header extends Component {
         <AppBar position="static">
           <Toolbar>
             <Link to='/'><Button color="contrast">New</Button></Link>
+            <Typography type="title" color="inherit" className={classes.flex}>
+              {userId && 'Hello ' + this.props.userName}
+            </Typography>
             <Typography type="title" color="inherit" className={classes.flex}>
               Spottermart
             </Typography>

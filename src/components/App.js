@@ -10,34 +10,36 @@ import {_userInfo} from '../utils'
 class App extends Component {
 
   state = {
-    userName:''
+    userName: ''
   }
 
   userId = localStorage.getItem(GC_USER_ID)
 
   componentDidMount() {
-    this._getUserName()
+    if (this.userId) {
+      this._getUserName(this.userId)
+    }
   }
 
   render() {
     return (
       <div>
-        <Header removeUserName={this._removeUserName}/>
-        <Main/>
+        <Header removeUserName={this._removeUserName} userName={this.state.userName}/>
+        <Main getUserName={this._getUserName}/>
       </div>
     );
   }
 
-  _getUserName = () => {
-    if (this.userId) {
-      _userInfo(this.userId).then(
-        result => this.setState({userName:result.data.viewer.User.name})
-      )
-    }
+  _getUserName = (userId) => {
+
+    _userInfo(userId).then(
+      result => this.setState({userName: result.data.viewer.User.name})
+    )
+
   }
 
   _removeUserName = () => {
-    this.setState({userName:''})
+    this.setState({userName: ''})
   }
 }
 

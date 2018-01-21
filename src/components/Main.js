@@ -8,11 +8,15 @@ import UserAssetListPage from './UserAssetListPage'
 import UpdateAssetPage from './UpdateAssetPage'
 
 const Main = (props) => {
+  const  extraProps = props
+
   return (
     <Switch>
       <Route exact path='/' component={AssetListPage}/>
       <Route exact path='/create' component={CreateAsset}/>
-      <Route exact path='/login' component={Login}/>
+      <Route exact path='/login' render={(props) => (
+        <Login {...props} getUserName={extraProps.getUserName}/>
+      )}/>
       <Route exact path='/myAssets' component={UserAssetListPage}/>
       <Route exact path='/update/:assetId' component={UpdateAssetPage}/>
       <Route path='/:businessName' component={SingleAssetPage}/>

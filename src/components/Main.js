@@ -6,6 +6,7 @@ import Login from './Login'
 import SingleAssetPage from './SingleAssetPage'
 import UserAssetListPage from './UserAssetListPage'
 import UpdateAssetPage from './UpdateAssetPage'
+import CreateMessage from './CreateMessage'
 
 const Main = (props) => {
   const  extraProps = props
@@ -18,6 +19,7 @@ const Main = (props) => {
         <Login {...props} getUserName={extraProps.getUserName}/>
       )}/>
       <Route exact path='/myAssets' component={UserAssetListPage}/>
+      <Route exact path='/message' component={CreateMessage}/>
       <Route exact path='/update/:assetId' component={UpdateAssetPage}/>
       <Route path='/:businessName' component={SingleAssetPage}/>
     </Switch>

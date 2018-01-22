@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 0148881be1f0c999e5d3c7cf50b626ad
+ * @relayHash fca4f71754210e7f2a375999f9d328a6
  */
 
 /* eslint-disable */
@@ -21,15 +21,6 @@ export type CreateMessageMutationResponse = {|
   +createMessage: ?{|
     +message: ?{|
       +id: string;
-      +text: string;
-      +to: ?{|
-        +id: string;
-        +name: string;
-      |};
-      +from: ?{|
-        +id: string;
-        +name: string;
-      |};
     |};
   |};
 |};
@@ -43,15 +34,6 @@ mutation CreateMessageMutation(
   createMessage(input: $input) {
     message {
       id
-      text
-      to {
-        id
-        name
-      }
-      from {
-        id
-        name
-      }
     }
   }
 }
@@ -99,63 +81,6 @@ const batch /*: ConcreteBatch*/ = {
                 "alias": null,
                 "args": null,
                 "name": "id",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "text",
-                "storageKey": null
-              },
-              {
-                "kind": "LinkedField",
-                "alias": null,
-                "args": null,
-                "concreteType": "User",
-                "name": "to",
-                "plural": false,
-                "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "id",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "name",
-                    "storageKey": null
-                  }
-                ],
-                "storageKey": null
-              },
-              {
-                "kind": "LinkedField",
-                "alias": null,
-                "args": null,
-                "concreteType": "User",
-                "name": "from",
-                "plural": false,
-                "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "id",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "name",
-                    "storageKey": null
-                  }
-                ],
                 "storageKey": null
               }
             ],
@@ -213,63 +138,6 @@ const batch /*: ConcreteBatch*/ = {
                 "args": null,
                 "name": "id",
                 "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "text",
-                "storageKey": null
-              },
-              {
-                "kind": "LinkedField",
-                "alias": null,
-                "args": null,
-                "concreteType": "User",
-                "name": "to",
-                "plural": false,
-                "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "id",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "name",
-                    "storageKey": null
-                  }
-                ],
-                "storageKey": null
-              },
-              {
-                "kind": "LinkedField",
-                "alias": null,
-                "args": null,
-                "concreteType": "User",
-                "name": "from",
-                "plural": false,
-                "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "id",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "name",
-                    "storageKey": null
-                  }
-                ],
-                "storageKey": null
               }
             ],
             "storageKey": null
@@ -279,7 +147,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "mutation CreateMessageMutation(\n  $input: CreateMessageInput!\n) {\n  createMessage(input: $input) {\n    message {\n      id\n      text\n      to {\n        id\n        name\n      }\n      from {\n        id\n        name\n      }\n    }\n  }\n}\n"
+  "text": "mutation CreateMessageMutation(\n  $input: CreateMessageInput!\n) {\n  createMessage(input: $input) {\n    message {\n      id\n    }\n  }\n}\n"
 };
 
 module.exports = batch;

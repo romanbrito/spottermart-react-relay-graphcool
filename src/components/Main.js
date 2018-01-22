@@ -20,8 +20,8 @@ const Main = (props) => {
         <Login {...props} getUserName={extraProps.getUserName}/>
       )}/>
       <Route exact path='/myAssets' component={UserAssetListPage}/>
-      <Route exact path='/createMessage' component={CreateMessage}/>
       <Route exact path='/myMessages' component={MessageListPage}/>
+      <Route exact path='/createMessage/:assetId' component={CreateMessage}/>
       <Route exact path='/update/:assetId' component={UpdateAssetPage}/>
       <Route path='/:businessName' component={SingleAssetPage}/>
     </Switch>

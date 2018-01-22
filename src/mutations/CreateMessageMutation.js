@@ -6,15 +6,6 @@ const mutation = graphql`
         createMessage(input: $input) {
             message {
                 id
-                text
-                to {
-                    id
-                    name
-                }
-                from {
-                    id
-                    name
-                }
             }
         }
     }

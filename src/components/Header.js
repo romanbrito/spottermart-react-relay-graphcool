@@ -55,6 +55,7 @@ class Header extends Component {
                   logout
                 </Button>
                 <Link to='/myAssets'><Button color="contrast">my assets</Button></Link>
+                <Link to='/myMessages'><Button color="contrast">my messages</Button></Link>
               </div>
               :
               <Link to='/login'><Button color="contrast">login</Button></Link>

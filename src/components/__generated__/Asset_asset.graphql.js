@@ -17,6 +17,10 @@ export type Asset_asset = {|
   +state: string;
   +zipCode: string;
   +pictures: ?$ReadOnlyArray<any>;
+  +postedBy: ?{|
+    +id: string;
+    +name: string;
+  |};
 |};
 */
 
@@ -81,6 +85,31 @@ const fragment /*: ConcreteFragment*/ = {
       "alias": null,
       "args": null,
       "name": "pictures",
+      "storageKey": null
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "args": null,
+      "concreteType": "User",
+      "name": "postedBy",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "args": null,
+          "name": "id",
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "args": null,
+          "name": "name",
+          "storageKey": null
+        }
+      ],
       "storageKey": null
     }
   ],

@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash daa755165a8337868e0f511bba68de2f
+ * @relayHash 595bd18098c7322e5a47e7c6fc444353
  */
 
 /* eslint-disable */
@@ -63,6 +63,10 @@ fragment Asset_asset on Asset {
   state
   zipCode
   pictures
+  postedBy {
+    id
+    name
+  }
 }
 */
 
@@ -249,6 +253,31 @@ const batch /*: ConcreteBatch*/ = {
                                 "args": null,
                                 "name": "pictures",
                                 "storageKey": null
+                              },
+                              {
+                                "kind": "LinkedField",
+                                "alias": null,
+                                "args": null,
+                                "concreteType": "User",
+                                "name": "postedBy",
+                                "plural": false,
+                                "selections": [
+                                  {
+                                    "kind": "ScalarField",
+                                    "alias": null,
+                                    "args": null,
+                                    "name": "id",
+                                    "storageKey": null
+                                  },
+                                  {
+                                    "kind": "ScalarField",
+                                    "alias": null,
+                                    "args": null,
+                                    "name": "name",
+                                    "storageKey": null
+                                  }
+                                ],
+                                "storageKey": null
                               }
                             ]
                           }
@@ -365,7 +394,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query AssetListPageQuery(\n  $count: Int!\n  $after: String\n) {\n  viewer {\n    ...AssetList_viewer\n    id\n  }\n}\n\nfragment AssetList_viewer on Viewer {\n  allAssets(first: $count, after: $after, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        ...Asset_asset\n        id\n      }\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    ... on AssetConnection {\n      edges {\n        cursor\n        node {\n          __typename\n          id\n        }\n      }\n      pageInfo {\n        endCursor\n        hasNextPage\n      }\n    }\n  }\n}\n\nfragment Asset_asset on Asset {\n  id\n  businessName\n  price\n  description\n  city\n  state\n  zipCode\n  pictures\n}\n"
+  "text": "query AssetListPageQuery(\n  $count: Int!\n  $after: String\n) {\n  viewer {\n    ...AssetList_viewer\n    id\n  }\n}\n\nfragment AssetList_viewer on Viewer {\n  allAssets(first: $count, after: $after, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        ...Asset_asset\n        id\n      }\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    ... on AssetConnection {\n      edges {\n        cursor\n        node {\n          __typename\n          id\n        }\n      }\n      pageInfo {\n        endCursor\n        hasNextPage\n      }\n    }\n  }\n}\n\nfragment Asset_asset on Asset {\n  id\n  businessName\n  price\n  description\n  city\n  state\n  zipCode\n  pictures\n  postedBy {\n    id\n    name\n  }\n}\n"
 };
 
 module.exports = batch;

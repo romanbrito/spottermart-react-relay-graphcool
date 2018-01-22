@@ -46,9 +46,9 @@ class Asset extends Component {
           <div className={classes.details}>
             <CardContent className={classes.content}>
               <Typography type="headline">
-                {this.props.asset.businessName}
+                {this.props.asset.businessName} posted by {this.props.asset.postedBy.name}
               </Typography>
-              <Link to={'/createMessage'}><Button color="primary">Send Message</Button></Link>
+              <Link to={'/createMessage/' + this.props.asset.postedBy.id}><Button color="primary">Send Message</Button></Link>
 
               {!this.props.showDetails &&
               <Link to={'/' + this.props.asset.businessName}><Button color="primary">
@@ -104,5 +104,9 @@ export default createFragmentContainer(Asset, graphql`
         state
         zipCode
         pictures
+        postedBy {
+            id
+            name
+        }
     }
 `)

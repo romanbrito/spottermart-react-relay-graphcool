@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 8c6d2ef6377cd246265eaff906ad5e50
+ * @relayHash 1a7f1a4708575b1bad95b466fc8974db
  */
 
 /* eslint-disable */
@@ -39,6 +39,10 @@ fragment Asset_asset on Asset {
   state
   zipCode
   pictures
+  postedBy {
+    id
+    name
+  }
 }
 */
 
@@ -188,6 +192,31 @@ const batch /*: ConcreteBatch*/ = {
                 "args": null,
                 "name": "pictures",
                 "storageKey": null
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "args": null,
+                "concreteType": "User",
+                "name": "postedBy",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "id",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "name",
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
               }
             ],
             "storageKey": null
@@ -204,7 +233,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query SingleAssetPageQuery(\n  $businessName: String!\n) {\n  viewer {\n    Asset(businessName: $businessName) {\n      ...Asset_asset\n      id\n    }\n    id\n  }\n}\n\nfragment Asset_asset on Asset {\n  id\n  businessName\n  price\n  description\n  city\n  state\n  zipCode\n  pictures\n}\n"
+  "text": "query SingleAssetPageQuery(\n  $businessName: String!\n) {\n  viewer {\n    Asset(businessName: $businessName) {\n      ...Asset_asset\n      id\n    }\n    id\n  }\n}\n\nfragment Asset_asset on Asset {\n  id\n  businessName\n  price\n  description\n  city\n  state\n  zipCode\n  pictures\n  postedBy {\n    id\n    name\n  }\n}\n"
 };
 
 module.exports = batch;

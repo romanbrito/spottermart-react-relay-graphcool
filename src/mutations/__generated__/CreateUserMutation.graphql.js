@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash f6ae5c404fdc5b5cf3adbb7c6b7b857f
+ * @relayHash c2f99710cb781665f321d384292267f6
  */
 
 /* eslint-disable */
@@ -52,6 +52,16 @@ export type CreateUserMutationVariables = {|
       website?: ?string;
       whySelling?: ?string;
       zipCode: string;
+    }>;
+    messagesIds?: ?$ReadOnlyArray<string>;
+    messages?: ?$ReadOnlyArray<{
+      text: string;
+      toId?: ?string;
+    }>;
+    sentIds?: ?$ReadOnlyArray<string>;
+    sent?: ?$ReadOnlyArray<{
+      text: string;
+      fromId?: ?string;
     }>;
     clientMutationId: string;
     authProvider: {

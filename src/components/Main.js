@@ -7,6 +7,7 @@ import SingleAssetPage from './SingleAssetPage'
 import UserAssetListPage from './UserAssetListPage'
 import UpdateAssetPage from './UpdateAssetPage'
 import CreateMessage from './CreateMessage'
+import MessageListPage from './MessageListPage'
 
 const Main = (props) => {
   const  extraProps = props
@@ -20,6 +21,7 @@ const Main = (props) => {
       )}/>
       <Route exact path='/myAssets' component={UserAssetListPage}/>
       <Route exact path='/message' component={CreateMessage}/>
+      <Route exact path='/myMessages' component={MessageListPage}/>
       <Route exact path='/update/:assetId' component={UpdateAssetPage}/>
       <Route path='/:businessName' component={SingleAssetPage}/>
     </Switch>

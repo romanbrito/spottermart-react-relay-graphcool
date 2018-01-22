@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {withStyles} from 'material-ui/styles'
 import TextField from 'material-ui/TextField'
 import Button from 'material-ui/Button'
+import {GC_USER_ID} from "../constants"
 
 const styles = theme => ({
   marginLeft: theme.spacing.unit,
@@ -47,6 +48,13 @@ class CreateMessage extends Component{
   }
 
   _createMessage = () => {
+
+    const fromId = localStorage.getItem(GC_USER_ID)
+
+    const {
+      text
+    } = this.state
+
   console.log(this.state.message)
   }
 

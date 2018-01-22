@@ -48,6 +48,7 @@ class Asset extends Component {
               <Typography type="headline">
                 {this.props.asset.businessName}
               </Typography>
+              <Link to={'/createMessage'}><Button color="primary">Send Message</Button></Link>
 
               {!this.props.showDetails &&
               <Link to={'/' + this.props.asset.businessName}><Button color="primary">

@@ -9,6 +9,7 @@ import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button'
 import {withStyles} from "material-ui/styles/index"
 import CreateMessage from "./CreateMessage"
+import DeleteMessageMutation from "../mutations/DeleteMessageMutation";
 
 const styles = theme => ({
   card: {
@@ -58,7 +59,11 @@ class Message extends Component {
                 Reply
               </Button>
               {this.state.replyMessage && <CreateMessage to={this.props.message.from.id} replyMessage={this._replyMessage}/>}
-              <Button color="primary">Delete</Button>
+              <Button
+                onClick={() => this._deleteMessage(this.props.message.id)}
+                color="primary">
+                Delete
+              </Button>
             </div>
           </div>
         </Card>
@@ -72,6 +77,13 @@ class Message extends Component {
     } else {
       this.setState({replyMessage: true})
     }
+  }
+
+  _deleteMessage = (messageId) => {
+    DeleteMessageMutation(
+      messageId,
+      () => console.log(this.props)
+    )
   }
 }
 

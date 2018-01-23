@@ -47,6 +47,10 @@ class Message extends Component {
                 {this.props.message.text} from {this.props.message.from.name} with id {this.props.message.from.id}
               </Typography>
             </CardContent>
+            <div>
+              <Button color="primary">Reply</Button>
+              <Button color="primary">Delete</Button>
+            </div>
           </div>
         </Card>
       </div>

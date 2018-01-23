@@ -10,6 +10,7 @@ import Button from 'material-ui/Button'
 import {withStyles} from "material-ui/styles/index"
 import ImageSlider from './ImageSlider'
 import DeleteAssetMutation from "../mutations/DeleteAssetMutation"
+import {GC_USER_ID} from "../constants"
 
 const styles = theme => ({
   card: {
@@ -39,6 +40,7 @@ class Asset extends Component {
 
   render() {
     const {classes} = this.props
+    const userId = localStorage.getItem(GC_USER_ID)
 
     return (
       <div>
@@ -48,12 +50,11 @@ class Asset extends Component {
               <Typography type="headline">
                 {this.props.asset.businessName} posted by {this.props.asset.postedBy.name}
               </Typography>
-              <Link to={'/createMessage/' + this.props.asset.postedBy.id}><Button color="primary">Send Message</Button></Link>
-
               {!this.props.showDetails &&
               <Link to={'/' + this.props.asset.businessName}><Button color="primary">
                 Show Details
               </Button></Link>}
+              {(userId !== this.props.asset.postedBy.id) && <Link to={'/createMessage/' + this.props.asset.postedBy.id}><Button color="primary">Send Message</Button></Link>}
 
               {this.props.userAsset &&
                 <div>

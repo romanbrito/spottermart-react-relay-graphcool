@@ -44,7 +44,7 @@ class Message extends Component {
           <div className={classes.details}>
             <CardContent className={classes.content}>
               <Typography>
-                {this.props.message.text}
+                {this.props.message.text} from {this.props.message.from.name} with id {this.props.message.from.id}
               </Typography>
             </CardContent>
           </div>
@@ -58,5 +58,9 @@ export default createFragmentContainer(Message, graphql`
   fragment Message_message on Message {
       id
       text
+      from {
+          id
+          name
+      }
   }
 `)

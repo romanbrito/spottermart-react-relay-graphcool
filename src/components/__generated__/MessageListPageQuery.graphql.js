@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash f73995b8a3658400dc8e303edd984637
+ * @relayHash 15f25abae72264134cdeb089b25fb8b9
  */
 
 /* eslint-disable */
@@ -52,6 +52,10 @@ fragment MessageList_viewer on Viewer {
 fragment Message_message on Message {
   id
   text
+  from {
+    id
+    name
+  }
 }
 */
 
@@ -184,6 +188,31 @@ const batch /*: ConcreteBatch*/ = {
                                 "args": null,
                                 "name": "text",
                                 "storageKey": null
+                              },
+                              {
+                                "kind": "LinkedField",
+                                "alias": null,
+                                "args": null,
+                                "concreteType": "User",
+                                "name": "from",
+                                "plural": false,
+                                "selections": [
+                                  {
+                                    "kind": "ScalarField",
+                                    "alias": null,
+                                    "args": null,
+                                    "name": "id",
+                                    "storageKey": null
+                                  },
+                                  {
+                                    "kind": "ScalarField",
+                                    "alias": null,
+                                    "args": null,
+                                    "name": "name",
+                                    "storageKey": null
+                                  }
+                                ],
+                                "storageKey": null
                               }
                             ]
                           }
@@ -301,7 +330,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query MessageListPageQuery(\n  $filter: MessageFilter!\n) {\n  viewer {\n    ...MessageList_viewer\n    id\n  }\n}\n\nfragment MessageList_viewer on Viewer {\n  allMessages(filter: $filter, last: 100, orderBy: id_ASC) {\n    edges {\n      node {\n        ...Message_message\n        id\n      }\n    }\n    ... on MessageConnection {\n      edges {\n        cursor\n        node {\n          __typename\n          id\n        }\n      }\n      pageInfo {\n        hasPreviousPage\n        startCursor\n      }\n    }\n  }\n}\n\nfragment Message_message on Message {\n  id\n  text\n}\n"
+  "text": "query MessageListPageQuery(\n  $filter: MessageFilter!\n) {\n  viewer {\n    ...MessageList_viewer\n    id\n  }\n}\n\nfragment MessageList_viewer on Viewer {\n  allMessages(filter: $filter, last: 100, orderBy: id_ASC) {\n    edges {\n      node {\n        ...Message_message\n        id\n      }\n    }\n    ... on MessageConnection {\n      edges {\n        cursor\n        node {\n          __typename\n          id\n        }\n      }\n      pageInfo {\n        hasPreviousPage\n        startCursor\n      }\n    }\n  }\n}\n\nfragment Message_message on Message {\n  id\n  text\n  from {\n    id\n    name\n  }\n}\n"
 };
 
 module.exports = batch;

@@ -15,7 +15,7 @@ class AssetList extends Component {
       <div>
         <div>
           {this.props.viewer.allAssets.edges.map(({node}) => (
-            <Asset key={node.__id} asset={node}/>
+            <Asset key={node.__id} asset={node} history={this.props.history}/>
           ))}
         </div>
         <Button

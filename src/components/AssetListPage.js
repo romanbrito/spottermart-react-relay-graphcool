@@ -20,6 +20,7 @@ const AssetListPageQuery = graphql`
 class AssetListPage extends Component {
 
   render(){
+
     return(
       <QueryRenderer
       environment={environment}
@@ -31,7 +32,7 @@ class AssetListPage extends Component {
         if (error) {
           return <div>{error.message}</div>
         } else if (props){
-          return <AssetList viewer={props.viewer}/>
+          return <AssetList viewer={props.viewer} history={this.props.history}/>
         }
         return <div>Loading</div>
       }}

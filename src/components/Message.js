@@ -8,6 +8,7 @@ import Card, {CardActions, CardContent, CardMedia} from 'material-ui/Card'
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button'
 import {withStyles} from "material-ui/styles/index"
+import CreateMessage from "./CreateMessage"
 
 const styles = theme => ({
   card: {
@@ -34,6 +35,9 @@ const styles = theme => ({
 
 @withStyles(styles)
 class Message extends Component {
+  state = {
+    replyMessage: false
+  }
 
   render() {
     const {classes} = this.props
@@ -48,13 +52,26 @@ class Message extends Component {
               </Typography>
             </CardContent>
             <div>
-              <Button color="primary">Reply</Button>
+              <Button
+                onClick={() => this._replyMessage()}
+                color="primary">
+                Reply
+              </Button>
+              {this.state.replyMessage && <CreateMessage to={this.props.message.from.id} replyMessage={this._replyMessage}/>}
               <Button color="primary">Delete</Button>
             </div>
           </div>
         </Card>
       </div>
     )
+  }
+
+  _replyMessage = () => {
+    if (this.state.replyMessage) {
+      this.setState({replyMessage:false})
+    } else {
+      this.setState({replyMessage: true})
+    }
   }
 }
 

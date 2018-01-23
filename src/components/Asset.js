@@ -8,9 +8,10 @@ import Card, {CardActions, CardContent, CardMedia} from 'material-ui/Card'
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button'
 import {withStyles} from "material-ui/styles/index"
+import {GC_USER_ID} from "../constants"
 import ImageSlider from './ImageSlider'
 import DeleteAssetMutation from "../mutations/DeleteAssetMutation"
-import {GC_USER_ID} from "../constants"
+import CreateMessage from './CreateMessage'
 
 const styles = theme => ({
   card: {
@@ -38,6 +39,10 @@ const styles = theme => ({
 @withStyles(styles)
 class Asset extends Component {
 
+  state = {
+    replyMessage:false
+  }
+
   render() {
     const {classes} = this.props
     const userId = localStorage.getItem(GC_USER_ID)
@@ -54,7 +59,12 @@ class Asset extends Component {
               <Link to={'/' + this.props.asset.businessName}><Button color="primary">
                 Show Details
               </Button></Link>}
-              {(userId !== this.props.asset.postedBy.id) && <Link to={'/createMessage/' + this.props.asset.postedBy.id}><Button color="primary">Send Message</Button></Link>}
+              {(userId !== this.props.asset.postedBy.id) &&
+              <Button
+              onClick={() => this._replyMessage()}
+                color="primary">
+                Send Message
+              </Button>}
 
               {this.props.userAsset &&
                 <div>
@@ -77,6 +87,9 @@ class Asset extends Component {
                 </Typography>
               </div>}
 
+              {this.state.replyMessage &&
+              <CreateMessage to={this.props.asset.postedBy.id} replyMessage={this._replyMessage}/>}
+
             </CardContent>
           </div>
         </Card>
@@ -85,6 +98,14 @@ class Asset extends Component {
         }
       </div>
     )
+  }
+
+  _replyMessage = () => {
+    if (this.state.replyMessage) {
+      this.setState({replyMessage:false})
+    } else {
+      this.setState({replyMessage: true})
+    }
   }
 
   _deleteAsset = (assetId) => {

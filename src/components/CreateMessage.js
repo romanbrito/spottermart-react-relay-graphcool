@@ -51,7 +51,7 @@ class CreateMessage extends Component{
   _createMessage = () => {
 
     const fromId = localStorage.getItem(GC_USER_ID)
-    const toId = this.props.match.params.assetId
+    const toId = this.props.to
 
     const {
       text
@@ -61,7 +61,7 @@ class CreateMessage extends Component{
       text,
       fromId,
       toId,
-      () => this.props.history.push('/')
+      () => this.props.replyMessage()
     )
 
   }

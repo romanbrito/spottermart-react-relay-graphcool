@@ -2949,10 +2949,51 @@ enum _ModelMutationType {
 }
 
 type MessagePreviousValues {
-
+  id: ID!
+  text: String!
 }
 
 type AssetPreviousValues {
-
+  address: String
+  alcoholLicense: Boolean
+  businessName: String!
+  businessType: String
+  city: String!
+  createdAt: DateTime!
+  description: String!
+  equipment: [String!]
+  franchiseBool: Boolean
+  franchiseMarketingFee: String
+  franchiseRoyalties: String
+  franchiseTraining: String
+  franchiseTransferFee: String
+  franchiseYearsRemaining: String
+  fullTimeEmployees: String
+  grossIncome: String
+  hoursOfOperation: String
+  howLongInOperation: String
+  howManySeats: String
+  id: ID!
+  insideSqFeet: String
+  netIncome: String
+  notes: String
+  owned: Boolean
+  ownerFinance: String
+  partTimeEmployees: String
+  pictures: [Json!]
+  price: String
+  rentNNN: String
+  requirementsToQualify: String
+  socialMedia: [String!]
+  socialMediaRating: String
+  specialFeatures: String
+  state: String!
+  status: String
+  structure: String
+  termOfLease: String
+  updatedAt: DateTime!
+  website: String
+  whySelling: String
+  zipCode: String!
 }
 

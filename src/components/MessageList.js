@@ -5,8 +5,20 @@ import {
   graphql
 } from 'react-relay'
 import Message from './Message'
+import NewMessageSubscription from '../subscriptions/NewMessageSubscription'
 
 class MessageList extends Component {
+
+  componentDidMount() {
+    NewMessageSubscription(
+      response => {
+        console.log(`Received data: `, response)
+      },
+      error => console.log(`An error occurred:`, error),
+      () => console.log(`Completed`),
+      store => console.log(store.getRoot())
+    )
+  }
 
   render() {
 

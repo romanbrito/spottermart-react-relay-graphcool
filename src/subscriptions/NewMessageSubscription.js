@@ -2,13 +2,15 @@ import {
   graphql,
   requestSubscription
 } from 'react-relay'
+import {ConnectionHandler} from 'relay-runtime'
 import environment from '../Environment'
 
 const newMessageSubscription = graphql`
-    subscription NewMessaageSubscription {
+    subscription NewMessageSubscription  {
         #1 root field of the subscription and the 
         #belonging filter express the event interested in
         Message {
+            mutation
             #2 payload of the subscription
             node {
                 id
@@ -27,15 +29,15 @@ const newMessageSubscription = graphql`
 // 3 exporting the function so it can be used anywhere
 // in the application and which submits the subscription
 // by wrapping the requestSubscription
-export default () => {
+export default (onNext, onError, onCompleted, updater) => {
 
   const subscriptionConfig = {
     subscription: newMessageSubscription,
     variables: {},
-    updater: proxyStore => {
-      //
-    },
-    onError: error => console.log('An error occurred' + error)
+    onError,
+    onNext,
+    onCompleted,
+    updater,
   }
 
   requestSubscription(

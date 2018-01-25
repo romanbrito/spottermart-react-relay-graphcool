@@ -2922,3 +2922,37 @@ type Viewer {
   User(email: String, id: ID): User
   id: ID!
 }
+
+type Subscription {
+  Message: MessageSubscriptionPayload
+  Asset: AssetSubscriptionPayload
+}
+
+type MessageSubscriptionPayload {
+  mutation: _ModelMutationType!
+  node: Message
+  updatedFields: [String!]
+  previousValues: MessagePreviousValues
+}
+
+type AssetSubscriptionPayload {
+  mutation: _ModelMutationType!
+  node: Asset
+  updatedFields: [String!]
+  previousValues: AssetPreviousValues
+}
+
+enum _ModelMutationType {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+type MessagePreviousValues {
+
+}
+
+type AssetPreviousValues {
+
+}
+

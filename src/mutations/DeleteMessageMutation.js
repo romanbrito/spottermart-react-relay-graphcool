@@ -34,12 +34,11 @@ export default (id, callback) => {
 
       onError: err => console.error(err),
 
-      //optimisticUpdater: proxyStore => {
-        //proxyStore.delete(id)
-      //},
+      optimisticUpdater: proxyStore => {
+        proxyStore.delete(id)
+      },
 
       updater: proxyStore => {
-        console.log('updater')
         proxyStore.delete(id)
       },
 

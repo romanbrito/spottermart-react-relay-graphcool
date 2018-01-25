@@ -45,7 +45,6 @@ class Message extends Component {
 
     return (
       <div>
-        {console.log('message ' + this.props.message.text)}
         <Card className={classes.card}>
           <div className={classes.details}>
             <CardContent className={classes.content}>

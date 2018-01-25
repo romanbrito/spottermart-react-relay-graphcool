@@ -12,7 +12,9 @@ class MessageList extends Component {
 
     return (
       <div>
-        {this.props.viewer.allMessages.edges.map(({node}) => (
+        {this.props.viewer.allMessages.edges
+          .filter(({node}) => node !== null)
+          .map(({node}) => (
           <Message key={node.__id} message={node} />
         ))}
       </div>

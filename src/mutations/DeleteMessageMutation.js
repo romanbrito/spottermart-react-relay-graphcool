@@ -28,10 +28,21 @@ export default (id, callback) => {
       mutation,
       variables,
 
-      onCompleted: () => {
-        callback()
+      // onCompleted: () => {
+      //   callback()
+      // },
+
+      onError: err => console.error(err),
+
+      //optimisticUpdater: proxyStore => {
+        //proxyStore.delete(id)
+      //},
+
+      updater: proxyStore => {
+        console.log('updater')
+        proxyStore.delete(id)
       },
-      onError: err => console.error(err)
+
     }
   )
 

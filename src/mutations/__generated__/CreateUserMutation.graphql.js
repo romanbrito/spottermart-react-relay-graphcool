@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash c2f99710cb781665f321d384292267f6
+ * @relayHash 3174f285d1536b37e92cc5b9c4362df4
  */
 
 /* eslint-disable */
@@ -8,89 +8,86 @@
 'use strict';
 
 /*::
-import type {ConcreteBatch} from 'relay-runtime';
+import type { ConcreteBatch } from 'relay-runtime';
 export type CreateUserMutationVariables = {|
   createUserInput: {
-    name: string;
-    assetsIds?: ?$ReadOnlyArray<string>;
+    name: string,
+    assetsIds?: ?$ReadOnlyArray<string>,
     assets?: ?$ReadOnlyArray<{
-      address?: ?string;
-      alcoholLicense?: ?boolean;
-      businessName: string;
-      businessType?: ?string;
-      city: string;
-      description: string;
-      equipment?: ?$ReadOnlyArray<string>;
-      franchiseBool?: ?boolean;
-      franchiseMarketingFee?: ?string;
-      franchiseRoyalties?: ?string;
-      franchiseTraining?: ?string;
-      franchiseTransferFee?: ?string;
-      franchiseYearsRemaining?: ?string;
-      fullTimeEmployees?: ?string;
-      grossIncome?: ?string;
-      hoursOfOperation?: ?string;
-      howLongInOperation?: ?string;
-      howManySeats?: ?string;
-      insideSqFeet?: ?string;
-      netIncome?: ?string;
-      notes?: ?string;
-      owned?: ?boolean;
-      ownerFinance?: ?string;
-      partTimeEmployees?: ?string;
-      pictures?: ?$ReadOnlyArray<any>;
-      price?: ?string;
-      rentNNN?: ?string;
-      requirementsToQualify?: ?string;
-      socialMedia?: ?$ReadOnlyArray<string>;
-      socialMediaRating?: ?string;
-      specialFeatures?: ?string;
-      state: string;
-      status?: ?string;
-      structure?: ?string;
-      termOfLease?: ?string;
-      website?: ?string;
-      whySelling?: ?string;
-      zipCode: string;
-    }>;
-    messagesIds?: ?$ReadOnlyArray<string>;
+      address?: ?string,
+      alcoholLicense?: ?boolean,
+      businessName: string,
+      businessType?: ?string,
+      city: string,
+      description: string,
+      equipment?: ?$ReadOnlyArray<string>,
+      franchiseBool?: ?boolean,
+      franchiseMarketingFee?: ?string,
+      franchiseRoyalties?: ?string,
+      franchiseTraining?: ?string,
+      franchiseTransferFee?: ?string,
+      franchiseYearsRemaining?: ?string,
+      fullTimeEmployees?: ?string,
+      grossIncome?: ?string,
+      hoursOfOperation?: ?string,
+      howLongInOperation?: ?string,
+      howManySeats?: ?string,
+      insideSqFeet?: ?string,
+      netIncome?: ?string,
+      notes?: ?string,
+      owned?: ?boolean,
+      ownerFinance?: ?string,
+      partTimeEmployees?: ?string,
+      pictures?: ?$ReadOnlyArray<any>,
+      price?: ?string,
+      rentNNN?: ?string,
+      requirementsToQualify?: ?string,
+      socialMedia?: ?$ReadOnlyArray<string>,
+      socialMediaRating?: ?string,
+      specialFeatures?: ?string,
+      state: string,
+      status?: ?string,
+      structure?: ?string,
+      termOfLease?: ?string,
+      website?: ?string,
+      whySelling?: ?string,
+      zipCode: string,
+    }>,
+    messagesIds?: ?$ReadOnlyArray<string>,
     messages?: ?$ReadOnlyArray<{
-      text: string;
-      toId?: ?string;
-    }>;
-    sentIds?: ?$ReadOnlyArray<string>;
+      text: string,
+      toId?: ?string,
+    }>,
+    sentIds?: ?$ReadOnlyArray<string>,
     sent?: ?$ReadOnlyArray<{
-      text: string;
-      fromId?: ?string;
-    }>;
-    clientMutationId: string;
+      text: string,
+      fromId?: ?string,
+    }>,
+    clientMutationId: string,
     authProvider: {
       email?: ?{
-        email: string;
-        password: string;
-      };
-    };
-  };
+        email: string,
+        password: string,
+      },
+    },
+  },
   signinUserInput: {
-    email?: ?{
-      email: string;
-      password: string;
-    };
-    clientMutationId: string;
-  };
+    email?: any,
+    clientMutationId: string,
+  },
 |};
 export type CreateUserMutationResponse = {|
   +createUser: {|
     +user: ?{|
-      +id: string;
-    |};
-  |};
+      +id: string,
+    |},
+  |},
   +signinUser: {|
-    +token: ?string;
+    +token: ?string,
     +user: ?{|
-      +id: string;
-    |};
-  |};
+      +id: string,
+    |},
+  |},
 |};
 */
 
@@ -114,106 +111,93 @@ mutation CreateUserMutation(
 }
 */
 
-const batch /*: ConcreteBatch*/ = {
-  "fragment": {
-    "argumentDefinitions": [
+const batch /*: ConcreteBatch*/ = (function(){
+var v0 = [
+  {
+    "kind": "LocalArgument",
+    "name": "createUserInput",
+    "type": "SignupUserInput!",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "signinUserInput",
+    "type": "SigninUserInput!",
+    "defaultValue": null
+  }
+],
+v1 = {
+  "kind": "LinkedField",
+  "alias": null,
+  "args": null,
+  "concreteType": "User",
+  "name": "user",
+  "plural": false,
+  "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "args": null,
+      "name": "id",
+      "storageKey": null
+    }
+  ],
+  "storageKey": null
+},
+v2 = [
+  {
+    "kind": "LinkedField",
+    "alias": null,
+    "args": [
       {
-        "kind": "LocalArgument",
-        "name": "createUserInput",
-        "type": "SignupUserInput!",
-        "defaultValue": null
-      },
-      {
-        "kind": "LocalArgument",
-        "name": "signinUserInput",
-        "type": "SigninUserInput!",
-        "defaultValue": null
+        "kind": "Variable",
+        "name": "input",
+        "variableName": "createUserInput",
+        "type": "SignupUserInput!"
       }
     ],
+    "concreteType": "CreateUserPayload",
+    "name": "createUser",
+    "plural": false,
+    "selections": [
+      v1
+    ],
+    "storageKey": null
+  },
+  {
+    "kind": "LinkedField",
+    "alias": null,
+    "args": [
+      {
+        "kind": "Variable",
+        "name": "input",
+        "variableName": "signinUserInput",
+        "type": "SigninUserInput!"
+      }
+    ],
+    "concreteType": "SigninPayload",
+    "name": "signinUser",
+    "plural": false,
+    "selections": [
+      {
+        "kind": "ScalarField",
+        "alias": null,
+        "args": null,
+        "name": "token",
+        "storageKey": null
+      },
+      v1
+    ],
+    "storageKey": null
+  }
+];
+return {
+  "fragment": {
+    "argumentDefinitions": v0,
     "kind": "Fragment",
     "metadata": null,
     "name": "CreateUserMutation",
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "input",
-            "variableName": "createUserInput",
-            "type": "SignupUserInput!"
-          }
-        ],
-        "concreteType": "CreateUserPayload",
-        "name": "createUser",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "args": null,
-            "concreteType": "User",
-            "name": "user",
-            "plural": false,
-            "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "id",
-                "storageKey": null
-              }
-            ],
-            "storageKey": null
-          }
-        ],
-        "storageKey": null
-      },
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "input",
-            "variableName": "signinUserInput",
-            "type": "SigninUserInput!"
-          }
-        ],
-        "concreteType": "SigninPayload",
-        "name": "signinUser",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "token",
-            "storageKey": null
-          },
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "args": null,
-            "concreteType": "User",
-            "name": "user",
-            "plural": false,
-            "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "id",
-                "storageKey": null
-              }
-            ],
-            "storageKey": null
-          }
-        ],
-        "storageKey": null
-      }
-    ],
+    "selections": v2,
     "type": "Mutation"
   },
   "id": null,
@@ -221,106 +205,14 @@ const batch /*: ConcreteBatch*/ = {
   "metadata": {},
   "name": "CreateUserMutation",
   "query": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "createUserInput",
-        "type": "SignupUserInput!",
-        "defaultValue": null
-      },
-      {
-        "kind": "LocalArgument",
-        "name": "signinUserInput",
-        "type": "SigninUserInput!",
-        "defaultValue": null
-      }
-    ],
+    "argumentDefinitions": v0,
     "kind": "Root",
     "name": "CreateUserMutation",
     "operation": "mutation",
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "input",
-            "variableName": "createUserInput",
-            "type": "SignupUserInput!"
-          }
-        ],
-        "concreteType": "CreateUserPayload",
-        "name": "createUser",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "args": null,
-            "concreteType": "User",
-            "name": "user",
-            "plural": false,
-            "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "id",
-                "storageKey": null
-              }
-            ],
-            "storageKey": null
-          }
-        ],
-        "storageKey": null
-      },
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "input",
-            "variableName": "signinUserInput",
-            "type": "SigninUserInput!"
-          }
-        ],
-        "concreteType": "SigninPayload",
-        "name": "signinUser",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "token",
-            "storageKey": null
-          },
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "args": null,
-            "concreteType": "User",
-            "name": "user",
-            "plural": false,
-            "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "id",
-                "storageKey": null
-              }
-            ],
-            "storageKey": null
-          }
-        ],
-        "storageKey": null
-      }
-    ]
+    "selections": v2
   },
   "text": "mutation CreateUserMutation(\n  $createUserInput: SignupUserInput!\n  $signinUserInput: SigninUserInput!\n) {\n  createUser(input: $createUserInput) {\n    user {\n      id\n    }\n  }\n  signinUser(input: $signinUserInput) {\n    token\n    user {\n      id\n    }\n  }\n}\n"
 };
+})();
 
 module.exports = batch;

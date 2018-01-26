@@ -7,17 +7,21 @@
 'use strict';
 
 /*::
-import type {ConcreteFragment} from 'relay-runtime';
+import type { ConcreteFragment } from 'relay-runtime';
+import type { FragmentReference } from 'relay-runtime';
+type Asset_asset = any;
 export type AssetList_viewer = {|
   +allAssets: {|
     +edges: ?$ReadOnlyArray<?{|
-      +node: {| |};
-    |}>;
+      +node: {|
+        +__fragments: FragmentReference<Asset_asset>,
+      |},
+    |}>,
     +pageInfo: {|
-      +hasNextPage: boolean;
-      +endCursor: ?string;
-    |};
-  |};
+      +hasNextPage: boolean,
+      +endCursor: ?string,
+    |},
+  |},
 |};
 */
 

@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 1a7f1a4708575b1bad95b466fc8974db
+ * @relayHash c9577662857c570f1c682bace7c9be2d
  */
 
 /* eslint-disable */
@@ -8,11 +8,15 @@
 'use strict';
 
 /*::
-import type {ConcreteBatch} from 'relay-runtime';
+import type { ConcreteBatch } from 'relay-runtime';
+import type { FragmentReference } from 'relay-runtime';
+type Asset_asset = any;
 export type SingleAssetPageQueryResponse = {|
   +viewer: {|
-    +Asset: ?{| |};
-  |};
+    +Asset: ?{|
+      +__fragments: FragmentReference<Asset_asset>,
+    |},
+  |},
 |};
 */
 
@@ -46,16 +50,33 @@ fragment Asset_asset on Asset {
 }
 */
 
-const batch /*: ConcreteBatch*/ = {
+const batch /*: ConcreteBatch*/ = (function(){
+var v0 = [
+  {
+    "kind": "LocalArgument",
+    "name": "businessName",
+    "type": "String!",
+    "defaultValue": null
+  }
+],
+v1 = [
+  {
+    "kind": "Variable",
+    "name": "businessName",
+    "variableName": "businessName",
+    "type": "String"
+  }
+],
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "args": null,
+  "name": "id",
+  "storageKey": null
+};
+return {
   "fragment": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "businessName",
-        "type": "String!",
-        "defaultValue": null
-      }
-    ],
+    "argumentDefinitions": v0,
     "kind": "Fragment",
     "metadata": null,
     "name": "SingleAssetPageQuery",
@@ -71,14 +92,7 @@ const batch /*: ConcreteBatch*/ = {
           {
             "kind": "LinkedField",
             "alias": null,
-            "args": [
-              {
-                "kind": "Variable",
-                "name": "businessName",
-                "variableName": "businessName",
-                "type": "String"
-              }
-            ],
+            "args": v1,
             "concreteType": "Asset",
             "name": "Asset",
             "plural": false,
@@ -102,14 +116,7 @@ const batch /*: ConcreteBatch*/ = {
   "metadata": {},
   "name": "SingleAssetPageQuery",
   "query": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "businessName",
-        "type": "String!",
-        "defaultValue": null
-      }
-    ],
+    "argumentDefinitions": v0,
     "kind": "Root",
     "name": "SingleAssetPageQuery",
     "operation": "query",
@@ -125,25 +132,12 @@ const batch /*: ConcreteBatch*/ = {
           {
             "kind": "LinkedField",
             "alias": null,
-            "args": [
-              {
-                "kind": "Variable",
-                "name": "businessName",
-                "variableName": "businessName",
-                "type": "String"
-              }
-            ],
+            "args": v1,
             "concreteType": "Asset",
             "name": "Asset",
             "plural": false,
             "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "id",
-                "storageKey": null
-              },
+              v2,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -201,13 +195,7 @@ const batch /*: ConcreteBatch*/ = {
                 "name": "postedBy",
                 "plural": false,
                 "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "id",
-                    "storageKey": null
-                  },
+                  v2,
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -221,13 +209,7 @@ const batch /*: ConcreteBatch*/ = {
             ],
             "storageKey": null
           },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "id",
-            "storageKey": null
-          }
+          v2
         ],
         "storageKey": null
       }
@@ -235,5 +217,6 @@ const batch /*: ConcreteBatch*/ = {
   },
   "text": "query SingleAssetPageQuery(\n  $businessName: String!\n) {\n  viewer {\n    Asset(businessName: $businessName) {\n      ...Asset_asset\n      id\n    }\n    id\n  }\n}\n\nfragment Asset_asset on Asset {\n  id\n  businessName\n  price\n  description\n  city\n  state\n  zipCode\n  pictures\n  postedBy {\n    id\n    name\n  }\n}\n"
 };
+})();
 
 module.exports = batch;

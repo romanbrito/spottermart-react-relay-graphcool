@@ -7,37 +7,39 @@
 'use strict';
 
 /*::
-import type {ConcreteFragment} from 'relay-runtime';
+import type { ConcreteFragment } from 'relay-runtime';
 export type Asset_asset = {|
-  +id: string;
-  +businessName: string;
-  +price: ?string;
-  +description: string;
-  +city: string;
-  +state: string;
-  +zipCode: string;
-  +pictures: ?$ReadOnlyArray<any>;
+  +id: string,
+  +businessName: string,
+  +price: ?string,
+  +description: string,
+  +city: string,
+  +state: string,
+  +zipCode: string,
+  +pictures: ?$ReadOnlyArray<any>,
   +postedBy: ?{|
-    +id: string;
-    +name: string;
-  |};
+    +id: string,
+    +name: string,
+  |},
 |};
 */
 
 
-const fragment /*: ConcreteFragment*/ = {
+const fragment /*: ConcreteFragment*/ = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "args": null,
+  "name": "id",
+  "storageKey": null
+};
+return {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
   "name": "Asset_asset",
   "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "args": null,
-      "name": "id",
-      "storageKey": null
-    },
+    v0,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -95,13 +97,7 @@ const fragment /*: ConcreteFragment*/ = {
       "name": "postedBy",
       "plural": false,
       "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "args": null,
-          "name": "id",
-          "storageKey": null
-        },
+        v0,
         {
           "kind": "ScalarField",
           "alias": null,
@@ -115,5 +111,6 @@ const fragment /*: ConcreteFragment*/ = {
   ],
   "type": "Asset"
 };
+})();
 
 module.exports = fragment;

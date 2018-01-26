@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash fca4f71754210e7f2a375999f9d328a6
+ * @relayHash f30fa9ed8089d7b843b0c5e174d0e1be
  */
 
 /* eslint-disable */
@@ -8,21 +8,21 @@
 'use strict';
 
 /*::
-import type {ConcreteBatch} from 'relay-runtime';
+import type { ConcreteBatch } from 'relay-runtime';
 export type CreateMessageMutationVariables = {|
   input: {
-    text: string;
-    fromId?: ?string;
-    toId?: ?string;
-    clientMutationId: string;
-  };
+    text: string,
+    fromId?: ?string,
+    toId?: ?string,
+    clientMutationId: string,
+  },
 |};
 export type CreateMessageMutationResponse = {|
   +createMessage: ?{|
     +message: ?{|
-      +id: string;
-    |};
-  |};
+      +id: string,
+    |},
+  |},
 |};
 */
 
@@ -39,57 +39,60 @@ mutation CreateMessageMutation(
 }
 */
 
-const batch /*: ConcreteBatch*/ = {
-  "fragment": {
-    "argumentDefinitions": [
+const batch /*: ConcreteBatch*/ = (function(){
+var v0 = [
+  {
+    "kind": "LocalArgument",
+    "name": "input",
+    "type": "CreateMessageInput!",
+    "defaultValue": null
+  }
+],
+v1 = [
+  {
+    "kind": "LinkedField",
+    "alias": null,
+    "args": [
       {
-        "kind": "LocalArgument",
+        "kind": "Variable",
         "name": "input",
-        "type": "CreateMessageInput!",
-        "defaultValue": null
+        "variableName": "input",
+        "type": "CreateMessageInput!"
       }
     ],
-    "kind": "Fragment",
-    "metadata": null,
-    "name": "CreateMessageMutation",
+    "concreteType": "CreateMessagePayload",
+    "name": "createMessage",
+    "plural": false,
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "input",
-            "variableName": "input",
-            "type": "CreateMessageInput!"
-          }
-        ],
-        "concreteType": "CreateMessagePayload",
-        "name": "createMessage",
+        "args": null,
+        "concreteType": "Message",
+        "name": "message",
         "plural": false,
         "selections": [
           {
-            "kind": "LinkedField",
+            "kind": "ScalarField",
             "alias": null,
             "args": null,
-            "concreteType": "Message",
-            "name": "message",
-            "plural": false,
-            "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "id",
-                "storageKey": null
-              }
-            ],
+            "name": "id",
             "storageKey": null
           }
         ],
         "storageKey": null
       }
     ],
+    "storageKey": null
+  }
+];
+return {
+  "fragment": {
+    "argumentDefinitions": v0,
+    "kind": "Fragment",
+    "metadata": null,
+    "name": "CreateMessageMutation",
+    "selections": v1,
     "type": "Mutation"
   },
   "id": null,
@@ -97,57 +100,14 @@ const batch /*: ConcreteBatch*/ = {
   "metadata": {},
   "name": "CreateMessageMutation",
   "query": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "input",
-        "type": "CreateMessageInput!",
-        "defaultValue": null
-      }
-    ],
+    "argumentDefinitions": v0,
     "kind": "Root",
     "name": "CreateMessageMutation",
     "operation": "mutation",
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "input",
-            "variableName": "input",
-            "type": "CreateMessageInput!"
-          }
-        ],
-        "concreteType": "CreateMessagePayload",
-        "name": "createMessage",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "args": null,
-            "concreteType": "Message",
-            "name": "message",
-            "plural": false,
-            "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "id",
-                "storageKey": null
-              }
-            ],
-            "storageKey": null
-          }
-        ],
-        "storageKey": null
-      }
-    ]
+    "selections": v1
   },
   "text": "mutation CreateMessageMutation(\n  $input: CreateMessageInput!\n) {\n  createMessage(input: $input) {\n    message {\n      id\n    }\n  }\n}\n"
 };
+})();
 
 module.exports = batch;

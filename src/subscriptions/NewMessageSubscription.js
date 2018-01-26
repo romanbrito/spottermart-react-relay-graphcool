@@ -4,12 +4,13 @@ import {
 } from 'react-relay'
 import {ConnectionHandler} from 'relay-runtime'
 import environment from '../Environment'
+import {GC_USER_ID} from "../constants"
 
 const newMessageSubscription = graphql`
-    subscription NewMessageSubscription  {
+    subscription NewMessageSubscription ($filter: MessageSubscriptionFilter!)  {
         #1 root field of the subscription and the 
         #belonging filter express the event interested in
-        Message {
+        Message(filter: $filter) {
             mutation
             #2 payload of the subscription
             node {
@@ -33,7 +34,11 @@ export default (onNext, onError, onCompleted, updater) => {
 
   const subscriptionConfig = {
     subscription: newMessageSubscription,
-    variables: {},
+    variables: {
+      filter: {
+        node: {to: {id: localStorage.getItem(GC_USER_ID)}}
+      }
+    },
     onError,
     onNext,
     onCompleted,

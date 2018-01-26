@@ -7,16 +7,16 @@
 'use strict';
 
 /*::
-import type {ConcreteFragment} from 'relay-runtime';
+import type { ConcreteFragment } from 'relay-runtime';
 export type UpdateAsset_asset = {|
-  +id: string;
-  +businessName: string;
-  +price: ?string;
-  +description: string;
-  +city: string;
-  +state: string;
-  +zipCode: string;
-  +pictures: ?$ReadOnlyArray<any>;
+  +id: string,
+  +businessName: string,
+  +price: ?string,
+  +description: string,
+  +city: string,
+  +state: string,
+  +zipCode: string,
+  +pictures: ?$ReadOnlyArray<any>,
 |};
 */
 

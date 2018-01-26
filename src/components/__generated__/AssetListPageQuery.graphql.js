@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 595bd18098c7322e5a47e7c6fc444353
+ * @relayHash edb3ebde08968ad72cde378b59e90571
  */
 
 /* eslint-disable */
@@ -8,9 +8,13 @@
 'use strict';
 
 /*::
-import type {ConcreteBatch} from 'relay-runtime';
+import type { ConcreteBatch } from 'relay-runtime';
+import type { FragmentReference } from 'relay-runtime';
+type AssetList_viewer = any;
 export type AssetListPageQueryResponse = {|
-  +viewer: {| |};
+  +viewer: {|
+    +__fragments: FragmentReference<AssetList_viewer>,
+  |},
 |};
 */
 
@@ -70,22 +74,31 @@ fragment Asset_asset on Asset {
 }
 */
 
-const batch /*: ConcreteBatch*/ = {
+const batch /*: ConcreteBatch*/ = (function(){
+var v0 = [
+  {
+    "kind": "LocalArgument",
+    "name": "count",
+    "type": "Int!",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "after",
+    "type": "String",
+    "defaultValue": null
+  }
+],
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "args": null,
+  "name": "id",
+  "storageKey": null
+};
+return {
   "fragment": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "count",
-        "type": "Int!",
-        "defaultValue": null
-      },
-      {
-        "kind": "LocalArgument",
-        "name": "after",
-        "type": "String",
-        "defaultValue": null
-      }
-    ],
+    "argumentDefinitions": v0,
     "kind": "Fragment",
     "metadata": null,
     "name": "AssetListPageQuery",
@@ -114,20 +127,7 @@ const batch /*: ConcreteBatch*/ = {
   "metadata": {},
   "name": "AssetListPageQuery",
   "query": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "count",
-        "type": "Int!",
-        "defaultValue": null
-      },
-      {
-        "kind": "LocalArgument",
-        "name": "after",
-        "type": "String",
-        "defaultValue": null
-      }
-    ],
+    "argumentDefinitions": v0,
     "kind": "Root",
     "name": "AssetListPageQuery",
     "operation": "query",
@@ -140,13 +140,7 @@ const batch /*: ConcreteBatch*/ = {
         "name": "viewer",
         "plural": false,
         "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "id",
-            "storageKey": null
-          },
+          v1,
           {
             "kind": "InlineFragment",
             "type": "Viewer",
@@ -194,13 +188,7 @@ const batch /*: ConcreteBatch*/ = {
                         "name": "node",
                         "plural": false,
                         "selections": [
-                          {
-                            "kind": "ScalarField",
-                            "alias": null,
-                            "args": null,
-                            "name": "id",
-                            "storageKey": null
-                          },
+                          v1,
                           {
                             "kind": "InlineFragment",
                             "type": "Asset",
@@ -262,13 +250,7 @@ const batch /*: ConcreteBatch*/ = {
                                 "name": "postedBy",
                                 "plural": false,
                                 "selections": [
-                                  {
-                                    "kind": "ScalarField",
-                                    "alias": null,
-                                    "args": null,
-                                    "name": "id",
-                                    "storageKey": null
-                                  },
+                                  v1,
                                   {
                                     "kind": "ScalarField",
                                     "alias": null,
@@ -396,5 +378,6 @@ const batch /*: ConcreteBatch*/ = {
   },
   "text": "query AssetListPageQuery(\n  $count: Int!\n  $after: String\n) {\n  viewer {\n    ...AssetList_viewer\n    id\n  }\n}\n\nfragment AssetList_viewer on Viewer {\n  allAssets(first: $count, after: $after, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        ...Asset_asset\n        id\n      }\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    ... on AssetConnection {\n      edges {\n        cursor\n        node {\n          __typename\n          id\n        }\n      }\n      pageInfo {\n        endCursor\n        hasNextPage\n      }\n    }\n  }\n}\n\nfragment Asset_asset on Asset {\n  id\n  businessName\n  price\n  description\n  city\n  state\n  zipCode\n  pictures\n  postedBy {\n    id\n    name\n  }\n}\n"
 };
+})();
 
 module.exports = batch;

@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 15f25abae72264134cdeb089b25fb8b9
+ * @relayHash 81c6523c30cbd9c0c62ece3050e39ac1
  */
 
 /* eslint-disable */
@@ -8,9 +8,13 @@
 'use strict';
 
 /*::
-import type {ConcreteBatch} from 'relay-runtime';
+import type { ConcreteBatch } from 'relay-runtime';
+import type { FragmentReference } from 'relay-runtime';
+type MessageList_viewer = any;
 export type MessageListPageQueryResponse = {|
-  +viewer: {| |};
+  +viewer: {|
+    +__fragments: FragmentReference<MessageList_viewer>,
+  |},
 |};
 */
 
@@ -59,16 +63,25 @@ fragment Message_message on Message {
 }
 */
 
-const batch /*: ConcreteBatch*/ = {
+const batch /*: ConcreteBatch*/ = (function(){
+var v0 = [
+  {
+    "kind": "LocalArgument",
+    "name": "filter",
+    "type": "MessageFilter!",
+    "defaultValue": null
+  }
+],
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "args": null,
+  "name": "id",
+  "storageKey": null
+};
+return {
   "fragment": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "filter",
-        "type": "MessageFilter!",
-        "defaultValue": null
-      }
-    ],
+    "argumentDefinitions": v0,
     "kind": "Fragment",
     "metadata": null,
     "name": "MessageListPageQuery",
@@ -97,14 +110,7 @@ const batch /*: ConcreteBatch*/ = {
   "metadata": {},
   "name": "MessageListPageQuery",
   "query": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "filter",
-        "type": "MessageFilter!",
-        "defaultValue": null
-      }
-    ],
+    "argumentDefinitions": v0,
     "kind": "Root",
     "name": "MessageListPageQuery",
     "operation": "query",
@@ -117,13 +123,7 @@ const batch /*: ConcreteBatch*/ = {
         "name": "viewer",
         "plural": false,
         "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "id",
-            "storageKey": null
-          },
+          v1,
           {
             "kind": "InlineFragment",
             "type": "Viewer",
@@ -171,13 +171,7 @@ const batch /*: ConcreteBatch*/ = {
                         "name": "node",
                         "plural": false,
                         "selections": [
-                          {
-                            "kind": "ScalarField",
-                            "alias": null,
-                            "args": null,
-                            "name": "id",
-                            "storageKey": null
-                          },
+                          v1,
                           {
                             "kind": "InlineFragment",
                             "type": "Message",
@@ -197,13 +191,7 @@ const batch /*: ConcreteBatch*/ = {
                                 "name": "from",
                                 "plural": false,
                                 "selections": [
-                                  {
-                                    "kind": "ScalarField",
-                                    "alias": null,
-                                    "args": null,
-                                    "name": "id",
-                                    "storageKey": null
-                                  },
+                                  v1,
                                   {
                                     "kind": "ScalarField",
                                     "alias": null,
@@ -332,5 +320,6 @@ const batch /*: ConcreteBatch*/ = {
   },
   "text": "query MessageListPageQuery(\n  $filter: MessageFilter!\n) {\n  viewer {\n    ...MessageList_viewer\n    id\n  }\n}\n\nfragment MessageList_viewer on Viewer {\n  allMessages(filter: $filter, last: 100, orderBy: id_ASC) {\n    edges {\n      node {\n        ...Message_message\n        id\n      }\n    }\n    ... on MessageConnection {\n      edges {\n        cursor\n        node {\n          __typename\n          id\n        }\n      }\n      pageInfo {\n        hasPreviousPage\n        startCursor\n      }\n    }\n  }\n}\n\nfragment Message_message on Message {\n  id\n  text\n  from {\n    id\n    name\n  }\n}\n"
 };
+})();
 
 module.exports = batch;

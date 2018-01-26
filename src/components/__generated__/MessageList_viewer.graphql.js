@@ -7,13 +7,17 @@
 'use strict';
 
 /*::
-import type {ConcreteFragment} from 'relay-runtime';
+import type { ConcreteFragment } from 'relay-runtime';
+import type { FragmentReference } from 'relay-runtime';
+type Message_message = any;
 export type MessageList_viewer = {|
   +allMessages: {|
     +edges: ?$ReadOnlyArray<?{|
-      +node: {| |};
-    |}>;
-  |};
+      +node: {|
+        +__fragments: FragmentReference<Message_message>,
+      |},
+    |}>,
+  |},
 |};
 */
 

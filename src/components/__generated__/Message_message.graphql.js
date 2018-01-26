@@ -7,31 +7,33 @@
 'use strict';
 
 /*::
-import type {ConcreteFragment} from 'relay-runtime';
+import type { ConcreteFragment } from 'relay-runtime';
 export type Message_message = {|
-  +id: string;
-  +text: string;
+  +id: string,
+  +text: string,
   +from: ?{|
-    +id: string;
-    +name: string;
-  |};
+    +id: string,
+    +name: string,
+  |},
 |};
 */
 
 
-const fragment /*: ConcreteFragment*/ = {
+const fragment /*: ConcreteFragment*/ = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "args": null,
+  "name": "id",
+  "storageKey": null
+};
+return {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
   "name": "Message_message",
   "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "args": null,
-      "name": "id",
-      "storageKey": null
-    },
+    v0,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -47,13 +49,7 @@ const fragment /*: ConcreteFragment*/ = {
       "name": "from",
       "plural": false,
       "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "args": null,
-          "name": "id",
-          "storageKey": null
-        },
+        v0,
         {
           "kind": "ScalarField",
           "alias": null,
@@ -67,5 +63,6 @@ const fragment /*: ConcreteFragment*/ = {
   ],
   "type": "Message"
 };
+})();
 
 module.exports = fragment;

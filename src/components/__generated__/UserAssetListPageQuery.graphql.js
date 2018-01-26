@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 44b72222805cb6f25d8de57df27533ff
+ * @relayHash 18b708c62f42f05ebfa009c470dbfa2d
  */
 
 /* eslint-disable */
@@ -8,9 +8,13 @@
 'use strict';
 
 /*::
-import type {ConcreteBatch} from 'relay-runtime';
+import type { ConcreteBatch } from 'relay-runtime';
+import type { FragmentReference } from 'relay-runtime';
+type UserAssetList_viewer = any;
 export type UserAssetListPageQueryResponse = {|
-  +viewer: {| |};
+  +viewer: {|
+    +__fragments: FragmentReference<UserAssetList_viewer>,
+  |},
 |};
 */
 
@@ -65,16 +69,25 @@ fragment Asset_asset on Asset {
 }
 */
 
-const batch /*: ConcreteBatch*/ = {
+const batch /*: ConcreteBatch*/ = (function(){
+var v0 = [
+  {
+    "kind": "LocalArgument",
+    "name": "filter",
+    "type": "AssetFilter!",
+    "defaultValue": null
+  }
+],
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "args": null,
+  "name": "id",
+  "storageKey": null
+};
+return {
   "fragment": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "filter",
-        "type": "AssetFilter!",
-        "defaultValue": null
-      }
-    ],
+    "argumentDefinitions": v0,
     "kind": "Fragment",
     "metadata": null,
     "name": "UserAssetListPageQuery",
@@ -103,14 +116,7 @@ const batch /*: ConcreteBatch*/ = {
   "metadata": {},
   "name": "UserAssetListPageQuery",
   "query": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "filter",
-        "type": "AssetFilter!",
-        "defaultValue": null
-      }
-    ],
+    "argumentDefinitions": v0,
     "kind": "Root",
     "name": "UserAssetListPageQuery",
     "operation": "query",
@@ -123,13 +129,7 @@ const batch /*: ConcreteBatch*/ = {
         "name": "viewer",
         "plural": false,
         "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "id",
-            "storageKey": null
-          },
+          v1,
           {
             "kind": "InlineFragment",
             "type": "Viewer",
@@ -177,13 +177,7 @@ const batch /*: ConcreteBatch*/ = {
                         "name": "node",
                         "plural": false,
                         "selections": [
-                          {
-                            "kind": "ScalarField",
-                            "alias": null,
-                            "args": null,
-                            "name": "id",
-                            "storageKey": null
-                          },
+                          v1,
                           {
                             "kind": "InlineFragment",
                             "type": "Asset",
@@ -245,13 +239,7 @@ const batch /*: ConcreteBatch*/ = {
                                 "name": "postedBy",
                                 "plural": false,
                                 "selections": [
-                                  {
-                                    "kind": "ScalarField",
-                                    "alias": null,
-                                    "args": null,
-                                    "name": "id",
-                                    "storageKey": null
-                                  },
+                                  v1,
                                   {
                                     "kind": "ScalarField",
                                     "alias": null,
@@ -380,5 +368,6 @@ const batch /*: ConcreteBatch*/ = {
   },
   "text": "query UserAssetListPageQuery(\n  $filter: AssetFilter!\n) {\n  viewer {\n    ...UserAssetList_viewer\n    id\n  }\n}\n\nfragment UserAssetList_viewer on Viewer {\n  allAssets(filter: $filter, last: 100, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        ...Asset_asset\n        id\n      }\n    }\n    ... on AssetConnection {\n      edges {\n        cursor\n        node {\n          __typename\n          id\n        }\n      }\n      pageInfo {\n        hasPreviousPage\n        startCursor\n      }\n    }\n  }\n}\n\nfragment Asset_asset on Asset {\n  id\n  businessName\n  price\n  description\n  city\n  state\n  zipCode\n  pictures\n  postedBy {\n    id\n    name\n  }\n}\n"
 };
+})();
 
 module.exports = batch;

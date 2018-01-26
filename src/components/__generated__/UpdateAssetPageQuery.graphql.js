@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash a480ee5d0ac20ab46cb94a9848cf4bb8
+ * @relayHash a2e402f2a18824cd6ba17622fa8837bb
  */
 
 /* eslint-disable */
@@ -8,11 +8,15 @@
 'use strict';
 
 /*::
-import type {ConcreteBatch} from 'relay-runtime';
+import type { ConcreteBatch } from 'relay-runtime';
+import type { FragmentReference } from 'relay-runtime';
+type UpdateAsset_asset = any;
 export type UpdateAssetPageQueryResponse = {|
   +viewer: {|
-    +Asset: ?{| |};
-  |};
+    +Asset: ?{|
+      +__fragments: FragmentReference<UpdateAsset_asset>,
+    |},
+  |},
 |};
 */
 
@@ -42,16 +46,33 @@ fragment UpdateAsset_asset on Asset {
 }
 */
 
-const batch /*: ConcreteBatch*/ = {
+const batch /*: ConcreteBatch*/ = (function(){
+var v0 = [
+  {
+    "kind": "LocalArgument",
+    "name": "assetId",
+    "type": "ID!",
+    "defaultValue": null
+  }
+],
+v1 = [
+  {
+    "kind": "Variable",
+    "name": "id",
+    "variableName": "assetId",
+    "type": "ID"
+  }
+],
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "args": null,
+  "name": "id",
+  "storageKey": null
+};
+return {
   "fragment": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "assetId",
-        "type": "ID!",
-        "defaultValue": null
-      }
-    ],
+    "argumentDefinitions": v0,
     "kind": "Fragment",
     "metadata": null,
     "name": "UpdateAssetPageQuery",
@@ -67,14 +88,7 @@ const batch /*: ConcreteBatch*/ = {
           {
             "kind": "LinkedField",
             "alias": null,
-            "args": [
-              {
-                "kind": "Variable",
-                "name": "id",
-                "variableName": "assetId",
-                "type": "ID"
-              }
-            ],
+            "args": v1,
             "concreteType": "Asset",
             "name": "Asset",
             "plural": false,
@@ -98,14 +112,7 @@ const batch /*: ConcreteBatch*/ = {
   "metadata": {},
   "name": "UpdateAssetPageQuery",
   "query": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "assetId",
-        "type": "ID!",
-        "defaultValue": null
-      }
-    ],
+    "argumentDefinitions": v0,
     "kind": "Root",
     "name": "UpdateAssetPageQuery",
     "operation": "query",
@@ -121,25 +128,12 @@ const batch /*: ConcreteBatch*/ = {
           {
             "kind": "LinkedField",
             "alias": null,
-            "args": [
-              {
-                "kind": "Variable",
-                "name": "id",
-                "variableName": "assetId",
-                "type": "ID"
-              }
-            ],
+            "args": v1,
             "concreteType": "Asset",
             "name": "Asset",
             "plural": false,
             "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "id",
-                "storageKey": null
-              },
+              v2,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -192,13 +186,7 @@ const batch /*: ConcreteBatch*/ = {
             ],
             "storageKey": null
           },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "id",
-            "storageKey": null
-          }
+          v2
         ],
         "storageKey": null
       }
@@ -206,5 +194,6 @@ const batch /*: ConcreteBatch*/ = {
   },
   "text": "query UpdateAssetPageQuery(\n  $assetId: ID!\n) {\n  viewer {\n    Asset(id: $assetId) {\n      ...UpdateAsset_asset\n      id\n    }\n    id\n  }\n}\n\nfragment UpdateAsset_asset on Asset {\n  id\n  businessName\n  price\n  description\n  city\n  state\n  zipCode\n  pictures\n}\n"
 };
+})();
 
 module.exports = batch;

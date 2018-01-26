@@ -9,7 +9,7 @@ import MessageList from './MessageList'
 
 const MessageListPageQuery = graphql`
   query MessageListPageQuery(
-      $filter: MessageFilter!
+      $userId: ID!
   ){
       viewer {
           ...MessageList_viewer
@@ -27,7 +27,7 @@ class MessageListPage extends Component {
       environment={environment}
       query={MessageListPageQuery}
       variables={{
-        filter: {to: {id:userId}}
+        userId: userId
       }}
       render={({error, props}) => {
         if (error) {

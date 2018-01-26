@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 81c6523c30cbd9c0c62ece3050e39ac1
+ * @relayHash 3bc06abfba9cd725f628880ab37ac386
  */
 
 /* eslint-disable */
@@ -21,7 +21,7 @@ export type MessageListPageQueryResponse = {|
 
 /*
 query MessageListPageQuery(
-  $filter: MessageFilter!
+  $userId: ID!
 ) {
   viewer {
     ...MessageList_viewer
@@ -30,26 +30,22 @@ query MessageListPageQuery(
 }
 
 fragment MessageList_viewer on Viewer {
-  allMessages(filter: $filter, last: 100, orderBy: id_ASC) {
-    edges {
-      node {
-        ...Message_message
-        id
-      }
-    }
-    ... on MessageConnection {
+  User(id: $userId) {
+    sent(last: 100, orderBy: id_ASC) {
       edges {
-        cursor
         node {
           __typename
+          ...Message_message
           id
         }
+        cursor
       }
       pageInfo {
         hasPreviousPage
         startCursor
       }
     }
+    id
   }
 }
 
@@ -67,8 +63,8 @@ const batch /*: ConcreteBatch*/ = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
-    "name": "filter",
-    "type": "MessageFilter!",
+    "name": "userId",
+    "type": "ID!",
     "defaultValue": null
   }
 ],
@@ -134,85 +130,35 @@ return {
                 "args": [
                   {
                     "kind": "Variable",
-                    "name": "filter",
-                    "variableName": "filter",
-                    "type": "MessageFilter"
-                  },
-                  {
-                    "kind": "Literal",
-                    "name": "last",
-                    "value": 100,
-                    "type": "Int"
-                  },
-                  {
-                    "kind": "Literal",
-                    "name": "orderBy",
-                    "value": "id_ASC",
-                    "type": "MessageOrderBy"
+                    "name": "id",
+                    "variableName": "userId",
+                    "type": "ID"
                   }
                 ],
-                "concreteType": "MessageConnection",
-                "name": "allMessages",
+                "concreteType": "User",
+                "name": "User",
                 "plural": false,
                 "selections": [
                   {
                     "kind": "LinkedField",
                     "alias": null,
-                    "args": null,
-                    "concreteType": "MessageEdge",
-                    "name": "edges",
-                    "plural": true,
-                    "selections": [
+                    "args": [
                       {
-                        "kind": "LinkedField",
-                        "alias": null,
-                        "args": null,
-                        "concreteType": "Message",
-                        "name": "node",
-                        "plural": false,
-                        "selections": [
-                          v1,
-                          {
-                            "kind": "InlineFragment",
-                            "type": "Message",
-                            "selections": [
-                              {
-                                "kind": "ScalarField",
-                                "alias": null,
-                                "args": null,
-                                "name": "text",
-                                "storageKey": null
-                              },
-                              {
-                                "kind": "LinkedField",
-                                "alias": null,
-                                "args": null,
-                                "concreteType": "User",
-                                "name": "from",
-                                "plural": false,
-                                "selections": [
-                                  v1,
-                                  {
-                                    "kind": "ScalarField",
-                                    "alias": null,
-                                    "args": null,
-                                    "name": "name",
-                                    "storageKey": null
-                                  }
-                                ],
-                                "storageKey": null
-                              }
-                            ]
-                          }
-                        ],
-                        "storageKey": null
+                        "kind": "Literal",
+                        "name": "last",
+                        "value": 100,
+                        "type": "Int"
+                      },
+                      {
+                        "kind": "Literal",
+                        "name": "orderBy",
+                        "value": "id_ASC",
+                        "type": "MessageOrderBy"
                       }
                     ],
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "InlineFragment",
-                    "type": "MessageConnection",
+                    "concreteType": "MessageConnection",
+                    "name": "sent",
+                    "plural": false,
                     "selections": [
                       {
                         "kind": "LinkedField",
@@ -222,13 +168,6 @@ return {
                         "name": "edges",
                         "plural": true,
                         "selections": [
-                          {
-                            "kind": "ScalarField",
-                            "alias": null,
-                            "args": null,
-                            "name": "cursor",
-                            "storageKey": null
-                          },
                           {
                             "kind": "LinkedField",
                             "alias": null,
@@ -243,8 +182,48 @@ return {
                                 "args": null,
                                 "name": "__typename",
                                 "storageKey": null
+                              },
+                              v1,
+                              {
+                                "kind": "InlineFragment",
+                                "type": "Message",
+                                "selections": [
+                                  {
+                                    "kind": "ScalarField",
+                                    "alias": null,
+                                    "args": null,
+                                    "name": "text",
+                                    "storageKey": null
+                                  },
+                                  {
+                                    "kind": "LinkedField",
+                                    "alias": null,
+                                    "args": null,
+                                    "concreteType": "User",
+                                    "name": "from",
+                                    "plural": false,
+                                    "selections": [
+                                      v1,
+                                      {
+                                        "kind": "ScalarField",
+                                        "alias": null,
+                                        "args": null,
+                                        "name": "name",
+                                        "storageKey": null
+                                      }
+                                    ],
+                                    "storageKey": null
+                                  }
+                                ]
                               }
                             ],
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "args": null,
+                            "name": "cursor",
                             "storageKey": null
                           }
                         ],
@@ -275,41 +254,36 @@ return {
                         ],
                         "storageKey": null
                       }
+                    ],
+                    "storageKey": "sent{\"last\":100,\"orderBy\":\"id_ASC\"}"
+                  },
+                  {
+                    "kind": "LinkedHandle",
+                    "alias": null,
+                    "args": [
+                      {
+                        "kind": "Literal",
+                        "name": "last",
+                        "value": 100,
+                        "type": "Int"
+                      },
+                      {
+                        "kind": "Literal",
+                        "name": "orderBy",
+                        "value": "id_ASC",
+                        "type": "MessageOrderBy"
+                      }
+                    ],
+                    "handle": "connection",
+                    "name": "sent",
+                    "key": "MessageList_sent",
+                    "filters": [
+                      "orderBy"
                     ]
-                  }
+                  },
+                  v1
                 ],
                 "storageKey": null
-              },
-              {
-                "kind": "LinkedHandle",
-                "alias": null,
-                "args": [
-                  {
-                    "kind": "Variable",
-                    "name": "filter",
-                    "variableName": "filter",
-                    "type": "MessageFilter"
-                  },
-                  {
-                    "kind": "Literal",
-                    "name": "last",
-                    "value": 100,
-                    "type": "Int"
-                  },
-                  {
-                    "kind": "Literal",
-                    "name": "orderBy",
-                    "value": "id_ASC",
-                    "type": "MessageOrderBy"
-                  }
-                ],
-                "handle": "connection",
-                "name": "allMessages",
-                "key": "MessageList_allMessages",
-                "filters": [
-                  "filter",
-                  "orderBy"
-                ]
               }
             ]
           }
@@ -318,7 +292,7 @@ return {
       }
     ]
   },
-  "text": "query MessageListPageQuery(\n  $filter: MessageFilter!\n) {\n  viewer {\n    ...MessageList_viewer\n    id\n  }\n}\n\nfragment MessageList_viewer on Viewer {\n  allMessages(filter: $filter, last: 100, orderBy: id_ASC) {\n    edges {\n      node {\n        ...Message_message\n        id\n      }\n    }\n    ... on MessageConnection {\n      edges {\n        cursor\n        node {\n          __typename\n          id\n        }\n      }\n      pageInfo {\n        hasPreviousPage\n        startCursor\n      }\n    }\n  }\n}\n\nfragment Message_message on Message {\n  id\n  text\n  from {\n    id\n    name\n  }\n}\n"
+  "text": "query MessageListPageQuery(\n  $userId: ID!\n) {\n  viewer {\n    ...MessageList_viewer\n    id\n  }\n}\n\nfragment MessageList_viewer on Viewer {\n  User(id: $userId) {\n    sent(last: 100, orderBy: id_ASC) {\n      edges {\n        node {\n          __typename\n          ...Message_message\n          id\n        }\n        cursor\n      }\n      pageInfo {\n        hasPreviousPage\n        startCursor\n      }\n    }\n    id\n  }\n}\n\nfragment Message_message on Message {\n  id\n  text\n  from {\n    id\n    name\n  }\n}\n"
 };
 })();
 

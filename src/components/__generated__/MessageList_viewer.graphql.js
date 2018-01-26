@@ -11,12 +11,14 @@ import type { ConcreteFragment } from 'relay-runtime';
 import type { FragmentReference } from 'relay-runtime';
 type Message_message = any;
 export type MessageList_viewer = {|
-  +allMessages: {|
-    +edges: ?$ReadOnlyArray<?{|
-      +node: {|
-        +__fragments: FragmentReference<Message_message>,
-      |},
-    |}>,
+  +User: ?{|
+    +sent: ?{|
+      +edges: ?$ReadOnlyArray<?{|
+        +node: {|
+          +__fragments: FragmentReference<Message_message>,
+        |},
+      |}>,
+    |},
   |},
 |};
 */
@@ -26,8 +28,8 @@ const fragment /*: ConcreteFragment*/ = {
   "argumentDefinitions": [
     {
       "kind": "RootArgument",
-      "name": "filter",
-      "type": "MessageFilter"
+      "name": "userId",
+      "type": "ID"
     }
   ],
   "kind": "Fragment",
@@ -38,7 +40,8 @@ const fragment /*: ConcreteFragment*/ = {
         "cursor": null,
         "direction": "backward",
         "path": [
-          "allMessages"
+          "User",
+          "sent"
         ]
       }
     ]
@@ -47,55 +50,33 @@ const fragment /*: ConcreteFragment*/ = {
   "selections": [
     {
       "kind": "LinkedField",
-      "alias": "allMessages",
+      "alias": null,
       "args": [
         {
           "kind": "Variable",
-          "name": "filter",
-          "variableName": "filter",
-          "type": "MessageFilter"
-        },
-        {
-          "kind": "Literal",
-          "name": "orderBy",
-          "value": "id_ASC",
-          "type": "MessageOrderBy"
+          "name": "id",
+          "variableName": "userId",
+          "type": "ID"
         }
       ],
-      "concreteType": "MessageConnection",
-      "name": "__MessageList_allMessages_connection",
+      "concreteType": "User",
+      "name": "User",
       "plural": false,
       "selections": [
         {
           "kind": "LinkedField",
-          "alias": null,
-          "args": null,
-          "concreteType": "MessageEdge",
-          "name": "edges",
-          "plural": true,
-          "selections": [
+          "alias": "sent",
+          "args": [
             {
-              "kind": "LinkedField",
-              "alias": null,
-              "args": null,
-              "concreteType": "Message",
-              "name": "node",
-              "plural": false,
-              "selections": [
-                {
-                  "kind": "FragmentSpread",
-                  "name": "Message_message",
-                  "args": null
-                }
-              ],
-              "storageKey": null
+              "kind": "Literal",
+              "name": "orderBy",
+              "value": "id_ASC",
+              "type": "MessageOrderBy"
             }
           ],
-          "storageKey": null
-        },
-        {
-          "kind": "InlineFragment",
-          "type": "MessageConnection",
+          "concreteType": "MessageConnection",
+          "name": "__MessageList_sent_connection",
+          "plural": false,
           "selections": [
             {
               "kind": "LinkedField",
@@ -106,13 +87,6 @@ const fragment /*: ConcreteFragment*/ = {
               "plural": true,
               "selections": [
                 {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "args": null,
-                  "name": "cursor",
-                  "storageKey": null
-                },
-                {
                   "kind": "LinkedField",
                   "alias": null,
                   "args": null,
@@ -121,6 +95,11 @@ const fragment /*: ConcreteFragment*/ = {
                   "plural": false,
                   "selections": [
                     {
+                      "kind": "FragmentSpread",
+                      "name": "Message_message",
+                      "args": null
+                    },
+                    {
                       "kind": "ScalarField",
                       "alias": null,
                       "args": null,
@@ -128,6 +107,13 @@ const fragment /*: ConcreteFragment*/ = {
                       "storageKey": null
                     }
                   ],
+                  "storageKey": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "args": null,
+                  "name": "cursor",
                   "storageKey": null
                 }
               ],
@@ -158,7 +144,8 @@ const fragment /*: ConcreteFragment*/ = {
               ],
               "storageKey": null
             }
-          ]
+          ],
+          "storageKey": "__MessageList_sent_connection{\"orderBy\":\"id_ASC\"}"
         }
       ],
       "storageKey": null

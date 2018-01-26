@@ -4,27 +4,38 @@ import {
   createPaginationContainer,
   graphql
 } from 'react-relay'
+import {ConnectionHandler} from 'relay-runtime'
 import Message from './Message'
 import NewMessageSubscription from '../subscriptions/NewMessageSubscription'
+import {GC_USER_ID} from "../constants"
 
 class MessageList extends Component {
 
   componentDidMount() {
+    const userId = localStorage.getItem(GC_USER_ID)
+
     NewMessageSubscription(
       response => {
         console.log(`Received data: `, response)
       },
       error => console.log(`An error occurred:`, error),
       () => console.log(`Completed`),
-      store => console.log(store.getRoot())
+      store => {
+        const userProxy = store.get(userId)
+
+        const conn = ConnectionHandler.getConnection(
+          userProxy,
+          'MessageList_sent'
+        )
+        console.log(conn)
+      }
     )
   }
 
   render() {
-
     return (
       <div>
-        {this.props.viewer.allMessages.edges
+        {this.props.viewer.User.sent.edges
           .filter(({node}) => node !== null)
           .map(({node}) => (
           <Message key={node.__id} message={node} />
@@ -38,16 +49,19 @@ export default createFragmentContainer(MessageList,
   {
     viewer: graphql`
       fragment MessageList_viewer on Viewer {
-          allMessages(
-              filter: $filter,
-              last: 100,
-              orderBy: id_ASC
-          ) @connection(key: "MessageList_allMessages") {
-              edges {
-                  node {
-                      ...Message_message
+          User(
+              id: $userId
+          ) {
+              sent(
+                  last: 100,
+                  orderBy: id_ASC
+              )@connection(key: "MessageList_sent") {
+                  edges {
+                      node {
+                          ...Message_message
+                      }
                   }
-              }
+              }      
           }
       }
     `

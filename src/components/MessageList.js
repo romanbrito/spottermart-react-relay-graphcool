@@ -21,13 +21,20 @@ class MessageList extends Component {
       error => console.log(`An error occurred:`, error),
       () => console.log(`Completed`),
       store => {
-        const userProxy = store.get(userId)
-
+        // const userProxy = store.get(userId)
+        //
+        // const conn = ConnectionHandler.getConnection(
+        //   userProxy,
+        //   'MessageList_sent'
+        // )
+        // console.log(conn)
+        const messageProxy = store.getRoot()
+        const messages = messageProxy.getLinkedRecord('viewer')
+        console.log(messages)
         const conn = ConnectionHandler.getConnection(
-          userProxy,
+          messageProxy,
           'MessageList_sent'
         )
-        console.log(conn)
       }
     )
   }

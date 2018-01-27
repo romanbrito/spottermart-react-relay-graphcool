@@ -1,10 +1,11 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import {
   createFragmentContainer,
   createPaginationContainer,
   graphql
 } from 'react-relay'
 import {ConnectionHandler} from 'relay-runtime'
+import storeDebugger from 'relay-runtime/lib/RelayStoreProxyDebugger'
 import Message from './Message'
 import NewMessageSubscription from '../subscriptions/NewMessageSubscription'
 import {GC_USER_ID} from "../constants"
@@ -21,20 +22,28 @@ class MessageList extends Component {
       error => console.log(`An error occurred:`, error),
       () => console.log(`Completed`),
       store => {
-        // const userProxy = store.get(userId)
-        //
-        // const conn = ConnectionHandler.getConnection(
-        //   userProxy,
-        //   'MessageList_sent'
-        // )
-        // console.log(conn)
-        const messageProxy = store.getRoot()
-        const messages = messageProxy.getLinkedRecord('viewer')
-        console.log(messages)
+        storeDebugger.dump(store)
+        // Get the new Message
+        const rootField = store.getRootField('Message')
+        const message = rootField.getLinkedRecord('node');
+        // Add it to a connection
+        const user = store.get(userId)
         const conn = ConnectionHandler.getConnection(
-          messageProxy,
-          'MessageList_sent'
+          user,
+          'MessageList_sent',
+          {orderBy: 'id_ASC'}
         )
+        const edge = ConnectionHandler.createEdge(
+          store,
+          conn,
+          message,
+          'UserEdge',
+        )
+        // No cursor provided, append the edge at the end.
+        ConnectionHandler.insertEdgeAfter(conn, edge)
+        //client:cjc5ivrys4qa20156p52u859c:__MessageList_sent_connection{"orderBy":"id_ASC"}:edges:0
+        //console.log(message)
+        //console.log(edge)
       }
     )
   }
@@ -42,11 +51,11 @@ class MessageList extends Component {
   render() {
     return (
       <div>
-        {this.props.viewer.User.sent.edges
+        {this.props.User.sent.edges
           .filter(({node}) => node !== null)
           .map(({node}) => (
-          <Message key={node.__id} message={node} />
-        ))}
+            <Message key={node.__id} message={node}/>
+          ))}
       </div>
     )
   }
@@ -54,22 +63,18 @@ class MessageList extends Component {
 
 export default createFragmentContainer(MessageList,
   {
-    viewer: graphql`
-      fragment MessageList_viewer on Viewer {
-          User(
-              id: $userId
-          ) {
-              sent(
-                  last: 100,
-                  orderBy: id_ASC
-              )@connection(key: "MessageList_sent") {
-                  edges {
-                      node {
-                          ...Message_message
-                      }
-                  }
-              }      
-          }
-      }
+    User: graphql`
+        fragment MessageList_User on User {
+            sent(
+                last: 100,
+                orderBy: id_ASC
+            )@connection(key: "MessageList_sent") {
+                edges {
+                    node {
+                        ...Message_message
+                    }
+                }
+            }
+        }
     `
   })

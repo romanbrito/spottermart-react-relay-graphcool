@@ -27,23 +27,25 @@ class MessageList extends Component {
         const rootField = store.getRootField('Message')
         const message = rootField.getLinkedRecord('node');
         // Add it to a connection
-        const user = store.get(userId)
-        const conn = ConnectionHandler.getConnection(
-          user,
-          'MessageList_sent',
-          {orderBy: 'id_ASC'}
-        )
-        const edge = ConnectionHandler.createEdge(
-          store,
-          conn,
-          message,
-          'UserEdge',
-        )
-        // No cursor provided, append the edge at the end.
-        ConnectionHandler.insertEdgeAfter(conn, edge)
+        if (message) {
+          const user = store.get(userId)
+          const conn = ConnectionHandler.getConnection(
+            user,
+            'MessageList_sent',
+            {orderBy: 'id_ASC'}
+          )
+          const edge = ConnectionHandler.createEdge(
+            store,
+            conn,
+            message,
+            'UserEdge',
+          )
+          // No cursor provided, append the edge at the end.
+          ConnectionHandler.insertEdgeAfter(conn, edge)
+        }
+
         //client:cjc5ivrys4qa20156p52u859c:__MessageList_sent_connection{"orderBy":"id_ASC"}:edges:0
-        //console.log(message)
-        //console.log(edge)
+
       }
     )
   }

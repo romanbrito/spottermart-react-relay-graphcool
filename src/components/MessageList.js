@@ -5,7 +5,7 @@ import {
   graphql
 } from 'react-relay'
 import {ConnectionHandler} from 'relay-runtime'
-import storeDebugger from 'relay-runtime/lib/RelayStoreProxyDebugger'
+//import storeDebugger from 'relay-runtime/lib/RelayStoreProxyDebugger'
 import Message from './Message'
 import NewMessageSubscription from '../subscriptions/NewMessageSubscription'
 import {GC_USER_ID} from "../constants"
@@ -17,12 +17,12 @@ class MessageList extends Component {
 
     NewMessageSubscription(
       response => {
-        console.log(`Received data: `, response)
+        //console.log(`Received data: `, response)
       },
       error => console.log(`An error occurred:`, error),
       () => console.log(`Completed`),
       store => {
-        storeDebugger.dump(store)
+        //storeDebugger.dump(store)
         // Get the new Message
         const rootField = store.getRootField('Message')
         const message = rootField.getLinkedRecord('node');

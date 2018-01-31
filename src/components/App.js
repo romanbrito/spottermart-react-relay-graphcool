@@ -23,7 +23,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="bgd">
         <Header removeUserName={this._removeUserName} userName={this.state.userName}/>
         <Main getUserName={this._getUserName}/>
       </div>

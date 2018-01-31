@@ -1,5 +1,5 @@
 import { SubscriptionClient } from 'subscriptions-transport-ws'
-import { GC_AUTH_TOKEN } from './constants'
+import { GC_AUTH_TOKEN, RELAY_API, SUBSCRIPTIONS_API } from './constants'
 // 1 import the required JS modules to instantiate and configure the Environment
 const {
   Environment,
@@ -15,7 +15,7 @@ const store = new Store(new RecordSource())
 // that returns a Promise of a networking call to the GraphQL API
 export const fetchQuery = (operation, variables) => {
   // 4 The Network needs to know the server endpoint for your API
-  return fetch('https://api.graph.cool/relay/v1/cjc2sxbbi0r6l0117xjitrpuu', {
+  return fetch(RELAY_API, {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -39,7 +39,7 @@ export const fetchQuery = (operation, variables) => {
 const setupSubscription = (config, variables, cacheConfig, observer) => {
   const query = config.text
 
-  const subscriptionClient = new SubscriptionClient('wss://subscriptions.us-west-2.graph.cool/v1/cjc2sxbbi0r6l0117xjitrpuu',{reconnect:true})
+  const subscriptionClient = new SubscriptionClient(SUBSCRIPTIONS_API,{reconnect:true})
   subscriptionClient.subscribe({query, variables}, (error, result) => {
     observer.onNext({data: result})
   })

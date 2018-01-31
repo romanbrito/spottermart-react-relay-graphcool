@@ -14,7 +14,7 @@ const Main = (props) => {
 
   return (
     <Switch>
-      <Route exact path='/' component={AssetListPage}/>
+      <Route exact path='/assets' component={AssetListPage}/>
       <Route exact path='/create' component={CreateAsset}/>
       <Route exact path='/login' render={(props) => (
         <Login {...props} getUserName={extraProps.getUserName}/>

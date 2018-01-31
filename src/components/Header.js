@@ -33,7 +33,7 @@ class Header extends Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <Link to='/'><Button color="contrast">New</Button></Link>
+            <Link to='/assets'><Button color="contrast">New</Button></Link>
             <Typography type="title" color="inherit" className={classes.flex}>
               {userId && 'Hello ' + this.props.userName}
             </Typography>

@@ -17,9 +17,10 @@ const styles = theme => ({
   },
   bg: {
     background: '#E3F2FD',
+    padding: '12px 0 12px 0'
   },
-  name: {
-    marginRight: 15
+  input: {
+    margin: 15
   }
 })
 
@@ -47,29 +48,31 @@ class Login extends Component {
 
     return (
       <div className={classes.root}>
-        <Grid container spacing={24}>
+        <Grid spacing={0} container>
 
-          <Grid item xs={1} sm={4}/>
-          <Grid item xs={12} sm={4} className={classes.bg}>
+          <Grid item md={4}/>
+          <Grid item xs={12} sm={12} md={4} className={classes.bg}>
             {!this.state.login &&
             <Input
-              className={classes.name}
+              className={classes.input}
               placeholder="Your Name"
               value={this.state.name}
               onChange={(e) => this.setState({name: e.target.value})}
             />}
             <Input
+              className={classes.input}
               placeholder="Your email address"
               value={this.state.email}
               onChange={(e) => this.setState({email: e.target.value})}
             />
           </Grid>
-          <Grid item xs={1} sm={4}/>
+          <Grid item xs={1} sm={4} md={4}/>
 
-          <Grid item xs={1} sm={4}/>
-          <Grid item xs={12} sm={2} className={classes.bg}>
+          <Grid item md={4}/>
+          <Grid item xs={12} sm={12} md={2}className={classes.bg}>
             <Input
-              placeholder="Choose a safe password"
+              className={classes.input}
+              placeholder="Password"
               type={this.state.showPassword ? 'text' : 'password'}
               value={this.state.password}
               onChange={(e) => this.setState({password: e.target.value})}
@@ -85,8 +88,9 @@ class Login extends Component {
               }
             />
           </Grid>
-          <Grid item xs={12} sm={2} className={classes.bg}>
+          <Grid item xs={12} sm={12} md={2}className={classes.bg}>
             <Button
+              className={classes.input}
               color="primary"
               onClick={() => this._confirm()}>
               Login
@@ -98,7 +102,7 @@ class Login extends Component {
               {this.state.login ? 'need to create an account?' : 'already have an account?'}
             </Button>
           </Grid>
-          <Grid item xs={1} sm={4}/>
+          <Grid item md={4}/>
 
         </Grid>
       </div>

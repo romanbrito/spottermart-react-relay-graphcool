@@ -16,7 +16,7 @@ const styles = theme => ({
     marginTop: 30
   },
   bg: {
-    background: '#E3F2FD',
+    backgroundColor: '#fafafa',
     padding: '12px 0 12px 0'
   },
   input: {

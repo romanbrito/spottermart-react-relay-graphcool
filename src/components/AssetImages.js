@@ -1,11 +1,13 @@
 import React, {Component} from 'react'
 import Dropzone from 'react-dropzone'
 import {withStyles} from 'material-ui/styles'
+import IconButton from 'material-ui/IconButton'
+import AddAPhoto from 'material-ui-icons/AddAPhoto'
 
 const styles = {
   imageDrop: {
     borderStyle: 'ridge',
-    width: '100%',
+    width: '50%',
     height: 200
   }
 }
@@ -27,7 +29,8 @@ export default class AssetImages extends Component {
           <Dropzone
             onDrop={this.onDrop.bind(this)}
             className={classes.imageDrop}>
-            <p>Try dropping some files here, or click to select files to upload.</p>
+            <IconButton><AddAPhoto/></IconButton>
+
           </Dropzone>
         </div>
       </section>

@@ -6,6 +6,8 @@ import AppBar from 'material-ui/AppBar'
 import Toolbar from 'material-ui/Toolbar'
 import Button from 'material-ui/Button'
 import Typography from 'material-ui/Typography'
+import IconButton from 'material-ui/IconButton'
+import Home from 'material-ui-icons/Home'
 import '../sass/Header.css'
 import {GC_USER_ID, GC_AUTH_TOKEN} from "../constants"
 
@@ -33,7 +35,8 @@ class Header extends Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <Link to='/assets'><Button color="contrast">New</Button></Link>
+            <Link to='/'><IconButton color="contrast"><Home/></IconButton></Link>
+            <Link to='/assets'><Button color="contrast">For Sale</Button></Link>
             <Typography type="title" color="inherit" className={classes.flex}>
               {userId && 'Hello ' + this.props.userName}
             </Typography>
@@ -41,10 +44,12 @@ class Header extends Component {
               Spottermart
             </Typography>
             {userId &&
-            <Link to='/create'><Button color="contrast">Submit</Button></Link>
+            <Link to='/create'><Button color="contrast">New Listing</Button></Link>
             }
             {userId ?
               <div>
+                <Link to='/myAssets'><Button color="contrast">my assets</Button></Link>
+                <Link to='/myMessages'><Button color="contrast">my messages</Button></Link>
                 <Button color="contrast"
                         onClick={() => {
                           localStorage.removeItem(GC_USER_ID)
@@ -54,8 +59,6 @@ class Header extends Component {
                         }}>
                   logout
                 </Button>
-                <Link to='/myAssets'><Button color="contrast">my assets</Button></Link>
-                <Link to='/myMessages'><Button color="contrast">my messages</Button></Link>
               </div>
               :
               <Link to='/login'><Button color="contrast">login</Button></Link>

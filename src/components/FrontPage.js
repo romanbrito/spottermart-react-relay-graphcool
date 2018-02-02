@@ -53,11 +53,11 @@ function FrontPage(props) {
       </div>
       <div>
         <Paper className={classes.paper} elevation={4}>
-          <Typography type="headline" component="h3">
-            This is a sheet of paper.
+          <Typography type="display1" component="h3">
+            Spottermart
           </Typography>
           <Typography component="p">
-            Paper can be used to build surface or other elements for your application.
+            Community driven asset listing
           </Typography>
         </Paper>
       </div>

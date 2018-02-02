@@ -17,7 +17,8 @@ const styles = theme => ({
   },
   bg: {
     backgroundColor: '#fafafa',
-    padding: '12px 0 12px 0'
+    padding: '12px 0 12px 0',
+    borderRadius: 10
   },
   input: {
     margin: 15

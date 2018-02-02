@@ -27,7 +27,9 @@ const styles = theme => ({
   },
   paper: {
     marginTop: '5vh',
-    height: '10vh'
+    height: '17vh',
+    textAlign: 'center',
+    paddingTop: '3vh'
   }
 });
 

@@ -35,6 +35,10 @@ const styles = theme => ({
 
 class FrontPage extends Component {
 
+  state = {
+    search: ''
+  }
+
 
   render() {
     const {classes} = this.props
@@ -49,9 +53,11 @@ class FrontPage extends Component {
               InputLabelProps={{
                 className: classes.label
               }}
-              type="search"
               className={classes.search}
               margin="normal"
+              value={this.state.search}
+              onChange={(e) => this.setState({search: e.target.value})}
+              onKeyPress={this._handleKeyPress}
             />
           </div>
         </div>
@@ -68,6 +74,13 @@ class FrontPage extends Component {
       </div>
     )
   }
+
+  _handleKeyPress = (e) => {
+    if(e.key === 'Enter') {
+      console.log('search term ' + this.state.search)
+    }
+  }
+
 }
 
 

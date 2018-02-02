@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {withStyles} from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
@@ -33,36 +33,41 @@ const styles = theme => ({
   }
 });
 
-function FrontPage(props) {
-  const {classes} = props;
-  return (
-    <div>
-      <div className={classes.container}>
-        <div className={classes.row}>
-          <TextField
-            id="search"
-            label="Search"
-            InputLabelProps={{
-              className: classes.label
-            }}
-            type="search"
-            className={classes.search}
-            margin="normal"
-          />
+class FrontPage extends Component {
+
+
+  render() {
+    const {classes} = this.props
+
+    return (
+      <div>
+        <div className={classes.container}>
+          <div className={classes.row}>
+            <TextField
+              id="search"
+              label="Search"
+              InputLabelProps={{
+                className: classes.label
+              }}
+              type="search"
+              className={classes.search}
+              margin="normal"
+            />
+          </div>
+        </div>
+        <div>
+          <Paper className={classes.paper} elevation={4}>
+            <Typography type="display1" component="h3">
+              Spottermart
+            </Typography>
+            <Typography component="p">
+              Community driven asset listing
+            </Typography>
+          </Paper>
         </div>
       </div>
-      <div>
-        <Paper className={classes.paper} elevation={4}>
-          <Typography type="display1" component="h3">
-            Spottermart
-          </Typography>
-          <Typography component="p">
-            Community driven asset listing
-          </Typography>
-        </Paper>
-      </div>
-    </div>
-  );
+    )
+  }
 }
 
 

@@ -22,6 +22,10 @@ const styles = {
     marginLeft: -12,
     marginRight: 20,
   },
+  header: {
+    background:'none',
+    boxShadow: 'none'
+  }
 }
 
 @withStyles(styles)
@@ -33,7 +37,7 @@ class Header extends Component {
 
     return (
       <div className={classes.root}>
-        <AppBar position="static">
+        <AppBar position="static" className={classes.header}>
           <Toolbar>
             <Link to='/'><IconButton color="contrast"><Home/></IconButton></Link>
             <Link to='/assets'><Button color="contrast">For Sale</Button></Link>

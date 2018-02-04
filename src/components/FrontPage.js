@@ -5,6 +5,8 @@ import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button'
 import {Link} from 'react-router-dom'
 
+import FrontPageInfo from './FrontPageInfo'
+
 const styles = theme => ({
   search: theme.mixins.gutters({
     paddingTop: 16,
@@ -26,12 +28,7 @@ const styles = theme => ({
     margin: 'auto',
     width: '50%'
   },
-  paper: {
-    marginTop: '25vh',
-    height: '17vh',
-    textAlign: 'center',
-    paddingTop: '3vh'
-  }
+
 });
 
 class FrontPage extends Component {
@@ -53,16 +50,7 @@ class FrontPage extends Component {
             </div>
           </div>
         </div>
-        <div>
-          <Paper className={classes.paper} elevation={4}>
-            <Typography type="display1" component="h3">
-              Spottermart
-            </Typography>
-            <Typography component="p">
-              Community driven asset listing
-            </Typography>
-          </Paper>
-        </div>
+        {/*<FrontPageInfo/>*/}
       </div>
     )
   }
@@ -70,4 +58,4 @@ class FrontPage extends Component {
 }
 
 
-export default withStyles(styles)(FrontPage);
+export default withStyles(styles)(FrontPage)

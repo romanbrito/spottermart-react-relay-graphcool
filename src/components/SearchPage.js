@@ -51,6 +51,7 @@ class AlgoliaSearch extends Component {
         </div>
 
         <Hits hitComponent={DisplaySearch} />
+        <Pagination />
 
       </InstantSearch>
     )

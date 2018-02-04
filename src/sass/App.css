@@ -1,5 +1,8 @@
-.bgd {
-  background-image: url("http://res.cloudinary.com/spottermart/image/upload/v1517776650/MainBG_g6n1jc.jpg");
-  background-repeat: no-repeat;
+html {
+  background: url("http://res.cloudinary.com/spottermart/image/upload/v1517776650/MainBG_g6n1jc.jpg") no-repeat center center fixed;
   background-size: cover;
-  height: 65vh; }
+  overflow: hidden; }
+
+body {
+  background: none;
+  height: 100%; }

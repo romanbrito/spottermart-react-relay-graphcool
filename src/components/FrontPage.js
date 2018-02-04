@@ -43,13 +43,13 @@ class FrontPage extends Component {
 
     return (
       <div>
-        <div className={classes.container}>
-          <div className={classes.row}>
-            <div className={classes.search}>
-              <Link to='/assets'><Typography type='display2' align='center'>Find Listings</Typography></Link>
-            </div>
-          </div>
-        </div>
+        {/*<div className={classes.container}>*/}
+          {/*<div className={classes.row}>*/}
+            {/*<div className={classes.search}>*/}
+              {/*<Link to='/assets'><Typography type='display2' align='center'>Find Listings</Typography></Link>*/}
+            {/*</div>*/}
+          {/*</div>*/}
+        {/*</div>*/}
         {/*<FrontPageInfo/>*/}
       </div>
     )

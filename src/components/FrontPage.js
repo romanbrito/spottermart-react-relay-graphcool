@@ -78,6 +78,7 @@ class FrontPage extends Component {
   _handleKeyPress = (e) => {
     if(e.key === 'Enter') {
       console.log('search term ' + this.state.search)
+      this.props.history.push(`/assets/${this.state.search}`)
     }
   }
 

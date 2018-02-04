@@ -20,6 +20,7 @@ const AssetListPageQuery = graphql`
 class AssetListPage extends Component {
 
   render(){
+    console.log(this.props.match.params.search)
 
     return(
       <QueryRenderer

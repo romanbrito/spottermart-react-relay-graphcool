@@ -40,7 +40,7 @@ class AlgoliaSearch extends Component {
       <InstantSearch
         appId='E4WQ29D3BH'
         apiKey='868078ad52fd8e57c099177430dd9fc3'
-        indexName='getstarted_actors'
+        indexName='Assets'
       >
         <div className={classes.search}>
         <SearchBox

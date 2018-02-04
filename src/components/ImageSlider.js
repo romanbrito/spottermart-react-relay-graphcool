@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Slider from 'react-slick'
 import { CloudinaryContext, Image, Transformation, Video } from 'cloudinary-react'
-import '../sass/Slider.css'
+import '../sass/ImageSlider.css'
 
 const ImageSlider = (props) => {
 

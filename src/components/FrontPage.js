@@ -2,13 +2,14 @@ import React, {Component} from 'react';
 import {withStyles} from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
-import TextField from 'material-ui/TextField'
+import Button from 'material-ui/Button'
+import {Link} from 'react-router-dom'
 
 const styles = theme => ({
   search: theme.mixins.gutters({
     paddingTop: 16,
     paddingBottom: 16,
-    marginTop: '30vh',
+    marginTop: '10vh',
     marginBottom: '10vh',
     width: '50vw',
     backgroundColor: '#fafafa',
@@ -26,7 +27,7 @@ const styles = theme => ({
     width: '50%'
   },
   paper: {
-    marginTop: '5vh',
+    marginTop: '25vh',
     height: '17vh',
     textAlign: 'center',
     paddingTop: '3vh'
@@ -47,18 +48,9 @@ class FrontPage extends Component {
       <div>
         <div className={classes.container}>
           <div className={classes.row}>
-            <TextField
-              id="search"
-              label="Search"
-              InputLabelProps={{
-                className: classes.label
-              }}
-              className={classes.search}
-              margin="normal"
-              value={this.state.search}
-              onChange={(e) => this.setState({search: e.target.value})}
-              onKeyPress={this._handleKeyPress}
-            />
+            <div className={classes.search}>
+              <Link to='/assets'><Typography type='display2' align='center'>Find Listings</Typography></Link>
+            </div>
           </div>
         </div>
         <div>
@@ -73,14 +65,6 @@ class FrontPage extends Component {
         </div>
       </div>
     )
-  }
-
-  _handleKeyPress = (e) => {
-    if(e.key === 'Enter') {
-      console.log('search term ' + this.state.search)
-      this.state.search && this.props.history.push(`/assets/${this.state.search}`)
-      !this.state.search && this.props.history.push(`/assets/all`)
-    }
   }
 
 }

@@ -64,7 +64,7 @@ class DisplaySearch extends Component {
               <Link to={'/' + this.props.hit.businessName}><Button color="primary">
                 Show Details
               </Button></Link>}
-              {(userId !== this.props.hit.postedBy.id) &&
+              {!userId || (userId !== this.props.hit.postedBy.id) &&
               <Button
                 onClick={() => this._replyMessage()}
                 color="primary">

@@ -15,3 +15,6 @@ a {
   .topnav .icon {
     display: block;
     margin-left: auto; } }
+
+.res-nav a {
+  width: 100%; }

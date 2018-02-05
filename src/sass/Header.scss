@@ -26,13 +26,11 @@ a {
       margin-left: auto;
     }
   }
-
 }
 
-//@media screen and (max-width: 600px) {
-//  .topnav a:not(:first-child) {display: none;}
-//  .topnav a.icon {
-//    float: right;
-//    display: block;
-//  }
-//}
+.res-nav {
+
+  a {
+    width: 100%;
+  }
+}

@@ -8,7 +8,9 @@ import Button from 'material-ui/Button'
 import IconButton from 'material-ui/IconButton'
 import MenuIcon from 'material-ui-icons/Menu'
 import Typography from 'material-ui/Typography'
+import Drawer from 'material-ui/Drawer'
 import {Image} from 'cloudinary-react'
+import List, {ListItem, ListItemIcon, ListItemText} from 'material-ui/List'
 import '../sass/Header.css'
 import {GC_USER_ID, GC_AUTH_TOKEN} from "../constants"
 
@@ -26,15 +28,85 @@ const styles = {
   header: {
     backgroundColor: '#f09859',
     boxShadow: 'none'
-  }
+  },
+  list: {
+    width: 250,
+  },
+  listFull: {
+    width: 'auto',
+  },
+  button: {
+    width: '100%',
+  },
 }
 
 @withStyles(styles)
 class Header extends Component {
 
+  state = {
+    top: false,
+    left: false,
+    bottom: false,
+    right: false,
+  }
+
+  toggleDrawer = (side, open) => () => {
+    this.setState({
+      [side]: open,
+    });
+  }
+
+
   render() {
     const {classes} = this.props
     const userId = localStorage.getItem(GC_USER_ID)
+
+    const fullList = (
+      <div className="res-nav">
+        <List component="nav">
+
+          <ListItem button>
+            <Link to='/assets'><Button className={classes.button}>For Sale</Button></Link>
+          </ListItem>
+
+          {userId &&
+          <ListItem button>
+            <Link to='/create'><Button className={classes.button}>New Listing</Button></Link>
+          </ListItem>}
+
+          {userId &&
+          <ListItem button>
+            <Link to='/myAssets'><Button className={classes.button}>my assets</Button></Link>
+          </ListItem>}
+
+          {userId &&
+          <ListItem button>
+            <Link to='/myMessages'><Button className={classes.button}>my messages</Button></Link>
+          </ListItem>}
+
+          {userId &&
+          <ListItem button>
+            <Button
+              className={classes.button}
+              onClick={() => {
+                localStorage.removeItem(GC_USER_ID)
+                localStorage.removeItem(GC_AUTH_TOKEN)
+                this.props.removeUserName()
+                this.props.history.push(`/`)
+              }}>
+              logout
+            </Button>
+          </ListItem>}
+
+          {!userId &&
+          <ListItem button>
+            <Link to='/login'><Button className={classes.button}>login</Button></Link>
+          </ListItem>}
+
+
+        </List>
+      </div>
+    )
 
     return (
       <div className={classes.root}>
@@ -65,9 +137,26 @@ class Header extends Component {
 
               {!userId && <Link to='/login'><Button color="contrast">login</Button></Link>}
 
-              <IconButton className="icon" color="inherit" aria-label="Menu">
+
+              <IconButton
+                onClick={this.toggleDrawer('top', true)}
+                className="icon"
+                color="inherit"
+                aria-label="Menu">
                 <MenuIcon/>
               </IconButton>
+
+              <Drawer anchor="top" open={this.state.top} onClose={this.toggleDrawer('top', false)}>
+                <div
+                  tabIndex={0}
+                  role="button"
+                  onClick={this.toggleDrawer('top', false)}
+                  onKeyDown={this.toggleDrawer('top', false)}
+                >
+                  {fullList}
+                </div>
+              </Drawer>
+
 
             </Toolbar>
           </AppBar>

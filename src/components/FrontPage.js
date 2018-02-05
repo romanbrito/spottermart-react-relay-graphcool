@@ -11,7 +11,7 @@ const styles = theme => ({
   search: theme.mixins.gutters({
     paddingTop: 16,
     paddingBottom: 16,
-    marginTop: '10vh',
+    marginTop: '30vh',
     marginBottom: '10vh',
     width: '50vw',
     backgroundColor: '#fafafa',
@@ -24,10 +24,13 @@ const styles = theme => ({
   row: {
     width: 'auto',
   },
-  container: {
+  listings: {
     margin: 'auto',
     width: '50%'
   },
+  container: {
+    height: '60vh'
+  }
 
 });
 
@@ -42,15 +45,15 @@ class FrontPage extends Component {
     const {classes} = this.props
 
     return (
-      <div>
-        {/*<div className={classes.container}>*/}
-          {/*<div className={classes.row}>*/}
-            {/*<div className={classes.search}>*/}
-              {/*<Link to='/assets'><Typography type='display2' align='center'>Find Listings</Typography></Link>*/}
-            {/*</div>*/}
-          {/*</div>*/}
-        {/*</div>*/}
-        {/*<FrontPageInfo/>*/}
+      <div  className={classes.container}>
+        <div className={classes.listings}>
+          <div className={classes.row}>
+            <div className={classes.search}>
+              <Link to='/assets'><Typography type='display2' align='center'>Find Listings</Typography></Link>
+            </div>
+          </div>
+        </div>
+        <FrontPageInfo/>
       </div>
     )
   }

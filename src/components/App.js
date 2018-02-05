@@ -23,9 +23,15 @@ class App extends Component {
 
   render() {
     return (
-      <div className="bgd">
-        <Header removeUserName={this._removeUserName} userName={this.state.userName}/>
-        <Main getUserName={this._getUserName}/>
+      <div className="app">
+        <div className="view-container">
+          <div className="container-relative">
+            <div className="hero-image">
+              <Header removeUserName={this._removeUserName} userName={this.state.userName}/>
+              <Main getUserName={this._getUserName}/>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

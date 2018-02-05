@@ -5,3 +5,34 @@ a {
 .link {
   cursor: pointer;
 }
+
+.topnav {
+
+  .icon {
+    display: none;
+  }
+
+  @media screen and (max-width: 770px) {
+    a:not(:first-child) {
+      display: none;
+    }
+
+    .hide-res {
+      display: none;
+    }
+
+    .icon {
+      display: block;
+      margin-left: auto;
+    }
+  }
+
+}
+
+//@media screen and (max-width: 600px) {
+//  .topnav a:not(:first-child) {display: none;}
+//  .topnav a.icon {
+//    float: right;
+//    display: block;
+//  }
+//}

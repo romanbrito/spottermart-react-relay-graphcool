@@ -1,6 +1,6 @@
 import React from 'react'
 import {Switch, Route} from 'react-router-dom'
-import AssetListPage from './AssetListPage'
+import '../sass/Main.css'
 import CreateAsset from './CreateAsset'
 import Login from './Login'
 import SingleAssetPage from './SingleAssetPage'
@@ -15,7 +15,7 @@ const Main = (props) => {
   const extraProps = props
 
   return (
-    <div>
+    <div className="main">
       <Switch>
         <Route exact path='/' component={FrontPage}/>
         <Route exact path='/create' component={CreateAsset}/>

@@ -1,10 +1,23 @@
-html {
-  background: url("http://res.cloudinary.com/spottermart/image/upload/v1517776650/MainBG_g6n1jc.jpg") no-repeat center center fixed;
-  background-size: cover;
-  overflow: hidden;
+.app {
+  min-height: 100%;
+  position: relative;
+  background: none;
 }
 
-body {
+.view-container {
+  box-sizing: border-box;
+  min-height: 600px;
+  width: 100%;
   background: none;
-  height: 100%;
 }
+
+.container-relative {
+  position: relative;
+}
+
+.hero-image {
+  background: url("http://res.cloudinary.com/spottermart/image/upload/v1517809198/MainBGlong_dwkqvv.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import {InstantSearch, Hits, SearchBox, Pagination} from 'react-instantsearch/dom'
 import {withStyles} from 'material-ui/styles'
 import '../sass/SearchPage.css'
@@ -11,22 +11,8 @@ const styles = theme => ({
     flexDirection: 'column',
     alignItems: 'center',
   }),
-  label: {
-    paddingLeft: 25,
-    color: 'green'
-  },
-  row: {
-    width: 'auto',
-  },
-  container: {
-    margin: 'auto',
-    width: '50%'
-  },
-  paper: {
-    marginTop: '5vh',
-    height: '17vh',
-    textAlign: 'center',
-    paddingTop: '3vh'
+  hits: {
+    backgroundColor: '#fafafa'
   }
 })
 
@@ -43,15 +29,17 @@ class AlgoliaSearch extends Component {
         indexName='Assets'
       >
         <div className={classes.search}>
-        <SearchBox
-          autoFocus
-          translations={{placeholder: 'Search ...'}}
-          searchAsYouType={true}
-        />
+          <SearchBox
+            autoFocus
+            translations={{placeholder: 'Search ...'}}
+            searchAsYouType={true}
+          />
         </div>
 
-        <Hits hitComponent={DisplaySearch} />
-        <Pagination />
+        <div className={classes.hits}>
+          <Hits hitComponent={DisplaySearch}/>
+          <Pagination/>
+        </div>
 
       </InstantSearch>
     )

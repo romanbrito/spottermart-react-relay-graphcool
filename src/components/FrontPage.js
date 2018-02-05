@@ -53,7 +53,9 @@ class FrontPage extends Component {
             </div>
           </div>
         </div>
+
         <FrontPageInfo/>
+
       </div>
     )
   }

@@ -34,7 +34,14 @@ const styles = theme => ( {
   },
   frontPageInfo: {
     marginBottom: '10vh',
+  },
+  info: {
+    marginTop: '10vh'
+  },
+  infoImage: {
+    width: '100%'
   }
+
 })
 
 const FrontPageInfo = (props) => {
@@ -59,6 +66,10 @@ const FrontPageInfo = (props) => {
           <Image cloudName="spottermart" publicId="cafe" width="300" height="200" crop="scale"/>
         </GridListTile>
       </GridList>
+      </div>
+
+      <div className={classes.info}>
+        <Image className={classes.infoImage} cloudName="spottermart" publicId="info_u9iti2"/>
       </div>
 
     </div>

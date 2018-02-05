@@ -7,6 +7,10 @@ a {
 .topnav .icon {
   display: none; }
 
+.topnav .Logo2 {
+  display: block;
+  margin-left: auto; }
+
 @media screen and (max-width: 770px) {
   .topnav a:not(:first-child) {
     display: none; }
@@ -14,7 +18,9 @@ a {
     display: none; }
   .topnav .icon {
     display: block;
-    margin-left: auto; } }
+    margin-left: auto; }
+  .topnav .Logo2 {
+    display: none; } }
 
 .res-nav a {
   width: 100%; }

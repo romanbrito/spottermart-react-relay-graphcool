@@ -157,6 +157,9 @@ class Header extends Component {
                 </div>
               </Drawer>
 
+              <div className="Logo2">
+                <Image cloudName="spottermart" publicId="Logo2_qpq49e"/>
+              </div>
 
             </Toolbar>
           </AppBar>

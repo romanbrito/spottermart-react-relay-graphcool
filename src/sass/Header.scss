@@ -12,6 +12,11 @@ a {
     display: none;
   }
 
+  .Logo2 {
+    display: block;
+    margin-left: auto;
+  }
+
   @media screen and (max-width: 770px) {
     a:not(:first-child) {
       display: none;
@@ -24,6 +29,10 @@ a {
     .icon {
       display: block;
       margin-left: auto;
+    }
+
+    .Logo2 {
+      display: none;
     }
   }
 }

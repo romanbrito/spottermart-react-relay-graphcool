@@ -56,6 +56,30 @@ class FrontPage extends Component {
 
         <FrontPageInfo/>
 
+        <div>
+          <footer>
+            <div>
+              <div>
+                <div className="left">
+                  <ul>
+                    <li>
+                      <a href="">List 1</a>
+                    </li>
+                  </ul>
+                </div>
+                <div className="right">
+                  <ul>
+                    <li>
+                      <a href="">List 2</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+
+
       </div>
     )
   }

@@ -24,6 +24,7 @@ class App extends Component {
   render() {
     return (
       <div className="app">
+
         <div className="view-container">
           <div className="container-relative">
             <div className="hero-image">

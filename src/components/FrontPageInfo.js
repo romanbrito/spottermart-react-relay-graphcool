@@ -10,14 +10,15 @@ const styles = theme => ( {
     marginTop: '50vh',
     height: '10vh',
     textAlign: 'center',
-    paddingTop: '3vh'
+    paddingTop: '3vh',
+    backgroundColor: '#fafafa',
   },
   root: {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     overflow: 'hidden',
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: '#fafafa',
   },
   gridList: {
     flexWrap: 'nowrap',
@@ -31,13 +32,16 @@ const styles = theme => ( {
     background:
       'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
   },
+  frontPageInfo: {
+    marginBottom: '10vh',
+  }
 })
 
 const FrontPageInfo = (props) => {
   const {classes} = props
 
   return (
-    <div>
+    <div className={classes.frontPageInfo}>
       <Paper className={classes.paper} elevation={4}>
         <Typography type="display1" component="h3">
           Featured Listings

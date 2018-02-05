@@ -29,7 +29,7 @@ const styles = theme => ({
     width: '50%'
   },
   container: {
-    height: '60vh'
+    height: '60vh',
   }
 
 });

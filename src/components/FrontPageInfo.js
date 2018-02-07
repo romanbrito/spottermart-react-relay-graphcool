@@ -36,10 +36,28 @@ const styles = theme => ( {
     marginBottom: '10vh',
   },
   info: {
-    marginTop: '10vh'
+    marginTop: '10vh',
   },
   infoImage: {
     width: '100%'
+  },
+  footer: {
+    backgroundColor:'#222',
+    width: '100%'
+  },
+  nav: {
+    listStyleType: 'none',
+    margin: 0,
+    padding: 0,
+  },
+  left: {
+    float: 'left',
+  },
+  right: {
+    float: 'right',
+  },
+  clear: {
+    clear: 'both'
   }
 
 })
@@ -70,6 +88,27 @@ const FrontPageInfo = (props) => {
 
       <div className={classes.info}>
         <Image className={classes.infoImage} cloudName="spottermart" publicId="info_u9iti2"/>
+
+        <footer className={classes.footer}>
+          <div>
+            <div className={classes.clear}>
+              <div className={classes.left}>
+                <ul className={classes.nav}>
+                  <li>
+                    <a href="">List 1</a>
+                  </li>
+                </ul>
+              </div>
+              <div className={classes.right}>
+                <ul className={classes.nav}>
+                  <li>
+                    <a href="">List 2</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </footer>
       </div>
 
     </div>

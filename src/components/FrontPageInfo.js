@@ -7,7 +7,6 @@ import { Image } from 'cloudinary-react'
 
 const styles = theme => ( {
   paper: {
-    marginTop: '50vh',
     height: '10vh',
     textAlign: 'center',
     paddingTop: '3vh',

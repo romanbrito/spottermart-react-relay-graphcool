@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {withStyles} from 'material-ui/styles';
+import {Image} from 'cloudinary-react'
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button'
@@ -8,29 +9,45 @@ import {Link} from 'react-router-dom'
 import FrontPageInfo from './FrontPageInfo'
 
 const styles = theme => ({
-  search: theme.mixins.gutters({
-    paddingTop: 16,
-    paddingBottom: 16,
-    marginTop: '30vh',
-    marginBottom: '10vh',
-    width: '50vw',
-    backgroundColor: '#fafafa',
-    borderRadius: 10
-  }),
-  label: {
-    paddingLeft: 25,
-    color: 'green'
+  // search: theme.mixins.gutters({
+  //   paddingTop: 16,
+  //   paddingBottom: 16,
+  //   marginTop: '30vh',
+  //   marginBottom: '10vh',
+  //   width: '50vw',
+  //   backgroundColor: '#fafafa',
+  //   borderRadius: 10
+  // }),
+  // label: {
+  //   paddingLeft: 25,
+  //   color: 'green'
+  // },
+  // row: {
+  //   width: 'auto',
+  // },
+  // listings: {
+  //   margin: 'auto',
+  //   width: '50%'
+  // },
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  row: {
-    width: 'auto',
+  image: {
+    width: '100%',
+    display: 'block',
   },
   listings: {
-    margin: 'auto',
-    width: '50%'
-  },
-  container: {
-    height: '60vh',
-  },
+    position: 'absolute',
+    fontSize: '3vw',
+    fontWeight: 400,
+    color:'rgba(0,0,0,0.54)',
+    padding: '1em',
+    backgroundColor: '#fbfbfb',
+    borderRadius: 5,
+  }
 
 });
 
@@ -45,17 +62,12 @@ class FrontPage extends Component {
     const {classes} = this.props
 
     return (
-      <div  className={classes.container}>
-        <div className={classes.listings}>
-          <div className={classes.row}>
-            <div className={classes.search}>
-              <Link to='/assets'><Typography type='display2' align='center'>Find Listings</Typography></Link>
-            </div>
-          </div>
-        </div>
-
+      <div>
+      <div className={classes.container}>
+        <Link to='/assets' className={classes.listings}>Find Listings</Link>
+        <Image className={classes.image} cloudName="spottermart" publicId="MainBGlong_dwkqvv.jpg"/>
+      </div>
         <FrontPageInfo/>
-
       </div>
     )
   }

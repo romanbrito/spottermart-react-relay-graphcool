@@ -1,17 +1,11 @@
 import React, {Component} from 'react'
-import Header from './Header'
-import Main from './Main'
 import 'typeface-roboto' //roboto font
-import {withStyles} from 'material-ui/styles'
 import {GC_USER_ID} from "../constants";
 import {_userInfo} from '../utils'
+import '../sass/App.css'
+import Header from './Header'
+import Main from './Main'
 import Footer from './Footer'
-
-const styles = {
-  content: {
-    flex:"1 0 auto"
-  }
-}
 
 class App extends Component {
 
@@ -53,4 +47,4 @@ class App extends Component {
   }
 }
 
-export default withStyles(styles)(App);
+export default App;

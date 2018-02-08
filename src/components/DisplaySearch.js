@@ -6,7 +6,6 @@ import Button from 'material-ui/Button'
 import {withStyles} from "material-ui/styles/index"
 import {GC_USER_ID} from "../constants"
 import ImageSlider from './ImageSlider'
-import DeleteAssetMutation from "../mutations/DeleteAssetMutation"
 import CreateMessage from './CreateMessage'
 
 const styles = theme => ({
@@ -52,21 +51,22 @@ class DisplaySearch extends Component {
         <Card className={classes.card}>
           <CardMedia
             className={classes.cover}
-            image={'http://res.cloudinary.com/spottermart/image/upload/t_media_lib_thumb/v1516376737/' + this.props.hit.pictures[0].public_id + '.jpg'}
+            image={'http://res.cloudinary.com/spottermart/image/upload/t_media_lib_thumb/v1516376737/' + this.props.hit.hit.pictures[0].public_id + '.jpg'}
             title="thumb"
           />
           <div className={classes.details}>
             <CardContent className={classes.content}>
               <Typography type="headline">
-                {this.props.hit.businessName} posted by {this.props.hit.postedBy.name}
+                {this.props.hit.hit.businessName} posted by {this.props.hit.hit.postedBy.name}
               </Typography>
               {!this.props.showDetails &&
-              <Link to={'/' + this.props.hit.businessName}><Button color="primary">
+              <Link to={'/' + this.props.hit.hit.businessName}><Button color="primary">
                 Show Details
               </Button></Link>}
-              {!userId || (userId !== this.props.hit.postedBy.id) &&
+
+              {userId !== this.props.hit.hit.postedBy.id &&
               <Button
-                onClick={() => this._replyMessage()}
+                onClick={() => this._sendMessage(userId)}
                 color="primary">
                 Send Message
               </Button>}
@@ -75,34 +75,42 @@ class DisplaySearch extends Component {
               <div>
                 <Button
                   color="primary"
-                  onClick={() => this._deleteAsset(this.props.hit.id)}>
+                  onClick={() => this._deleteAsset(this.props.hit.hit.id)}>
                   Delete
                 </Button>
-                <Link to={'/update/' + this.props.hit.id}><Button color="primary">Update</Button></Link>
+                <Link to={'/update/' + this.props.hit.hit.id}><Button color="primary">Update</Button></Link>
               </div>
               }
 
               {this.props.showDetails &&
               <div>
                 <Typography type="subheading" color="secondary">
-                  {this.props.hit.price}
+                  {this.props.hit.hit.price}
                 </Typography>
                 <Typography type="subheading" color="secondary">
-                  {this.props.hit.city}, {this.props.hit.state}, {this.props.hit.zipCode}
+                  {this.props.hit.hit.city}, {this.props.hit.hit.state}, {this.props.hit.hit.zipCode}
                 </Typography>
               </div>}
 
               {this.state.replyMessage &&
-              <CreateMessage to={this.props.hit.postedBy.id} replyMessage={this._replyMessage}/>}
+              <CreateMessage to={this.props.hit.hit.postedBy.id} replyMessage={this._replyMessage}/>}
 
             </CardContent>
           </div>
         </Card>
         {this.props.showDetails &&
-        <ImageSlider pictures={this.props.hit.pictures}/>
+        <ImageSlider pictures={this.props.hit.hit.pictures}/>
         }
       </div>
     )
+  }
+
+  _sendMessage = (userId) => {
+    if (!userId) {
+      this.props.history.push('/login')
+    } else {
+      this._replyMessage()
+    }
   }
 
   _replyMessage = () => {
@@ -111,13 +119,6 @@ class DisplaySearch extends Component {
     } else {
       this.setState({replyMessage: true})
     }
-  }
-
-  _deleteAsset = (assetId) => {
-    DeleteAssetMutation(
-      assetId,
-      () => this.props.history.push('/')
-    )
   }
 
 }

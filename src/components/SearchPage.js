@@ -37,7 +37,7 @@ class AlgoliaSearch extends Component {
         </div>
 
         <div className={classes.hits}>
-          <Hits hitComponent={DisplaySearch}/>
+          <Hits hitComponent={hit => <DisplaySearch hit={hit} history={this.props.history}/>}/>
           <Pagination/>
         </div>
 
@@ -45,5 +45,6 @@ class AlgoliaSearch extends Component {
     )
   }
 }
+
 
 export default withStyles(styles)(AlgoliaSearch)

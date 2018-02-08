@@ -1,11 +1,17 @@
 import React, {Component} from 'react'
 import Header from './Header'
 import Main from './Main'
-import '../sass/App.css' //reboot, similar to normalize.css
-import 'typeface-roboto'
-import {GC_USER_ID} from "../constants"; //roboto font
+import 'typeface-roboto' //roboto font
+import {withStyles} from 'material-ui/styles'
+import {GC_USER_ID} from "../constants";
 import {_userInfo} from '../utils'
+import Footer from './Footer'
 
+const styles = {
+  content: {
+    flex:"1 0 auto"
+  }
+}
 
 class App extends Component {
 
@@ -22,13 +28,14 @@ class App extends Component {
   }
 
   render() {
+    const {classes} = this.props
     return (
       <div className="app">
-
-
-        <Header removeUserName={this._removeUserName} userName={this.state.userName}/>
-        <Main getUserName={this._getUserName}/>
-
+        <div className="content">
+          <Header removeUserName={this._removeUserName} userName={this.state.userName}/>
+          <Main getUserName={this._getUserName}/>
+        </div>
+        <Footer/>
       </div>
     );
   }
@@ -46,4 +53,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withStyles(styles)(App);

@@ -2,10 +2,10 @@ import React from 'react'
 import {withStyles} from 'material-ui/styles'
 import Paper from 'material-ui/Paper'
 import Typography from 'material-ui/Typography'
-import GridList, { GridListTile, GridListTileBar } from 'material-ui/GridList'
-import { Image } from 'cloudinary-react'
+import GridList, {GridListTile, GridListTileBar} from 'material-ui/GridList'
+import {Image} from 'cloudinary-react'
 
-const styles = theme => ( {
+const styles = theme => ({
   paper: {
     height: '10vh',
     textAlign: 'center',
@@ -41,7 +41,7 @@ const styles = theme => ( {
     width: '100%'
   },
   footer: {
-    backgroundColor:'#222',
+    backgroundColor: '#222',
     width: '100%'
   },
   nav: {
@@ -72,44 +72,18 @@ const FrontPageInfo = (props) => {
         </Typography>
       </Paper>
       <div className={classes.root}>
-      <GridList className={classes.gridList} cols={3}>
-        <GridListTile>
-          <Image cloudName="spottermart" publicId="counter" width="300" height="200" crop="scale"/>
-        </GridListTile>
-        <GridListTile>
-          <Image cloudName="spottermart" publicId="restaurant" width="300" height="200" crop="scale"/>
-        </GridListTile>
-        <GridListTile>
-          <Image cloudName="spottermart" publicId="cafe" width="300" height="200" crop="scale"/>
-        </GridListTile>
-      </GridList>
+        <GridList className={classes.gridList} cols={3}>
+          <GridListTile>
+            <Image cloudName="spottermart" publicId="counter" width="300" height="200" crop="scale"/>
+          </GridListTile>
+          <GridListTile>
+            <Image cloudName="spottermart" publicId="restaurant" width="300" height="200" crop="scale"/>
+          </GridListTile>
+          <GridListTile>
+            <Image cloudName="spottermart" publicId="cafe" width="300" height="200" crop="scale"/>
+          </GridListTile>
+        </GridList>
       </div>
-
-      <div className={classes.info}>
-        <Image className={classes.infoImage} cloudName="spottermart" publicId="info_u9iti2"/>
-
-        <footer className={classes.footer}>
-          <div>
-            <div className={classes.clear}>
-              <div className={classes.left}>
-                <ul className={classes.nav}>
-                  <li>
-                    <a href="">List 1</a>
-                  </li>
-                </ul>
-              </div>
-              <div className={classes.right}>
-                <ul className={classes.nav}>
-                  <li>
-                    <a href="">List 2</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </footer>
-      </div>
-
     </div>
   )
 

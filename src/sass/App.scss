@@ -1,23 +1,10 @@
-//.app {
-//  min-height: 100%;
-//  position: relative;
-//  background: none;
-//}
-//
-//.view-container {
-//  box-sizing: border-box;
-//  min-height: 600px;
-//  width: 100%;
-//  background: none;
-//}
-//
-//.container-relative {
-//  position: relative;
-//}
-//
-//.hero-image {
-//  background: url("http://res.cloudinary.com/spottermart/image/upload/v1517809198/MainBGlong_dwkqvv.jpg");
-//  background-repeat: no-repeat;
-//  background-size: cover;
-//}
-
+html, body, .app {
+  height: 100%;
+}
+.app {
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  flex: 1 0 auto;
+}

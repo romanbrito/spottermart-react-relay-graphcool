@@ -39,7 +39,7 @@ const styles = theme => ({
 class DisplaySearch extends Component {
 
   state = {
-    replyMessage:false
+    replyMessage: false
   }
 
   render() {
@@ -49,11 +49,14 @@ class DisplaySearch extends Component {
     return (
       <div>
         <Card className={classes.card}>
+
+          {this.props.hit.hit.pictures &&
           <CardMedia
             className={classes.cover}
             image={'http://res.cloudinary.com/spottermart/image/upload/t_media_lib_thumb/v1516376737/' + this.props.hit.hit.pictures[0].public_id + '.jpg'}
             title="thumb"
-          />
+          />}
+
           <div className={classes.details}>
             <CardContent className={classes.content}>
               <Typography type="headline">
@@ -115,7 +118,7 @@ class DisplaySearch extends Component {
 
   _replyMessage = () => {
     if (this.state.replyMessage) {
-      this.setState({replyMessage:false})
+      this.setState({replyMessage: false})
     } else {
       this.setState({replyMessage: true})
     }

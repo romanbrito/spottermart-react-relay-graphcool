@@ -10,12 +10,13 @@ import Button from 'material-ui/Button'
 import {withStyles} from "material-ui/styles/index"
 import {GC_USER_ID} from "../constants"
 import ImageSlider from './ImageSlider'
+import ImageGridList from './ImageGridList'
 import DeleteAssetMutation from "../mutations/DeleteAssetMutation"
 import CreateMessage from './CreateMessage'
 
 const styles = theme => ({
   card: {
-    display: 'flex',
+    // display: 'flex',
     //maxWidth: 345,
   },
   media: {
@@ -33,6 +34,10 @@ const styles = theme => ({
     marginBottom: 32,
     fontSize: 20,
     color: theme.palette.text.secondary,
+  },
+  container: {
+    display: 'flex',
+    justifyContent: 'center',
   }
 })
 
@@ -48,12 +53,12 @@ class Asset extends Component {
     const userId = localStorage.getItem(GC_USER_ID)
 
     return (
-      <div>
+      <div className={classes.container}>
         <Card className={classes.card}>
           <div className={classes.details}>
             <CardContent className={classes.content}>
               <Typography type="headline">
-                {this.props.asset.businessName} posted by {this.props.asset.postedBy.name}
+                {this.props.asset.businessName}
               </Typography>
               {!this.props.showDetails &&
               <Link to={'/' + this.props.asset.businessName}><Button color="primary">
@@ -94,7 +99,7 @@ class Asset extends Component {
           </div>
         </Card>
         {this.props.showDetails &&
-        <ImageSlider pictures={this.props.asset.pictures}/>
+        <ImageGridList pictures={this.props.asset.pictures}/>
         }
       </div>
     )

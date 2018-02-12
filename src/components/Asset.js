@@ -8,6 +8,7 @@ import Card, {CardActions, CardContent, CardMedia} from 'material-ui/Card'
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button'
 import {withStyles} from "material-ui/styles/index"
+import '../sass/Asset.css'
 import {GC_USER_ID} from "../constants"
 import ImageSlider from './ImageSlider'
 import ImageGridList from './ImageGridList'
@@ -34,10 +35,6 @@ const styles = theme => ({
     fontSize: 20,
     color: theme.palette.text.secondary,
   },
-  container: {
-    display: 'flex',
-    // justifyContent: 'space-evenly',
-  }
 })
 
 @withStyles(styles)
@@ -52,14 +49,14 @@ class Asset extends Component {
     const userId = localStorage.getItem(GC_USER_ID)
 
     return (
-      <div className={classes.container}>
+      <div className="assetContainer">
 
         {this.props.showDetails &&
         <ImageGridList pictures={this.props.asset.pictures}/>
         }
-        {/*{this.props.showDetails &&*/}
-        {/*<ImageSlider pictures={this.props.asset.pictures}/>*/}
-        {/*}*/}
+        {this.props.showDetails &&
+        <ImageSlider pictures={this.props.asset.pictures}/>
+        }
 
         <Card className={classes.card}>
           <div className={classes.details}>

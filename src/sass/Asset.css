@@ -1,0 +1,5 @@
+.assetContainer {
+  display: flex; }
+  @media screen and (max-width: 770px) {
+    .assetContainer {
+      display: block; } }

@@ -4,9 +4,17 @@ import { withStyles } from 'material-ui/styles';
 import GridList, { GridListTile } from 'material-ui/GridList';
 import { Image } from 'cloudinary-react'
 
+const display = (size) => {
+  if (size < 770) {
+    return 'none'
+  } else {
+    return 'flex'
+  }
+}
+
 const styles = theme => ({
   root: {
-    // display: 'flex',
+    display: display(window.innerWidth),
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     overflow: 'hidden',

@@ -16,8 +16,7 @@ import CreateMessage from './CreateMessage'
 
 const styles = theme => ({
   card: {
-    // display: 'flex',
-    //maxWidth: 345,
+    // width: '80%'
   },
   media: {
     width: 151,
@@ -37,7 +36,7 @@ const styles = theme => ({
   },
   container: {
     display: 'flex',
-    justifyContent: 'center',
+    // justifyContent: 'space-evenly',
   }
 })
 
@@ -54,6 +53,11 @@ class Asset extends Component {
 
     return (
       <div className={classes.container}>
+
+        {this.props.showDetails &&
+        <ImageGridList pictures={this.props.asset.pictures}/>
+        }
+
         <Card className={classes.card}>
           <div className={classes.details}>
             <CardContent className={classes.content}>
@@ -98,9 +102,6 @@ class Asset extends Component {
             </CardContent>
           </div>
         </Card>
-        {this.props.showDetails &&
-        <ImageGridList pictures={this.props.asset.pictures}/>
-        }
       </div>
     )
   }

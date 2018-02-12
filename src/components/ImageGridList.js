@@ -11,10 +11,12 @@ const styles = theme => ({
     justifyContent: 'space-around',
     overflow: 'hidden',
     backgroundColor: theme.palette.background.paper,
+    paddingLeft: 15,
+    paddingRight: 15,
   },
   gridList: {
-    width: 300,
-    height: 450,
+    width: 170,
+    height: 300,
   },
   subheader: {
     width: '100%',
@@ -47,7 +49,7 @@ function ImageGridList(props) {
       <GridList cellHeight={160} className={classes.gridList} cols={1}>
         {props.pictures.map(tile => (
           <GridListTile key={tile.public_id} cols={1}>
-            <Image cloudName="spottermart" publicId={tile.public_id} width="300" crop="scale"/>
+            <Image cloudName="spottermart" publicId={tile.public_id} transformation="media_lib_thumb"/>
           </GridListTile>
         ))}
       </GridList>

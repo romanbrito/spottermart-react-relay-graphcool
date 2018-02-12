@@ -57,6 +57,9 @@ class Asset extends Component {
         {this.props.showDetails &&
         <ImageGridList pictures={this.props.asset.pictures}/>
         }
+        {/*{this.props.showDetails &&*/}
+        {/*<ImageSlider pictures={this.props.asset.pictures}/>*/}
+        {/*}*/}
 
         <Card className={classes.card}>
           <div className={classes.details}>

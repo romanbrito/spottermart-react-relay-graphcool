@@ -1,20 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import GridList, { GridListTile } from 'material-ui/GridList';
-import { Image } from 'cloudinary-react'
-
-const display = (size) => {
-  if (size < 770) {
-    return 'none'
-  } else {
-    return 'flex'
-  }
-}
+import {withStyles} from 'material-ui/styles';
+import GridList, {GridListTile} from 'material-ui/GridList';
+import {Image} from 'cloudinary-react'
+import '../sass/ImageGridList.css'
 
 const styles = theme => ({
   root: {
-    display: display(window.innerWidth),
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     overflow: 'hidden',
@@ -31,36 +23,21 @@ const styles = theme => ({
   },
 });
 
-/**
- * The example data is structured as follows:
- *
- * import image from 'path/to/image.jpg';
- * [etc...]
- *
- * const tileData = [
- *   {
- *     img: image,
- *     title: 'Image',
- *     author: 'author',
- *     cols: 2,
- *   },
- *   {
- *     [etc...]
- *   },
- * ];
- */
 function ImageGridList(props) {
-  const { classes } = props;
+
+  const {classes} = props;
 
   return (
-    <div className={classes.root}>
-      <GridList cellHeight={160} className={classes.gridList} cols={1}>
-        {props.pictures.map(tile => (
-          <GridListTile key={tile.public_id} cols={1}>
-            <Image cloudName="spottermart" publicId={tile.public_id} transformation="media_lib_thumb"/>
-          </GridListTile>
-        ))}
-      </GridList>
+    <div className="ImageGrid">
+      <div className={classes.root}>
+        <GridList cellHeight={160} className={classes.gridList} cols={1}>
+          {props.pictures.map(tile => (
+            <GridListTile key={tile.public_id} cols={1}>
+              <Image cloudName="spottermart" publicId={tile.public_id} transformation="media_lib_thumb"/>
+            </GridListTile>
+          ))}
+        </GridList>
+      </div>
     </div>
   );
 }

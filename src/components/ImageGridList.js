@@ -62,7 +62,7 @@ class ImageGridList extends Component {
   }
 
   _handleClose = () => {
-    this.setState({ showModal: false });
+    this.setState({ showModal: false })
   }
 
 }
@@ -71,4 +71,4 @@ ImageGridList.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
-export default withStyles(styles)(ImageGridList);
+export default withStyles(styles)(ImageGridList)

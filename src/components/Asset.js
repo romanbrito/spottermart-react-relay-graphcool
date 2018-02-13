@@ -10,7 +10,8 @@ import Button from 'material-ui/Button'
 import {withStyles} from "material-ui/styles/index"
 import '../sass/Asset.css'
 import {GC_USER_ID} from "../constants"
-import ImageSlider from './ImageSlider'
+// import ImageSlider from './ImageSlider'
+import SlideShow from './SlideShow'
 import ImageGridList from './ImageGridList'
 import DeleteAssetMutation from "../mutations/DeleteAssetMutation"
 import CreateMessage from './CreateMessage'
@@ -55,7 +56,7 @@ class Asset extends Component {
         <ImageGridList pictures={this.props.asset.pictures}/>
         }
         {this.props.showDetails &&
-        <ImageSlider pictures={this.props.asset.pictures}/>
+        <SlideShow pictures={this.props.asset.pictures}/>
         }
 
         <Card className={classes.card}>

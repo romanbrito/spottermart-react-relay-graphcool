@@ -58,7 +58,7 @@ class ImageGridList extends Component {
       showModal: true,
       publicId:e.target.getAttribute("data")
     })
-    console.log(e.target.getAttribute("data"))
+
   }
 
   _handleClose = () => {

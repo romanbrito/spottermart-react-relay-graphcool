@@ -1,24 +1,58 @@
-import React from 'react'
+import React, {Component} from 'react'
 import '../sass/SlideShow.css'
 import {withStyles} from "material-ui/styles/index"
 import {Image} from 'cloudinary-react'
+import Button from 'material-ui/Button'
 
-const styles = {
+const styles = {}
 
-}
+class SlideShow extends Component {
 
-const SlideShow  = (props) => {
+  state = {
+    index: 0,
+  }
 
-  return (
-    <div className="SlideShow">
+  render() {
+    const {classes} = this.props
 
-      {props.pictures.map(picture => (
-        <div key={picture.public_id}><Image cloudName="spottermart" publicId={picture.public_id} width="300"
-                                            crop="scale"/></div>
-      ))}
+    return (
+      <div className="SlideShow">
+        {console.log(this.props.pictures[0].public_id)}
 
-    </div>
-  )
+
+        <div>
+          <Image cloudName="spottermart" publicId={this.props.pictures[this.state.index].public_id} width="300"
+                    crop="scale"/>
+        </div>
+
+
+        <Button
+          onClick={() => this._nextImage()}>
+          Next
+        </Button>
+
+      </div>
+    )
+
+  }
+
+  _nextImage = () => {
+    const index = this.state.index + 1
+
+    if (index < this.props.pictures.length) {
+
+      this.setState({
+        index
+      })
+
+    } else {
+      this.setState({
+        index: 0
+      })
+    }
+
+  }
+
 
 }
 

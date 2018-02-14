@@ -4,7 +4,15 @@ import {withStyles} from "material-ui/styles/index"
 import {Image} from 'cloudinary-react'
 import Button from 'material-ui/Button'
 
-const styles = {}
+const styles = {
+  container: {
+    // minWidth: 300,
+  },
+  image: {
+    display: 'block',
+    margin: '0 auto'
+  }
+}
 
 class SlideShow extends Component {
 
@@ -20,8 +28,8 @@ class SlideShow extends Component {
         {console.log(this.props.pictures[0].public_id)}
 
 
-        <div>
-          <Image cloudName="spottermart" publicId={this.props.pictures[this.state.index].public_id} width="300"
+        <div className={classes.container}>
+          <Image className={classes.image} cloudName="spottermart" publicId={this.props.pictures[this.state.index].public_id} width="300"
                     crop="scale"/>
         </div>
 

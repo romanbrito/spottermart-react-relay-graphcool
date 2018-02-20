@@ -52,7 +52,8 @@ class CreateAsset extends Component {
     state: '',
     zipCode: '',
     pictures: [],
-    images: []
+    images: [],
+    equipment: [{ name: '' }],
   }
 
   render() {
@@ -128,7 +129,12 @@ class CreateAsset extends Component {
           </Grid>
         </Grid>
 
-        <EquipmentList/>
+        <EquipmentList
+          handleEquipmentNameChange={this._handleEquipmentNameChange}
+          handleAddItem={this._handleAddItem}
+          handleRemoveItem={this._handleRemoveItem}
+          equipment={this.state.equipment}
+        />
 
         <ImageGrid imageDrop={this._getImages} images={this.state.images} removeImage={this._removeImage}/>
 
@@ -198,6 +204,23 @@ class CreateAsset extends Component {
     this.setState({
       images: this.state.images.filter(pic => pic.preview !== image.src)
     })
+  }
+
+  _handleEquipmentNameChange = (idx) => (evt) => {
+    const newEquipment = this.state.equipment.map((equipment, sidx) => {
+      if (idx !== sidx) return equipment
+      return { ...equipment, name: evt.target.value }
+    });
+
+    this.setState({ equipment: newEquipment })
+  }
+
+  _handleAddItem = () => {
+    this.setState({ equipment: this.state.equipment.concat([{ name: '' }]) })
+  }
+
+  _handleRemoveItem = (idx) => () => {
+    this.setState({ equipment: this.state.equipment.filter((s, sidx) => idx !== sidx) })
   }
 
 }

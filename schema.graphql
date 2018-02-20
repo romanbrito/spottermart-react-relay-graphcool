@@ -1,4 +1,4 @@
-﻿﻿type AddToUsersAssetsPayload {
+﻿type AddToUsersAssetsPayload {
   viewer: Viewer!
   clientMutationId: String!
   postedByUser: User
@@ -51,7 +51,7 @@ type Asset implements Node {
   city: String!
   createdAt: DateTime!
   description: String!
-  equipment: [String!]
+  equipment: [Json!]
   franchiseBool: Boolean
   franchiseMarketingFee: String
   franchiseRoyalties: String
@@ -1589,7 +1589,7 @@ input CreateAsset {
   businessType: String
   city: String!
   description: String!
-  equipment: [String!]
+  equpment: [Json!]
   franchiseBool: Boolean
   franchiseMarketingFee: String
   franchiseRoyalties: String
@@ -1631,7 +1631,7 @@ input CreateAssetInput {
   businessType: String
   city: String!
   description: String!
-  equipment: [String!]
+  equpment: [Json!]
   franchiseBool: Boolean
   franchiseMarketingFee: String
   franchiseRoyalties: String
@@ -2374,7 +2374,7 @@ input UpdateAsset {
   businessType: String
   city: String
   description: String
-  equipment: [String!]
+  equpment: [Json!]
   franchiseBool: Boolean
   franchiseMarketingFee: String
   franchiseRoyalties: String
@@ -2417,7 +2417,7 @@ input UpdateAssetInput {
   businessType: String
   city: String
   description: String
-  equipment: [String!]
+  equpment: [Json!]
   franchiseBool: Boolean
   franchiseMarketingFee: String
   franchiseRoyalties: String
@@ -2608,7 +2608,7 @@ input UserassetsAsset {
   businessType: String
   city: String!
   description: String!
-  equipment: [String!]
+  equpment: [Json!]
   franchiseBool: Boolean
   franchiseMarketingFee: String
   franchiseRoyalties: String

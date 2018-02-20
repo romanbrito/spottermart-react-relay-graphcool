@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 40b15d5d9b3fd428f2a8fed2de01d30f
+ * @relayHash d7506294ee35e7ff1ce2caf7b863bc10
  */
 
 /* eslint-disable */
@@ -17,7 +17,7 @@ export type CreateAssetMutationVariables = {|
     businessType?: ?string,
     city: string,
     description: string,
-    equipment?: ?$ReadOnlyArray<string>,
+    equpment?: ?$ReadOnlyArray<any>,
     franchiseBool?: ?boolean,
     franchiseMarketingFee?: ?string,
     franchiseRoyalties?: ?string,
@@ -69,6 +69,7 @@ export type CreateAssetMutationResponse = {|
       +state: string,
       +zipCode: string,
       +pictures: ?$ReadOnlyArray<any>,
+      +equipment: ?$ReadOnlyArray<any>,
     |},
   |},
 |};
@@ -81,19 +82,20 @@ mutation CreateAssetMutation(
 ) {
   createAsset(input: $input) {
     asset {
-      id
       createdAt
+      description
       businessName
       price
       postedBy {
         id
         name
       }
-      description
+      id
       city
       state
       zipCode
       pictures
+      equipment
     }
   }
 }
@@ -108,127 +110,144 @@ var v0 = [
     "defaultValue": null
   }
 ],
-v1 = {
+v1 = [
+  {
+    "kind": "Variable",
+    "name": "input",
+    "variableName": "input",
+    "type": "CreateAssetInput!"
+  }
+],
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "args": null,
+  "name": "description",
+  "storageKey": null
+},
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "args": null,
   "name": "id",
   "storageKey": null
 },
-v2 = [
-  {
-    "kind": "LinkedField",
-    "alias": null,
-    "args": [
-      {
-        "kind": "Variable",
-        "name": "input",
-        "variableName": "input",
-        "type": "CreateAssetInput!"
-      }
-    ],
-    "concreteType": "CreateAssetPayload",
-    "name": "createAsset",
-    "plural": false,
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "args": null,
-        "concreteType": "Asset",
-        "name": "asset",
-        "plural": false,
-        "selections": [
-          v1,
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "createdAt",
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "businessName",
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "price",
-            "storageKey": null
-          },
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "args": null,
-            "concreteType": "User",
-            "name": "postedBy",
-            "plural": false,
-            "selections": [
-              v1,
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "name",
-                "storageKey": null
-              }
-            ],
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "description",
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "city",
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "state",
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "zipCode",
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "pictures",
-            "storageKey": null
-          }
-        ],
-        "storageKey": null
-      }
-    ],
-    "storageKey": null
-  }
-];
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "args": null,
+  "name": "businessName",
+  "storageKey": null
+},
+v5 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "args": null,
+  "name": "price",
+  "storageKey": null
+},
+v6 = {
+  "kind": "LinkedField",
+  "alias": null,
+  "args": null,
+  "concreteType": "User",
+  "name": "postedBy",
+  "plural": false,
+  "selections": [
+    v3,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "args": null,
+      "name": "name",
+      "storageKey": null
+    }
+  ],
+  "storageKey": null
+},
+v7 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "args": null,
+  "name": "createdAt",
+  "storageKey": null
+},
+v8 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "args": null,
+  "name": "city",
+  "storageKey": null
+},
+v9 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "args": null,
+  "name": "state",
+  "storageKey": null
+},
+v10 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "args": null,
+  "name": "zipCode",
+  "storageKey": null
+},
+v11 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "args": null,
+  "name": "pictures",
+  "storageKey": null
+},
+v12 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "args": null,
+  "name": "equipment",
+  "storageKey": null
+};
 return {
   "fragment": {
     "argumentDefinitions": v0,
     "kind": "Fragment",
     "metadata": null,
     "name": "CreateAssetMutation",
-    "selections": v2,
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "args": v1,
+        "concreteType": "CreateAssetPayload",
+        "name": "createAsset",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "args": null,
+            "concreteType": "Asset",
+            "name": "asset",
+            "plural": false,
+            "selections": [
+              v2,
+              v3,
+              v4,
+              v5,
+              v6,
+              v7,
+              v8,
+              v9,
+              v10,
+              v11,
+              v12
+            ],
+            "storageKey": null
+          }
+        ],
+        "storageKey": null
+      }
+    ],
     "type": "Mutation"
   },
   "id": null,
@@ -240,9 +259,43 @@ return {
     "kind": "Root",
     "name": "CreateAssetMutation",
     "operation": "mutation",
-    "selections": v2
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "args": v1,
+        "concreteType": "CreateAssetPayload",
+        "name": "createAsset",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "args": null,
+            "concreteType": "Asset",
+            "name": "asset",
+            "plural": false,
+            "selections": [
+              v3,
+              v7,
+              v4,
+              v5,
+              v6,
+              v2,
+              v8,
+              v9,
+              v10,
+              v11,
+              v12
+            ],
+            "storageKey": null
+          }
+        ],
+        "storageKey": null
+      }
+    ]
   },
-  "text": "mutation CreateAssetMutation(\n  $input: CreateAssetInput!\n) {\n  createAsset(input: $input) {\n    asset {\n      id\n      createdAt\n      businessName\n      price\n      postedBy {\n        id\n        name\n      }\n      description\n      city\n      state\n      zipCode\n      pictures\n    }\n  }\n}\n"
+  "text": "mutation CreateAssetMutation(\n  $input: CreateAssetInput!\n) {\n  createAsset(input: $input) {\n    asset {\n      createdAt\n      description\n      businessName\n      price\n      postedBy {\n        id\n        name\n      }\n      id\n      city\n      state\n      zipCode\n      pictures\n      equipment\n    }\n  }\n}\n"
 };
 })();
 

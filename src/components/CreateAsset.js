@@ -39,7 +39,7 @@ const styles = theme => ({
   submit: {
     marginTop: 24
   }
-});
+})
 
 @withStyles(styles)
 class CreateAsset extends Component {
@@ -174,7 +174,8 @@ class CreateAsset extends Component {
           description,
           city,
           state,
-          zipCode
+          zipCode,
+          equipment,
         } = this.state
 
         CreateAssetMutation(
@@ -185,7 +186,8 @@ class CreateAsset extends Component {
           city,
           state,
           zipCode,
-          pictures
+          pictures,
+          equipment
           , () => this.props.history.push('/'))
       }
     )

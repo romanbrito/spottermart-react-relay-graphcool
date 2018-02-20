@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 3174f285d1536b37e92cc5b9c4362df4
+ * @relayHash 7c0df32366c78a163a66745feffd8b88
  */
 
 /* eslint-disable */
@@ -20,7 +20,7 @@ export type CreateUserMutationVariables = {|
       businessType?: ?string,
       city: string,
       description: string,
-      equipment?: ?$ReadOnlyArray<string>,
+      equpment?: ?$ReadOnlyArray<any>,
       franchiseBool?: ?boolean,
       franchiseMarketingFee?: ?string,
       franchiseRoyalties?: ?string,

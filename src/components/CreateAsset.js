@@ -11,6 +11,7 @@ import ImageGrid from './ImageGrid'
 import {NumberFormatCustom} from "./FormatedInputs"
 import {GC_USER_ID} from "../constants"
 import {uploadImage} from "../utils"
+import EquipmentList from './EquipmentList'
 
 const styles = theme => ({
   container: {
@@ -126,6 +127,8 @@ class CreateAsset extends Component {
             />
           </Grid>
         </Grid>
+
+        <EquipmentList/>
 
         <ImageGrid imageDrop={this._getImages} images={this.state.images} removeImage={this._removeImage}/>
 

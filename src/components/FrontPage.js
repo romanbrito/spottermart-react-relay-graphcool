@@ -1,10 +1,8 @@
 import React, {Component} from 'react'
 import {withStyles} from 'material-ui/styles'
 import {Image} from 'cloudinary-react'
-import Paper from 'material-ui/Paper'
-import Typography from 'material-ui/Typography'
-import Button from 'material-ui/Button'
 import {Link} from 'react-router-dom'
+import Footer from './Footer'
 
 import FrontPageInfo from './FrontPageInfo'
 
@@ -48,6 +46,7 @@ class FrontPage extends Component {
           <Image className={classes.bannerImage} cloudName="spottermart" publicId="MainBGlong_dwkqvv.jpg"/>
         </div>
         <FrontPageInfo/>
+        <Footer/>
       </div>
     )
   }

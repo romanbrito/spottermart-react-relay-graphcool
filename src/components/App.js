@@ -5,7 +5,6 @@ import {_userInfo} from '../utils'
 import '../sass/App.css'
 import Header from './Header'
 import Main from './Main'
-import Footer from './Footer'
 
 class App extends Component {
 
@@ -29,7 +28,6 @@ class App extends Component {
           <Header removeUserName={this._removeUserName} userName={this.state.userName}/>
           <Main getUserName={this._getUserName}/>
         </div>
-        <Footer/>
       </div>
     );
   }

@@ -13,6 +13,9 @@ const styles = theme => ({
   }),
   hits: {
     backgroundColor: '#fafafa'
+  },
+  backLogo: {
+    paddingRight: 5,
   }
 })
 
@@ -34,6 +37,9 @@ class AlgoliaSearch extends Component {
             translations={{placeholder: 'Search ...'}}
             searchAsYouType={true}
           />
+          <a href="https://www.algolia.com/" target="_blank"><img className={classes.backLogo}
+                                                                  src="https://www.algolia.com/static_assets/images/pricing/pricing_new/algolia-powered-by-14773f38.svg"
+                                                                  alt=""/></a>
         </div>
 
         <div className={classes.hits}>

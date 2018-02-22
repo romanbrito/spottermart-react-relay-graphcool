@@ -58,11 +58,6 @@ const Footer = (props) => {
                   <a href="https://www.graph.cool/" target="_blank"><img className={classes.backLogo}
                     src="https://www.graph.cool/static/media/badge.2cbac90a.svg" alt=""/></a>
                 </li>
-                <li className={classes.backendRight}>
-                  <a href="https://www.algolia.com/" target="_blank"><img className={classes.backLogo}
-                    src="https://www.algolia.com/static_assets/images/pricing/pricing_new/algolia-powered-by-14773f38.svg"
-                    alt=""/></a>
-                </li>
               </ul>
             </div>
           </div>

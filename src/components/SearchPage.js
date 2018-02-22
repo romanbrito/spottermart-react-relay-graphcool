@@ -6,7 +6,7 @@ import DisplaySearch from './DisplaySearch'
 
 const styles = theme => ({
   search: theme.mixins.gutters({
-    marginTop: '10vh',
+    marginTop: '15px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',

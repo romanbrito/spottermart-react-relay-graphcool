@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 06b5db42d03ac100fa372bdab1cf10a2
+ * @relayHash 8e856b81b3ae710ab8262843acc416db
  */
 
 /* eslint-disable */
@@ -71,6 +71,7 @@ fragment Asset_asset on Asset {
     id
     name
   }
+  equipment
 }
 */
 
@@ -260,6 +261,13 @@ return {
                                   }
                                 ],
                                 "storageKey": null
+                              },
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "args": null,
+                                "name": "equipment",
+                                "storageKey": null
                               }
                             ]
                           }
@@ -376,7 +384,7 @@ return {
       }
     ]
   },
-  "text": "query AssetListForwardQuery(\n  $count: Int!\n  $after: String\n) {\n  viewer {\n    ...AssetList_viewer\n    id\n  }\n}\n\nfragment AssetList_viewer on Viewer {\n  allAssets(first: $count, after: $after, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        ...Asset_asset\n        id\n      }\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    ... on AssetConnection {\n      edges {\n        cursor\n        node {\n          __typename\n          id\n        }\n      }\n      pageInfo {\n        endCursor\n        hasNextPage\n      }\n    }\n  }\n}\n\nfragment Asset_asset on Asset {\n  id\n  businessName\n  price\n  description\n  city\n  state\n  zipCode\n  pictures\n  postedBy {\n    id\n    name\n  }\n}\n"
+  "text": "query AssetListForwardQuery(\n  $count: Int!\n  $after: String\n) {\n  viewer {\n    ...AssetList_viewer\n    id\n  }\n}\n\nfragment AssetList_viewer on Viewer {\n  allAssets(first: $count, after: $after, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        ...Asset_asset\n        id\n      }\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    ... on AssetConnection {\n      edges {\n        cursor\n        node {\n          __typename\n          id\n        }\n      }\n      pageInfo {\n        endCursor\n        hasNextPage\n      }\n    }\n  }\n}\n\nfragment Asset_asset on Asset {\n  id\n  businessName\n  price\n  description\n  city\n  state\n  zipCode\n  pictures\n  postedBy {\n    id\n    name\n  }\n  equipment\n}\n"
 };
 })();
 

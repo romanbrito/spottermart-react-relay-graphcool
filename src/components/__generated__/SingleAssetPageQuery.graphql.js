@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash c9577662857c570f1c682bace7c9be2d
+ * @relayHash 5de1ae82342552f8840a4dc69797dd99
  */
 
 /* eslint-disable */
@@ -47,6 +47,7 @@ fragment Asset_asset on Asset {
     id
     name
   }
+  equipment
 }
 */
 
@@ -205,6 +206,13 @@ return {
                   }
                 ],
                 "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "equipment",
+                "storageKey": null
               }
             ],
             "storageKey": null
@@ -215,7 +223,7 @@ return {
       }
     ]
   },
-  "text": "query SingleAssetPageQuery(\n  $businessName: String!\n) {\n  viewer {\n    Asset(businessName: $businessName) {\n      ...Asset_asset\n      id\n    }\n    id\n  }\n}\n\nfragment Asset_asset on Asset {\n  id\n  businessName\n  price\n  description\n  city\n  state\n  zipCode\n  pictures\n  postedBy {\n    id\n    name\n  }\n}\n"
+  "text": "query SingleAssetPageQuery(\n  $businessName: String!\n) {\n  viewer {\n    Asset(businessName: $businessName) {\n      ...Asset_asset\n      id\n    }\n    id\n  }\n}\n\nfragment Asset_asset on Asset {\n  id\n  businessName\n  price\n  description\n  city\n  state\n  zipCode\n  pictures\n  postedBy {\n    id\n    name\n  }\n  equipment\n}\n"
 };
 })();
 

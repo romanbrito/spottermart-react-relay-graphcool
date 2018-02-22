@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 18b708c62f42f05ebfa009c470dbfa2d
+ * @relayHash 9e916f0d3fbb5216b177d2654918d43e
  */
 
 /* eslint-disable */
@@ -66,6 +66,7 @@ fragment Asset_asset on Asset {
     id
     name
   }
+  equipment
 }
 */
 
@@ -249,6 +250,13 @@ return {
                                   }
                                 ],
                                 "storageKey": null
+                              },
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "args": null,
+                                "name": "equipment",
+                                "storageKey": null
                               }
                             ]
                           }
@@ -366,7 +374,7 @@ return {
       }
     ]
   },
-  "text": "query UserAssetListPageQuery(\n  $filter: AssetFilter!\n) {\n  viewer {\n    ...UserAssetList_viewer\n    id\n  }\n}\n\nfragment UserAssetList_viewer on Viewer {\n  allAssets(filter: $filter, last: 100, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        ...Asset_asset\n        id\n      }\n    }\n    ... on AssetConnection {\n      edges {\n        cursor\n        node {\n          __typename\n          id\n        }\n      }\n      pageInfo {\n        hasPreviousPage\n        startCursor\n      }\n    }\n  }\n}\n\nfragment Asset_asset on Asset {\n  id\n  businessName\n  price\n  description\n  city\n  state\n  zipCode\n  pictures\n  postedBy {\n    id\n    name\n  }\n}\n"
+  "text": "query UserAssetListPageQuery(\n  $filter: AssetFilter!\n) {\n  viewer {\n    ...UserAssetList_viewer\n    id\n  }\n}\n\nfragment UserAssetList_viewer on Viewer {\n  allAssets(filter: $filter, last: 100, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        ...Asset_asset\n        id\n      }\n    }\n    ... on AssetConnection {\n      edges {\n        cursor\n        node {\n          __typename\n          id\n        }\n      }\n      pageInfo {\n        hasPreviousPage\n        startCursor\n      }\n    }\n  }\n}\n\nfragment Asset_asset on Asset {\n  id\n  businessName\n  price\n  description\n  city\n  state\n  zipCode\n  pictures\n  postedBy {\n    id\n    name\n  }\n  equipment\n}\n"
 };
 })();
 

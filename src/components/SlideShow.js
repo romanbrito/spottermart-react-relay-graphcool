@@ -25,8 +25,6 @@ class SlideShow extends Component {
 
     return (
       <div className="SlideShow">
-        {console.log(this.props.pictures[0].public_id)}
-
 
         <div className={classes.container}>
           <Image className={classes.image} cloudName="spottermart" publicId={this.props.pictures[this.state.index].public_id} width="300"

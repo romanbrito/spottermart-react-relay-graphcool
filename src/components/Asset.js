@@ -95,6 +95,17 @@ class Asset extends Component {
                 <Typography type="subheading" color="secondary">
                   {this.props.asset.city}, {this.props.asset.state}, {this.props.asset.zipCode}
                 </Typography>
+
+                <Typography type="body2" color="secondary">
+                  Equipment
+                </Typography>
+
+                {this.props.asset.equipment.map((item,idx) =>
+                  <Typography key={idx} type="subheading" color="secondary">
+                    {item && item.name}
+                  </Typography>
+                )}
+
               </div>}
 
               {this.state.replyMessage &&
@@ -137,5 +148,6 @@ export default createFragmentContainer(Asset, graphql`
             id
             name
         }
+        equipment
     }
 `)

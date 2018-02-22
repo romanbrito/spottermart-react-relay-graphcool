@@ -21,6 +21,7 @@ export type Asset_asset = {|
     +id: string,
     +name: string,
   |},
+  +equipment: ?$ReadOnlyArray<any>,
 |};
 */
 
@@ -106,6 +107,13 @@ return {
           "storageKey": null
         }
       ],
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "args": null,
+      "name": "equipment",
       "storageKey": null
     }
   ],

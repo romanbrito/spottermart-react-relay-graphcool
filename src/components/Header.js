@@ -121,7 +121,7 @@ class Header extends Component {
               <Link to='/create'><Button color="contrast">New Listing</Button></Link>
               }
 
-              {userId && <Link to='/myAssets'><Button color="contrast">my assets</Button></Link>}
+              {userId && <Link to='/myAssets'><Button color="contrast">my listings</Button></Link>}
               {userId && <Link to='/myMessages'><Button color="contrast">my messages</Button></Link>}
 
               {userId && <Button color="contrast"

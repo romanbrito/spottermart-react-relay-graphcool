@@ -76,7 +76,7 @@ type Asset implements Node {
   rentNNN: String
   requirementsToQualify: String
   socialMedia: [String!]
-  socialMediaRating: String
+  socialMediaRating: [Json!]
   specialFeatures: String
   state: String!
   status: String
@@ -1109,46 +1109,6 @@ input AssetFilter {
 
   # All values not ending with the given string.
   requirementsToQualify_not_ends_with: String
-  socialMediaRating: String
-
-  # All values that are not equal to given value.
-  socialMediaRating_not: String
-
-  # All values that are contained in given list.
-  socialMediaRating_in: [String!]
-
-  # All values that are not contained in given list.
-  socialMediaRating_not_in: [String!]
-
-  # All values less than the given value.
-  socialMediaRating_lt: String
-
-  # All values less than or equal the given value.
-  socialMediaRating_lte: String
-
-  # All values greater than the given value.
-  socialMediaRating_gt: String
-
-  # All values greater than or equal the given value.
-  socialMediaRating_gte: String
-
-  # All values containing the given string.
-  socialMediaRating_contains: String
-
-  # All values not containing the given string.
-  socialMediaRating_not_contains: String
-
-  # All values starting with the given string.
-  socialMediaRating_starts_with: String
-
-  # All values not starting with the given string.
-  socialMediaRating_not_starts_with: String
-
-  # All values ending with the given string.
-  socialMediaRating_ends_with: String
-
-  # All values not ending with the given string.
-  socialMediaRating_not_ends_with: String
   specialFeatures: String
 
   # All values that are not equal to given value.
@@ -1551,8 +1511,6 @@ enum AssetOrderBy {
   rentNNN_DESC
   requirementsToQualify_ASC
   requirementsToQualify_DESC
-  socialMediaRating_ASC
-  socialMediaRating_DESC
   specialFeatures_ASC
   specialFeatures_DESC
   state_ASC
@@ -1589,7 +1547,7 @@ input CreateAsset {
   businessType: String
   city: String!
   description: String!
-  equpment: [Json!]
+  equipment: [Json!]
   franchiseBool: Boolean
   franchiseMarketingFee: String
   franchiseRoyalties: String
@@ -1612,7 +1570,7 @@ input CreateAsset {
   rentNNN: String
   requirementsToQualify: String
   socialMedia: [String!]
-  socialMediaRating: String
+  socialMediaRating: [Json!]
   specialFeatures: String
   state: String!
   status: String
@@ -1631,7 +1589,7 @@ input CreateAssetInput {
   businessType: String
   city: String!
   description: String!
-  equpment: [Json!]
+  equipment: [Json!]
   franchiseBool: Boolean
   franchiseMarketingFee: String
   franchiseRoyalties: String
@@ -1654,7 +1612,7 @@ input CreateAssetInput {
   rentNNN: String
   requirementsToQualify: String
   socialMedia: [String!]
-  socialMediaRating: String
+  socialMediaRating: [Json!]
   specialFeatures: String
   state: String!
   status: String
@@ -2374,7 +2332,7 @@ input UpdateAsset {
   businessType: String
   city: String
   description: String
-  equpment: [Json!]
+  equipment: [Json!]
   franchiseBool: Boolean
   franchiseMarketingFee: String
   franchiseRoyalties: String
@@ -2398,7 +2356,7 @@ input UpdateAsset {
   rentNNN: String
   requirementsToQualify: String
   socialMedia: [String!]
-  socialMediaRating: String
+  socialMediaRating: [Json!]
   specialFeatures: String
   state: String
   status: String
@@ -2417,7 +2375,7 @@ input UpdateAssetInput {
   businessType: String
   city: String
   description: String
-  equpment: [Json!]
+  equipment: [Json!]
   franchiseBool: Boolean
   franchiseMarketingFee: String
   franchiseRoyalties: String
@@ -2441,7 +2399,7 @@ input UpdateAssetInput {
   rentNNN: String
   requirementsToQualify: String
   socialMedia: [String!]
-  socialMediaRating: String
+  socialMediaRating: [Json!]
   specialFeatures: String
   state: String
   status: String
@@ -2608,7 +2566,7 @@ input UserassetsAsset {
   businessType: String
   city: String!
   description: String!
-  equpment: [Json!]
+  equipment: [Json!]
   franchiseBool: Boolean
   franchiseMarketingFee: String
   franchiseRoyalties: String
@@ -2631,7 +2589,7 @@ input UserassetsAsset {
   rentNNN: String
   requirementsToQualify: String
   socialMedia: [String!]
-  socialMediaRating: String
+  socialMediaRating: [Json!]
   specialFeatures: String
   state: String!
   status: String

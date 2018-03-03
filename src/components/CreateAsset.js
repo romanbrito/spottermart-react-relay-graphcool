@@ -12,6 +12,7 @@ import {NumberFormatCustom} from "./FormatedInputs"
 import {GC_USER_ID} from "../constants"
 import {uploadImage} from "../utils"
 import EquipmentList from './EquipmentList'
+import SocialMediaList from './SocialMediaList'
 
 const styles = theme => ({
   container: {
@@ -54,6 +55,7 @@ class CreateAsset extends Component {
     pictures: [],
     images: [],
     equipment: [{ name: '' }],
+    socialMedia: [{ name: ''}],
   }
 
   render() {
@@ -134,6 +136,13 @@ class CreateAsset extends Component {
           handleAddItem={this._handleAddItem}
           handleRemoveItem={this._handleRemoveItem}
           equipment={this.state.equipment}
+        />
+
+        <SocialMediaList
+          handleSocialNameChange={this._handleSocialNameChange}
+          handleAddSocialItem={this._handleAddSocialItem}
+          handleRemoveSocialItem={this._handleRemoveSocialItem}
+          socialMedia={this.state.socialMedia}
         />
 
         <ImageGrid imageDrop={this._getImages} images={this.state.images} removeImage={this._removeImage}/>
@@ -225,6 +234,22 @@ class CreateAsset extends Component {
     this.setState({ equipment: this.state.equipment.filter((s, sidx) => idx !== sidx) })
   }
 
+  _handleSocialNameChange = (idx) => (evt) => {
+    const newSocial = this.state.socialMedia.map((social, sidx) => {
+      if (idx !== sidx) return social
+      return { ...social, name: evt.target.value }
+    });
+
+    this.setState({ socialMedia: newSocial })
+  }
+
+  _handleAddSocialItem = () => {
+    this.setState({ socialMedia: this.state.socialMedia.concat([{ name: '' }]) })
+  }
+
+  _handleRemoveSocialItem = (idx) => () => {
+    this.setState({ socialMedia: this.state.socialMedia.filter((s, sidx) => idx !== sidx) })
+  }
 }
 
 export default CreateAsset

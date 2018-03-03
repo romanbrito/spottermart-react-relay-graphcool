@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 68adc861424862286f8df782a317cab9
+ * @relayHash ea5a1e7fc04c1e922273f80aed0a5f2b
  */
 
 /* eslint-disable */
@@ -17,7 +17,7 @@ export type UpdateAssetMutationVariables = {|
     businessType?: ?string,
     city?: ?string,
     description?: ?string,
-    equpment?: ?$ReadOnlyArray<any>,
+    equipment?: ?$ReadOnlyArray<any>,
     franchiseBool?: ?boolean,
     franchiseMarketingFee?: ?string,
     franchiseRoyalties?: ?string,
@@ -41,7 +41,7 @@ export type UpdateAssetMutationVariables = {|
     rentNNN?: ?string,
     requirementsToQualify?: ?string,
     socialMedia?: ?$ReadOnlyArray<string>,
-    socialMediaRating?: ?string,
+    socialMediaRating?: ?$ReadOnlyArray<any>,
     specialFeatures?: ?string,
     state?: ?string,
     status?: ?string,

@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash d7506294ee35e7ff1ce2caf7b863bc10
+ * @relayHash d8c48c74743e9798b07772acdd55209b
  */
 
 /* eslint-disable */
@@ -17,7 +17,7 @@ export type CreateAssetMutationVariables = {|
     businessType?: ?string,
     city: string,
     description: string,
-    equpment?: ?$ReadOnlyArray<any>,
+    equipment?: ?$ReadOnlyArray<any>,
     franchiseBool?: ?boolean,
     franchiseMarketingFee?: ?string,
     franchiseRoyalties?: ?string,
@@ -40,7 +40,7 @@ export type CreateAssetMutationVariables = {|
     rentNNN?: ?string,
     requirementsToQualify?: ?string,
     socialMedia?: ?$ReadOnlyArray<string>,
-    socialMediaRating?: ?string,
+    socialMediaRating?: ?$ReadOnlyArray<any>,
     specialFeatures?: ?string,
     state: string,
     status?: ?string,
@@ -70,6 +70,7 @@ export type CreateAssetMutationResponse = {|
       +zipCode: string,
       +pictures: ?$ReadOnlyArray<any>,
       +equipment: ?$ReadOnlyArray<any>,
+      +socialMedia: ?$ReadOnlyArray<string>,
     |},
   |},
 |};
@@ -83,19 +84,20 @@ mutation CreateAssetMutation(
   createAsset(input: $input) {
     asset {
       createdAt
-      description
+      city
       businessName
       price
       postedBy {
         id
         name
       }
+      description
       id
-      city
       state
       zipCode
       pictures
       equipment
+      socialMedia
     }
   }
 }
@@ -122,7 +124,7 @@ v2 = {
   "kind": "ScalarField",
   "alias": null,
   "args": null,
-  "name": "description",
+  "name": "city",
   "storageKey": null
 },
 v3 = {
@@ -169,14 +171,14 @@ v7 = {
   "kind": "ScalarField",
   "alias": null,
   "args": null,
-  "name": "createdAt",
+  "name": "description",
   "storageKey": null
 },
 v8 = {
   "kind": "ScalarField",
   "alias": null,
   "args": null,
-  "name": "city",
+  "name": "createdAt",
   "storageKey": null
 },
 v9 = {
@@ -205,6 +207,13 @@ v12 = {
   "alias": null,
   "args": null,
   "name": "equipment",
+  "storageKey": null
+},
+v13 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "args": null,
+  "name": "socialMedia",
   "storageKey": null
 };
 return {
@@ -240,7 +249,8 @@ return {
               v9,
               v10,
               v11,
-              v12
+              v12,
+              v13
             ],
             "storageKey": null
           }
@@ -277,16 +287,17 @@ return {
             "plural": false,
             "selections": [
               v3,
-              v7,
+              v8,
               v4,
               v5,
               v6,
+              v7,
               v2,
-              v8,
               v9,
               v10,
               v11,
-              v12
+              v12,
+              v13
             ],
             "storageKey": null
           }
@@ -295,7 +306,7 @@ return {
       }
     ]
   },
-  "text": "mutation CreateAssetMutation(\n  $input: CreateAssetInput!\n) {\n  createAsset(input: $input) {\n    asset {\n      createdAt\n      description\n      businessName\n      price\n      postedBy {\n        id\n        name\n      }\n      id\n      city\n      state\n      zipCode\n      pictures\n      equipment\n    }\n  }\n}\n"
+  "text": "mutation CreateAssetMutation(\n  $input: CreateAssetInput!\n) {\n  createAsset(input: $input) {\n    asset {\n      createdAt\n      city\n      businessName\n      price\n      postedBy {\n        id\n        name\n      }\n      description\n      id\n      state\n      zipCode\n      pictures\n      equipment\n      socialMedia\n    }\n  }\n}\n"
 };
 })();
 

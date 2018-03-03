@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash b9547c5b870692fe86e01c9b57399ec1
+ * @relayHash 6642dff50629e706740d75782c0c064c
  */
 
 /* eslint-disable */
@@ -475,20 +475,6 @@ export type NewMessageSubscriptionVariables = {|
           requirementsToQualify_not_starts_with?: ?string,
           requirementsToQualify_ends_with?: ?string,
           requirementsToQualify_not_ends_with?: ?string,
-          socialMediaRating?: ?string,
-          socialMediaRating_not?: ?string,
-          socialMediaRating_in?: ?$ReadOnlyArray<string>,
-          socialMediaRating_not_in?: ?$ReadOnlyArray<string>,
-          socialMediaRating_lt?: ?string,
-          socialMediaRating_lte?: ?string,
-          socialMediaRating_gt?: ?string,
-          socialMediaRating_gte?: ?string,
-          socialMediaRating_contains?: ?string,
-          socialMediaRating_not_contains?: ?string,
-          socialMediaRating_starts_with?: ?string,
-          socialMediaRating_not_starts_with?: ?string,
-          socialMediaRating_ends_with?: ?string,
-          socialMediaRating_not_ends_with?: ?string,
           specialFeatures?: ?string,
           specialFeatures_not?: ?string,
           specialFeatures_in?: ?$ReadOnlyArray<string>,

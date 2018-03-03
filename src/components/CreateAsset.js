@@ -185,6 +185,7 @@ class CreateAsset extends Component {
           state,
           zipCode,
           equipment,
+          socialMedia,
         } = this.state
 
         CreateAssetMutation(
@@ -196,7 +197,8 @@ class CreateAsset extends Component {
           state,
           zipCode,
           pictures,
-          equipment
+          equipment,
+          socialMedia
           , () => this.props.history.push('/'))
       }
     )

@@ -24,6 +24,7 @@ const mutation = graphql`
                 zipCode
                 pictures
                 equipment
+                socialMedia
             }
         }
     }
@@ -38,7 +39,8 @@ export default (postedById,
                 state,
                 zipCode,
                 pictures,
-                equipment, callback) => {
+                equipment,
+                socialMedia, callback) => {
   //4
   const variables = {
     input: {
@@ -51,6 +53,7 @@ export default (postedById,
       zipCode,
       pictures,
       equipment,
+      socialMedia,
       clientMutationId: ""
     },
   }

@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 7c0df32366c78a163a66745feffd8b88
+ * @relayHash 9bf0103d797b9e492be5bca5bed5f937
  */
 
 /* eslint-disable */
@@ -20,7 +20,7 @@ export type CreateUserMutationVariables = {|
       businessType?: ?string,
       city: string,
       description: string,
-      equpment?: ?$ReadOnlyArray<any>,
+      equipment?: ?$ReadOnlyArray<any>,
       franchiseBool?: ?boolean,
       franchiseMarketingFee?: ?string,
       franchiseRoyalties?: ?string,
@@ -43,7 +43,7 @@ export type CreateUserMutationVariables = {|
       rentNNN?: ?string,
       requirementsToQualify?: ?string,
       socialMedia?: ?$ReadOnlyArray<string>,
-      socialMediaRating?: ?string,
+      socialMediaRating?: ?$ReadOnlyArray<any>,
       specialFeatures?: ?string,
       state: string,
       status?: ?string,

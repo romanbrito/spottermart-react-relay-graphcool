@@ -22,6 +22,7 @@ export type Asset_asset = {|
     +name: string,
   |},
   +equipment: ?$ReadOnlyArray<any>,
+  +socialMedia: ?$ReadOnlyArray<any>,
 |};
 */
 
@@ -40,14 +41,14 @@ return {
   "metadata": null,
   "name": "Asset_asset",
   "selections": [
-    v0,
     {
       "kind": "ScalarField",
       "alias": null,
       "args": null,
-      "name": "businessName",
+      "name": "state",
       "storageKey": null
     },
+    v0,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -73,7 +74,7 @@ return {
       "kind": "ScalarField",
       "alias": null,
       "args": null,
-      "name": "state",
+      "name": "businessName",
       "storageKey": null
     },
     {
@@ -114,6 +115,13 @@ return {
       "alias": null,
       "args": null,
       "name": "equipment",
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "args": null,
+      "name": "socialMedia",
       "storageKey": null
     }
   ],

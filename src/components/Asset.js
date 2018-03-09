@@ -49,6 +49,8 @@ class Asset extends Component {
     const {classes} = this.props
     const userId = localStorage.getItem(GC_USER_ID)
 
+    console.log(this.props.asset)
+
     return (
       <div className="assetContainer">
 
@@ -149,5 +151,6 @@ export default createFragmentContainer(Asset, graphql`
             name
         }
         equipment
+        socialMedia
     }
 `)

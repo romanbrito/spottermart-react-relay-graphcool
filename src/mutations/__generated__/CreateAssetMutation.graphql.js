@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash d8c48c74743e9798b07772acdd55209b
+ * @relayHash d87dac09f490ebeeb066d388f3498726
  */
 
 /* eslint-disable */
@@ -39,7 +39,7 @@ export type CreateAssetMutationVariables = {|
     price?: ?string,
     rentNNN?: ?string,
     requirementsToQualify?: ?string,
-    socialMedia?: ?$ReadOnlyArray<string>,
+    socialMedia?: ?$ReadOnlyArray<any>,
     socialMediaRating?: ?$ReadOnlyArray<any>,
     specialFeatures?: ?string,
     state: string,
@@ -70,7 +70,7 @@ export type CreateAssetMutationResponse = {|
       +zipCode: string,
       +pictures: ?$ReadOnlyArray<any>,
       +equipment: ?$ReadOnlyArray<any>,
-      +socialMedia: ?$ReadOnlyArray<string>,
+      +socialMedia: ?$ReadOnlyArray<any>,
     |},
   |},
 |};

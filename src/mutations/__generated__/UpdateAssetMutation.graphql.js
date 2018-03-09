@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash ea5a1e7fc04c1e922273f80aed0a5f2b
+ * @relayHash 24446a5cba8a9aa1ccd546ee4334db5b
  */
 
 /* eslint-disable */
@@ -40,7 +40,7 @@ export type UpdateAssetMutationVariables = {|
     price?: ?string,
     rentNNN?: ?string,
     requirementsToQualify?: ?string,
-    socialMedia?: ?$ReadOnlyArray<string>,
+    socialMedia?: ?$ReadOnlyArray<any>,
     socialMediaRating?: ?$ReadOnlyArray<any>,
     specialFeatures?: ?string,
     state?: ?string,

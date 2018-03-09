@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 8e856b81b3ae710ab8262843acc416db
+ * @relayHash ca080caafc6dff82d2b7b5a4ac4bf3ae
  */
 
 /* eslint-disable */
@@ -59,12 +59,12 @@ fragment AssetList_viewer on Viewer {
 }
 
 fragment Asset_asset on Asset {
+  state
   id
-  businessName
   price
   description
   city
-  state
+  businessName
   zipCode
   pictures
   postedBy {
@@ -72,6 +72,7 @@ fragment Asset_asset on Asset {
     name
   }
   equipment
+  socialMedia
 }
 */
 
@@ -198,7 +199,7 @@ return {
                                 "kind": "ScalarField",
                                 "alias": null,
                                 "args": null,
-                                "name": "businessName",
+                                "name": "state",
                                 "storageKey": null
                               },
                               {
@@ -226,7 +227,7 @@ return {
                                 "kind": "ScalarField",
                                 "alias": null,
                                 "args": null,
-                                "name": "state",
+                                "name": "businessName",
                                 "storageKey": null
                               },
                               {
@@ -267,6 +268,13 @@ return {
                                 "alias": null,
                                 "args": null,
                                 "name": "equipment",
+                                "storageKey": null
+                              },
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "args": null,
+                                "name": "socialMedia",
                                 "storageKey": null
                               }
                             ]
@@ -384,7 +392,7 @@ return {
       }
     ]
   },
-  "text": "query AssetListForwardQuery(\n  $count: Int!\n  $after: String\n) {\n  viewer {\n    ...AssetList_viewer\n    id\n  }\n}\n\nfragment AssetList_viewer on Viewer {\n  allAssets(first: $count, after: $after, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        ...Asset_asset\n        id\n      }\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    ... on AssetConnection {\n      edges {\n        cursor\n        node {\n          __typename\n          id\n        }\n      }\n      pageInfo {\n        endCursor\n        hasNextPage\n      }\n    }\n  }\n}\n\nfragment Asset_asset on Asset {\n  id\n  businessName\n  price\n  description\n  city\n  state\n  zipCode\n  pictures\n  postedBy {\n    id\n    name\n  }\n  equipment\n}\n"
+  "text": "query AssetListForwardQuery(\n  $count: Int!\n  $after: String\n) {\n  viewer {\n    ...AssetList_viewer\n    id\n  }\n}\n\nfragment AssetList_viewer on Viewer {\n  allAssets(first: $count, after: $after, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        ...Asset_asset\n        id\n      }\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    ... on AssetConnection {\n      edges {\n        cursor\n        node {\n          __typename\n          id\n        }\n      }\n      pageInfo {\n        endCursor\n        hasNextPage\n      }\n    }\n  }\n}\n\nfragment Asset_asset on Asset {\n  state\n  id\n  price\n  description\n  city\n  businessName\n  zipCode\n  pictures\n  postedBy {\n    id\n    name\n  }\n  equipment\n  socialMedia\n}\n"
 };
 })();
 

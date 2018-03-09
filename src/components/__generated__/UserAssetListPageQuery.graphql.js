@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 9e916f0d3fbb5216b177d2654918d43e
+ * @relayHash de23a2c7d5eacdb7080610e3b7270c69
  */
 
 /* eslint-disable */
@@ -54,12 +54,12 @@ fragment UserAssetList_viewer on Viewer {
 }
 
 fragment Asset_asset on Asset {
+  state
   id
-  businessName
   price
   description
   city
-  state
+  businessName
   zipCode
   pictures
   postedBy {
@@ -67,6 +67,7 @@ fragment Asset_asset on Asset {
     name
   }
   equipment
+  socialMedia
 }
 */
 
@@ -187,7 +188,7 @@ return {
                                 "kind": "ScalarField",
                                 "alias": null,
                                 "args": null,
-                                "name": "businessName",
+                                "name": "state",
                                 "storageKey": null
                               },
                               {
@@ -215,7 +216,7 @@ return {
                                 "kind": "ScalarField",
                                 "alias": null,
                                 "args": null,
-                                "name": "state",
+                                "name": "businessName",
                                 "storageKey": null
                               },
                               {
@@ -256,6 +257,13 @@ return {
                                 "alias": null,
                                 "args": null,
                                 "name": "equipment",
+                                "storageKey": null
+                              },
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "args": null,
+                                "name": "socialMedia",
                                 "storageKey": null
                               }
                             ]
@@ -374,7 +382,7 @@ return {
       }
     ]
   },
-  "text": "query UserAssetListPageQuery(\n  $filter: AssetFilter!\n) {\n  viewer {\n    ...UserAssetList_viewer\n    id\n  }\n}\n\nfragment UserAssetList_viewer on Viewer {\n  allAssets(filter: $filter, last: 100, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        ...Asset_asset\n        id\n      }\n    }\n    ... on AssetConnection {\n      edges {\n        cursor\n        node {\n          __typename\n          id\n        }\n      }\n      pageInfo {\n        hasPreviousPage\n        startCursor\n      }\n    }\n  }\n}\n\nfragment Asset_asset on Asset {\n  id\n  businessName\n  price\n  description\n  city\n  state\n  zipCode\n  pictures\n  postedBy {\n    id\n    name\n  }\n  equipment\n}\n"
+  "text": "query UserAssetListPageQuery(\n  $filter: AssetFilter!\n) {\n  viewer {\n    ...UserAssetList_viewer\n    id\n  }\n}\n\nfragment UserAssetList_viewer on Viewer {\n  allAssets(filter: $filter, last: 100, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        ...Asset_asset\n        id\n      }\n    }\n    ... on AssetConnection {\n      edges {\n        cursor\n        node {\n          __typename\n          id\n        }\n      }\n      pageInfo {\n        hasPreviousPage\n        startCursor\n      }\n    }\n  }\n}\n\nfragment Asset_asset on Asset {\n  state\n  id\n  price\n  description\n  city\n  businessName\n  zipCode\n  pictures\n  postedBy {\n    id\n    name\n  }\n  equipment\n  socialMedia\n}\n"
 };
 })();
 

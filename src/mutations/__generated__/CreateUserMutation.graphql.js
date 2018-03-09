@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 9bf0103d797b9e492be5bca5bed5f937
+ * @relayHash 9923766a14fd835f46664ff2ac3a8941
  */
 
 /* eslint-disable */
@@ -42,7 +42,7 @@ export type CreateUserMutationVariables = {|
       price?: ?string,
       rentNNN?: ?string,
       requirementsToQualify?: ?string,
-      socialMedia?: ?$ReadOnlyArray<string>,
+      socialMedia?: ?$ReadOnlyArray<any>,
       socialMediaRating?: ?$ReadOnlyArray<any>,
       specialFeatures?: ?string,
       state: string,

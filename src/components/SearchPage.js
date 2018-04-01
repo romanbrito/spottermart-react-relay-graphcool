@@ -5,12 +5,6 @@ import '../sass/SearchPage.css'
 import DisplaySearch from './DisplaySearch'
 
 const styles = theme => ({
-  search: {
-    width: '90%',
-    margin: '0 auto',
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
   backLogo: {
     display: 'block',
     textAlign: 'center',

@@ -15,6 +15,10 @@ import EquipmentList from './EquipmentList'
 import SocialMediaList from './SocialMediaList'
 
 const styles = theme => ({
+  listing: {
+    margin: '0 auto',
+    width: '80%'
+  },
   formGroup: {
     '& ul': {
       listStyle: 'none'

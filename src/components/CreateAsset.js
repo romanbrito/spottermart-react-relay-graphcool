@@ -15,31 +15,22 @@ import EquipmentList from './EquipmentList'
 import SocialMediaList from './SocialMediaList'
 
 const styles = theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
+  formGroup: {
+    '& ul': {
+      listStyle: 'none'
+    }
   },
   form: {
-    backgroundColor: '#fafafa',
+    display: 'flex',
+    flexWrap: 'wrap'
   },
-  heading: {
-    paddingLeft: 24
+  formFields: {
+
   },
-  description: {
-    width: '95%',
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-  },
-  zipCode: {
-    width: 100
-  },
-  submit: {
-    marginTop: 24
+  formSubmit: {
+    flex: '0 0 100%'
   }
+
 })
 
 @withStyles(styles)
@@ -54,106 +45,132 @@ class CreateAsset extends Component {
     zipCode: '',
     pictures: [],
     images: [],
-    equipment: [{ name: '' }],
-    socialMedia: [{ name: ''}],
+    equipment: [{name: ''}],
+    socialMedia: [{name: ''}],
   }
 
   render() {
     const {classes} = this.props
 
     return (
-      <div className={classes.form}>
-        <Grid spacing={0} container>
+      <div className={classes.listing}>
+        <header>
           <Typography type="display1" className={classes.heading}>
             Listing Details
           </Typography>
-          <Grid item xs={11}>
-            <TextField
-              required
-              id="businessname"
-              label="Name"
-              className={classes.textField}
-              margin="normal"
-              value={this.state.businessName}
-              onChange={(e) => this.setState({businessName: e.target.value})}
-            />
-            <FormControl>
-              <InputLabel htmlFor="price">Price</InputLabel>
-              <Input
-                id="price"
-                className={classes.textField}
-                inputComponent={NumberFormatCustom}
-                value={this.state.price}
-                onChange={(e) => this.setState({price: e.target.value})}
-              />
-            </FormControl>
-          </Grid>
-          <Grid item xs={11}>
-            <TextField
-              required
-              id="city"
-              label="City"
-              className={classes.textField}
-              margin="normal"
-              value={this.state.city}
-              onChange={(e) => this.setState({city: e.target.value})}
-            />
-            <TextField
-              required
-              id="state"
-              label="State"
-              className={classes.textField}
-              margin="normal"
-              value={this.state.state}
-              onChange={(e) => this.setState({state: e.target.value})}
-            />
-            <TextField
-              required
-              id="zipCode"
-              label="ZipCode"
-              className={classes.zipCode}
-              margin="normal"
-              value={this.state.zipCode}
-              onChange={(e) => this.setState({zipCode: e.target.value})}
-            />
-          </Grid>
-          <Grid item xs={11}>
-            <TextField
-              required
-              id="description"
-              label="Description"
-              multiline
-              className={classes.description}
-              margin="normal"
-              value={this.state.description}
-              onChange={(e) => this.setState({description: e.target.value})}
-            />
-          </Grid>
-        </Grid>
+        </header>
 
-        <EquipmentList
-          handleEquipmentNameChange={this._handleEquipmentNameChange}
-          handleAddItem={this._handleAddItem}
-          handleRemoveItem={this._handleRemoveItem}
-          equipment={this.state.equipment}
-        />
+        <div className={classes.form}>
+          <section className={classes.formGroup}>
+            <ul className={classes.formFields}>
+              <li>
+                <TextField
+                  required
+                  id="businessname"
+                  label="Name"
+                  className={classes.textField}
+                  margin="normal"
+                  value={this.state.businessName}
+                  onChange={(e) => this.setState({businessName: e.target.value})}
+                />
+              </li>
+              <li>
+                <FormControl>
+                  <InputLabel htmlFor="price">Price</InputLabel>
+                  <Input
+                    id="price"
+                    className={classes.textField}
+                    inputComponent={NumberFormatCustom}
+                    value={this.state.price}
+                    onChange={(e) => this.setState({price: e.target.value})}
+                  />
+                </FormControl>
+              </li>
+              <li>
+                <TextField
+                  required
+                  id="city"
+                  label="City"
+                  className={classes.textField}
+                  margin="normal"
+                  value={this.state.city}
+                  onChange={(e) => this.setState({city: e.target.value})}
+                />
+              </li>
+              <li>
+                <TextField
+                  required
+                  id="state"
+                  label="State"
+                  className={classes.textField}
+                  margin="normal"
+                  value={this.state.state}
+                  onChange={(e) => this.setState({state: e.target.value})}
+                />
+              </li>
+              <li>
+                <TextField
+                  required
+                  id="zipCode"
+                  label="ZipCode"
+                  className={classes.zipCode}
+                  margin="normal"
+                  value={this.state.zipCode}
+                  onChange={(e) => this.setState({zipCode: e.target.value})}
+                />
+              </li>
+            </ul>
+          </section>
+          <section className={classes.formGroup}>
+            <ul className={classes.formFields}>
+              <li>
+                <TextField
+                  required
+                  id="description"
+                  label="Description"
+                  multiline
+                  className={classes.description}
+                  margin="normal"
+                  value={this.state.description}
+                  onChange={(e) => this.setState({description: e.target.value})}
+                />
+              </li>
+              <li>
+                <SocialMediaList
+                  handleSocialNameChange={this._handleSocialNameChange}
+                  handleAddSocialItem={this._handleAddSocialItem}
+                  handleRemoveSocialItem={this._handleRemoveSocialItem}
+                  socialMedia={this.state.socialMedia}
+                />
+              </li>
+              <li>
+                <EquipmentList
+                  handleEquipmentNameChange={this._handleEquipmentNameChange}
+                  handleAddItem={this._handleAddItem}
+                  handleRemoveItem={this._handleRemoveItem}
+                  equipment={this.state.equipment}
+                />
+              </li>
 
-        <SocialMediaList
-          handleSocialNameChange={this._handleSocialNameChange}
-          handleAddSocialItem={this._handleAddSocialItem}
-          handleRemoveSocialItem={this._handleRemoveSocialItem}
-          socialMedia={this.state.socialMedia}
-        />
+            </ul>
+          </section>
+          <section className={classes.formGroup}>
+            <ul className={classes.formFields}>
+              <li>
+                <ImageGrid imageDrop={this._getImages} images={this.state.images} removeImage={this._removeImage}/>
+              </li>
+            </ul>
+          </section>
+          <section className={classes.formSubmit}>
+            <Button
+              color="primary"
+              className={classes.submit}
+              onClick={() => this._createAsset()}>
+              Submit
+            </Button>
+          </section>
 
-        <ImageGrid imageDrop={this._getImages} images={this.state.images} removeImage={this._removeImage}/>
-
-        <Button
-          color="primary"
-          className={classes.submit}
-          onClick={() => this._createAsset()}>
-          Submit
-        </Button>
-
+        </div>
       </div>
     )
   }

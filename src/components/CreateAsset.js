@@ -14,15 +14,30 @@ import {uploadImage} from "../utils"
 import EquipmentList from './EquipmentList'
 import SocialMediaList from './SocialMediaList'
 
+const q = (x) => {
+  if (x.matches) {
+    return '100%'
+  }
+}
+
+const x = window.matchMedia("(max-width: 700px)")
+x.addListener(q)
+
 const styles = theme => ({
   listing: {
     margin: '0 auto',
-    width: '80%'
+    width: '80%',
   },
   formGroup: {
     '& ul': {
       listStyle: 'none'
     }
+  },
+  formImage: {
+    '& ul': {
+      listStyle: 'none'
+    },
+    width: q(window.matchMedia("(max-width: 700px)"))
   },
   form: {
     display: 'flex',
@@ -158,7 +173,7 @@ class CreateAsset extends Component {
 
             </ul>
           </section>
-          <section className={classes.formGroup}>
+          <section className={classes.formImage}>
             <ul className={classes.formFields}>
               <li>
                 <ImageGrid imageDrop={this._getImages} images={this.state.images} removeImage={this._removeImage}/>

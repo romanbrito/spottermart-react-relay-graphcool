@@ -16,7 +16,7 @@ const styles = theme => ({
   },
   gridList: {
     width: 500,
-    height: 450,
+    // height: 450,
     // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
     transform: 'translateZ(0)',
   },
@@ -34,7 +34,7 @@ function ImageGrid(props) {
   const {classes} = props
 
   return (
-    <div className={classes.root}>
+
       <GridList cellHeight={200} spacing={1} className={classes.gridList}>
         {
           props.pictures.map(image => (
@@ -59,7 +59,7 @@ function ImageGrid(props) {
           ))
         }
       </GridList>
-    </div>
+
   )
 }
 
